@@ -10,31 +10,35 @@ using namespace BootstrapForge;
 
 int main()
 {
-    Domain::Models::Resource project(
+    //
+    // Desired Architecture
+    //
+    Domain::Models::Resource desiredProject(
+        Domain::Types::ResourceId{},
+        Domain::Types::Name("BootstrapForge"),
+        Domain::Types::Path("/"));
+
+    //
+    // Current Architecture
+    //
+    Domain::Models::Resource currentProject(
         Domain::Types::ResourceId{},
         Domain::Types::Name("Project"),
         Domain::Types::Path("/"));
 
-    Domain::Models::Resource src(
-        Domain::Types::ResourceId{},
-        Domain::Types::Name("src"),
-        Domain::Types::Path("/src"));
-
-    Domain::Models::Resource mainCpp(
-        Domain::Types::ResourceId{},
-        Domain::Types::Name("main.cpp"),
-        Domain::Types::Path("/src/main.cpp"));
-
     Domain::Models::ArchitectureModel desired(
         {
-            project,
-            src,
-            mainCpp
+            desiredProject
         },
         {}
     );
 
-    Domain::Models::ArchitectureModel current;
+    Domain::Models::ArchitectureModel current(
+        {
+            currentProject
+        },
+        {}
+    );
 
     Engine::Differ::ArchitectureDiffer differ;
 
@@ -43,13 +47,20 @@ int main()
     std::cout << "Execution Plan\n";
     std::cout << "--------------\n";
 
-    for (const auto& operation : plan.Operations())
+    if (plan.Operations().empty())
     {
-        std::cout
-            << ToString(operation.Kind())
-            << " : "
-            << operation.Name().Value()
-            << '\n';
+        std::cout << "No operations.\n";
+    }
+    else
+    {
+        for (const auto& operation : plan.Operations())
+        {
+            std::cout
+                << ToString(operation.Kind())
+                << " : "
+                << operation.Name().Value()
+                << '\n';
+        }
     }
 
     return 0;
