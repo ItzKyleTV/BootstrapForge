@@ -1,0 +1,21 @@
+<Project>
+
+	<ItemDefinitionGroup>
+
+		<ClCompile>
+
+			<AdditionalOptions>
+				/permissive-
+				/Zc:__cplusplus
+				/Zc:preprocessor
+				/utf-8
+				%(AdditionalOptions)
+			</AdditionalOptions>
+
+			<ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+
+		</ClCompile>
+
+	</ItemDefinitionGroup>
+
+</Project>

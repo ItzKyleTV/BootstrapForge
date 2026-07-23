@@ -1,0 +1,63 @@
+# Visual Studio
+.vs/
+*.VC.db
+*.VC.opendb
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# CMake
+out/
+build/
+cmake-build-*/
+CMakeUserPresets.json
+
+# CMake generated
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+CTestTestfile.cmake
+Testing/
+
+# Generated project files
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.dir
+
+# Ninja
+.ninja_deps
+.ninja_log
+
+# MSBuild
+*.tlog
+*.lastbuildstate
+
+# Object files
+*.obj
+*.o
+*.lo
+
+# Libraries
+*.lib
+*.a
+
+# DLLs
+*.dll
+*.exp
+*.pdb
+*.ilk
+
+# Executables
+*.exe
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# Logs
+*.log

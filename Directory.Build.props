@@ -1,0 +1,47 @@
+<Project>
+
+	<PropertyGroup>
+
+		<LangVersion>latest</LangVersion>
+
+		<WarningLevel>4</WarningLevel>
+
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+		<ConformanceMode>true</ConformanceMode>
+
+		<MultiProcessorCompilation>true</MultiProcessorCompilation>
+
+		<UseMultiToolTask>true</UseMultiToolTask>
+
+		<PreferredToolArchitecture>x64</PreferredToolArchitecture>
+
+		<CharacterSet>Unicode</CharacterSet>
+
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+
+		<RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+
+		<Optimization>Disabled</Optimization>
+
+		<FunctionLevelLinking>false</FunctionLevelLinking>
+
+		<IntrinsicFunctions>false</IntrinsicFunctions>
+
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+
+		<RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+
+		<Optimization>MaxSpeed</Optimization>
+
+		<FunctionLevelLinking>true</FunctionLevelLinking>
+
+		<IntrinsicFunctions>true</IntrinsicFunctions>
+
+	</PropertyGroup>
+
+</Project>
