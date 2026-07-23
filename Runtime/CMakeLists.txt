@@ -10,6 +10,8 @@ target_link_libraries(BootstrapForge.Runtime
     PRIVATE
         BootstrapForge.Domain
         BootstrapForge.Engine
+        BootstrapForge.Application
+        BootstrapForge.Infrastructure
 )
 
 target_compile_features(BootstrapForge.Runtime
@@ -34,3 +36,9 @@ else()
     )
 
 endif()
+
+set_target_properties(BootstrapForge.Runtime PROPERTIES
+    CXX_STANDARD 23
+    CXX_STANDARD_REQUIRED ON
+    CXX_EXTENSIONS OFF
+)

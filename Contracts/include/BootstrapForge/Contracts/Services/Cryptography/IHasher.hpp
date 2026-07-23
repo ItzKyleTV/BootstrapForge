@@ -18,4 +18,4 @@ namespace BootstrapForge::Contracts::Services::Cryptography
             std::span<const std::byte> data) const = 0;
     };
 
-} // namespace BootstrapForge::Contracts::Services::Cryptographyge::Contracts::Services::Cryptographyta) const = 0;
+} // namespace BootstrapForge::Contracts::Services::Cryptography

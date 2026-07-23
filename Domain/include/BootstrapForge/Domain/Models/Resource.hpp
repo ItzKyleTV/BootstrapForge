@@ -5,6 +5,8 @@
 #include <BootstrapForge/Domain/Types/ResourceId.hpp>
 
 #include <compare>
+#include <string>
+#include <utility>
 
 namespace BootstrapForge::Domain::Models
 {
@@ -28,6 +30,9 @@ namespace BootstrapForge::Domain::Models
         [[nodiscard]]
         constexpr const Types::Path& Path() const noexcept;
 
+        [[nodiscard]]
+        std::string Canonical() const;
+
         auto operator<=>(const Resource&) const noexcept = default;
 
     private:
@@ -41,9 +46,10 @@ namespace BootstrapForge::Domain::Models
         Types::ResourceId id,
         Types::Name name,
         Types::Path path)
-        : m_id(std::move(id))
-        , m_name(std::move(name))
-        , m_path(std::move(path))
+        :
+        m_id(std::move(id)),
+        m_name(std::move(name)),
+        m_path(std::move(path))
     {
     }
 
@@ -60,6 +66,19 @@ namespace BootstrapForge::Domain::Models
     constexpr const Types::Path& Resource::Path() const noexcept
     {
         return m_path;
+    }
+
+    inline std::string Resource::Canonical() const
+    {
+        std::string canonical;
+
+        canonical += "resource\n";
+        canonical += "path=";
+        canonical += m_path.ToString();
+        canonical += "\nname=";
+        canonical += std::string(m_name.Value());
+
+        return canonical;
     }
 
 } // namespace BootstrapForge::Domain::Models

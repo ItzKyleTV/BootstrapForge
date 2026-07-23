@@ -1,8 +1,11 @@
-#include <BootstrapForge/Domain/Models/ArchitectureModel.hpp>
-#include <BootstrapForge/Domain/Models/Resource.hpp>
-#include <BootstrapForge/Engine/Differ/ArchitectureDiffer.hpp>
+#include <BootstrapForge/Application/Identity/ResourceFactory.hpp>
 
-#include "OperationKindFormatter.hpp"
+#include <BootstrapForge/Domain/Models/ArchitectureModel.hpp>
+
+#include <BootstrapForge/Engine/Differ/ArchitectureDiffer.hpp>
+#include <BootstrapForge/Engine/Formatting/OperationKindFormatter.hpp>
+
+#include <BootstrapForge/Infrastructure/Cryptography/Hashing/Blake3Hasher.hpp>
 
 #include <iostream>
 
@@ -10,57 +13,35 @@ using namespace BootstrapForge;
 
 int main()
 {
-    //
-    // Desired Architecture
-    //
-    Domain::Models::Resource desiredProject(
-        Domain::Types::ResourceId{},
-        Domain::Types::Name("BootstrapForge"),
-        Domain::Types::Path("/"));
+    Infrastructure::Cryptography::Hashing::Blake3Hasher hasher;
 
-    //
-    // Current Architecture
-    //
-    Domain::Models::Resource currentProject(
-        Domain::Types::ResourceId{},
-        Domain::Types::Name("Project"),
-        Domain::Types::Path("/"));
+    Application::Identity::ResourceFactory resourceFactory(hasher);
 
-    Domain::Models::ArchitectureModel desired(
+    const Domain::Models::ArchitectureModel desired(
         {
-            desiredProject
+            resourceFactory.Create("/"),
+            resourceFactory.Create("/src"),
+            resourceFactory.Create("/src/main.cpp")
         },
         {}
     );
 
-    Domain::Models::ArchitectureModel current(
-        {
-            currentProject
-        },
-        {}
-    );
+    const Domain::Models::ArchitectureModel current;
 
     Engine::Differ::ArchitectureDiffer differ;
 
-    auto plan = differ.Compare(desired, current);
+    const auto plan = differ.Compare(desired, current);
 
     std::cout << "Execution Plan\n";
     std::cout << "--------------\n";
 
-    if (plan.Operations().empty())
+    for (const auto& operation : plan.Operations())
     {
-        std::cout << "No operations.\n";
-    }
-    else
-    {
-        for (const auto& operation : plan.Operations())
-        {
-            std::cout
-                << ToString(operation.Kind())
-                << " : "
-                << operation.Name().Value()
-                << '\n';
-        }
+        std::cout
+            << Engine::Formatting::ToString(operation.Kind())
+            << " : "
+            << operation.Name().Value()
+            << '\n';
     }
 
     return 0;
