@@ -45,3 +45,12 @@ set_target_properties(BootstrapForge.Domain PROPERTIES
     CXX_STANDARD_REQUIRED ON
     CXX_EXTENSIONS OFF
 )
+target_sources(BootstrapForge.Domain
+    PRIVATE
+        src/Types/Hash.cpp
+        src/Types/Identifier.cpp
+        src/Types/Name.cpp
+        src/Types/Path.cpp
+
+        src/Operations/Operation.cpp
+)
