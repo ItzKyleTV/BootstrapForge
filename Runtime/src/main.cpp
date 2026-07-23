@@ -2,6 +2,8 @@
 #include <BootstrapForge/Domain/Models/Resource.hpp>
 #include <BootstrapForge/Engine/Differ/ArchitectureDiffer.hpp>
 
+#include "OperationKindFormatter.hpp"
+
 #include <iostream>
 
 using namespace BootstrapForge;
@@ -13,8 +15,22 @@ int main()
         Domain::Types::Name("Project"),
         Domain::Types::Path("/"));
 
+    Domain::Models::Resource src(
+        Domain::Types::ResourceId{},
+        Domain::Types::Name("src"),
+        Domain::Types::Path("/src"));
+
+    Domain::Models::Resource mainCpp(
+        Domain::Types::ResourceId{},
+        Domain::Types::Name("main.cpp"),
+        Domain::Types::Path("/src/main.cpp"));
+
     Domain::Models::ArchitectureModel desired(
-        { project },
+        {
+            project,
+            src,
+            mainCpp
+        },
         {}
     );
 
@@ -30,7 +46,7 @@ int main()
     for (const auto& operation : plan.Operations())
     {
         std::cout
-            << static_cast<int>(operation.Kind())
+            << ToString(operation.Kind())
             << " : "
             << operation.Name().Value()
             << '\n';
