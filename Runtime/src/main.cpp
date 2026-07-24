@@ -1,9 +1,11 @@
 #include <BootstrapForge/Application/Identity/ResourceFactory.hpp>
 
+#include <BootstrapForge/Domain/Models/ArchitectureDelta.hpp>
 #include <BootstrapForge/Domain/Models/ArchitectureModel.hpp>
 
 #include <BootstrapForge/Engine/Differ/ArchitectureDiffer.hpp>
 #include <BootstrapForge/Engine/Formatting/OperationKindFormatter.hpp>
+#include <BootstrapForge/Engine/Planner/ArchitecturePlanner.hpp>
 
 #include <BootstrapForge/Infrastructure/Cryptography/Hashing/Blake3Hasher.hpp>
 
@@ -23,14 +25,18 @@ int main()
             resourceFactory.Create("/src"),
             resourceFactory.Create("/src/main.cpp")
         },
-        {}
-    );
+        {});
 
     const Domain::Models::ArchitectureModel current;
 
     Engine::Differ::ArchitectureDiffer differ;
+    Engine::Planner::ArchitecturePlanner planner;
 
-    const auto plan = differ.Compare(desired, current);
+    const Domain::Models::ArchitectureDelta delta =
+        differ.Compare(desired, current);
+
+    const Domain::Operations::ExecutionPlan plan =
+        planner.Plan(delta);
 
     std::cout << "Execution Plan\n";
     std::cout << "--------------\n";
@@ -40,7 +46,7 @@ int main()
         std::cout
             << Engine::Formatting::ToString(operation.Kind())
             << " : "
-            << operation.Name().Value()
+            << operation.Resource().Name().Value()
             << '\n';
     }
 

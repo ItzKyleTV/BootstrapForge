@@ -7,7 +7,7 @@ add_library(BootstrapForge.Engine STATIC)
 target_sources(BootstrapForge.Engine
     PRIVATE
         src/Differ/ArchitectureDiffer.cpp
-)
+ "src/Planner/ArchitecturePlanner.cpp" "src/Formatting/ExecutionExecutor.cpp")
 
 target_include_directories(BootstrapForge.Engine
     PUBLIC

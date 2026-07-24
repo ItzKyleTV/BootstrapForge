@@ -17,7 +17,7 @@ add_library(BootstrapForge.Infrastructure STATIC)
 target_sources(BootstrapForge.Infrastructure
     PRIVATE
         src/Cryptography/Hashing/Blake3Hasher.cpp
-)
+ "src/Filesystem/PhysicalFileSystem.cpp")
 
 target_include_directories(BootstrapForge.Infrastructure
     PUBLIC

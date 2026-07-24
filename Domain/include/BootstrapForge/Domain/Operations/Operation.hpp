@@ -1,37 +1,39 @@
 #pragma once
 
+#include <BootstrapForge/Domain/Models/Resource.hpp>
 #include <BootstrapForge/Domain/Operations/OperationKind.hpp>
-#include <BootstrapForge/Domain/Types/Name.hpp>
-#include <BootstrapForge/Domain/Types/ResourceId.hpp>
 
 namespace BootstrapForge::Domain::Operations
 {
-
     class Operation
     {
     public:
 
-        Operation(
+        constexpr Operation(
             OperationKind kind,
-            Types::ResourceId resourceId,
-            Types::Name name);
+            Models::Resource resource)
+            :
+            m_kind(kind),
+            m_resource(std::move(resource))
+        {
+        }
 
         [[nodiscard]]
-        OperationKind Kind() const noexcept;
+        constexpr OperationKind Kind() const noexcept
+        {
+            return m_kind;
+        }
 
         [[nodiscard]]
-        const Types::ResourceId& ResourceId() const noexcept;
-
-        [[nodiscard]]
-        const Types::Name& Name() const noexcept;
+        constexpr const Models::Resource& Resource() const noexcept
+        {
+            return m_resource;
+        }
 
     private:
 
         OperationKind m_kind;
 
-        Types::ResourceId m_resourceId;
-
-        Types::Name m_name;
+        Models::Resource m_resource;
     };
-
 }

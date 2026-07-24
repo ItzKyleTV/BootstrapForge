@@ -5,68 +5,107 @@
 
 namespace BootstrapForge::Engine::Differ
 {
-
     using namespace BootstrapForge::Domain;
 
-    Operations::ExecutionPlan ArchitectureDiffer::Compare(
+    Models::ArchitectureDelta ArchitectureDiffer::Compare(
         const Models::ArchitectureModel& desired,
         const Models::ArchitectureModel& current) const
     {
-        std::vector<Operations::Operation> operations;
+        std::vector<Models::Resource> addedResources;
+        std::vector<Models::Resource> removedResources;
+        std::vector<Models::Resource> modifiedResources;
+
+        std::vector<Models::Relationship> addedRelationships;
+        std::vector<Models::Relationship> removedRelationships;
 
         //
-        // Create and Update operations
+        // Added and modified resources
         //
         for (const auto& desiredResource : desired.Resources())
         {
-            auto currentIt = std::ranges::find_if(
-                current.Resources(),
-                [&](const auto& currentResource)
-                {
-                    return currentResource.Id() == desiredResource.Id();
-                });
+            const auto currentIt =
+                std::ranges::find_if(
+                    current.Resources(),
+                    [&](const auto& currentResource)
+                    {
+                        return currentResource.Id() == desiredResource.Id();
+                    });
 
             if (currentIt == current.Resources().end())
             {
-                operations.emplace_back(
-                    Operations::OperationKind::Create,
-                    desiredResource.Id(),
-                    desiredResource.Name());
-
+                addedResources.emplace_back(desiredResource);
                 continue;
             }
 
             if (desiredResource != *currentIt)
             {
-                operations.emplace_back(
-                    Operations::OperationKind::Update,
-                    desiredResource.Id(),
-                    desiredResource.Name());
+                modifiedResources.emplace_back(desiredResource);
             }
         }
 
         //
-        // Delete operations
+        // Removed resources
         //
         for (const auto& currentResource : current.Resources())
         {
-            const bool exists = std::ranges::any_of(
-                desired.Resources(),
-                [&](const auto& desiredResource)
-                {
-                    return desiredResource.Id() == currentResource.Id();
-                });
+            const bool exists =
+                std::ranges::any_of(
+                    desired.Resources(),
+                    [&](const auto& desiredResource)
+                    {
+                        return desiredResource.Id() == currentResource.Id();
+                    });
 
             if (!exists)
             {
-                operations.emplace_back(
-                    Operations::OperationKind::Delete,
-                    currentResource.Id(),
-                    currentResource.Name());
+                removedResources.emplace_back(currentResource);
             }
         }
 
-        return Operations::ExecutionPlan(std::move(operations));
+        //
+        // Added relationships
+        //
+        for (const auto& desiredRelationship : desired.Relationships())
+        {
+            const bool exists =
+                std::ranges::any_of(
+                    current.Relationships(),
+                    [&](const auto& currentRelationship)
+                    {
+                        return currentRelationship.Id() == desiredRelationship.Id();
+                    });
+
+            if (!exists)
+            {
+                addedRelationships.emplace_back(desiredRelationship);
+            }
+        }
+
+        //
+        // Removed relationships
+        //
+        for (const auto& currentRelationship : current.Relationships())
+        {
+            const bool exists =
+                std::ranges::any_of(
+                    desired.Relationships(),
+                    [&](const auto& desiredRelationship)
+                    {
+                        return desiredRelationship.Id() == currentRelationship.Id();
+                    });
+
+            if (!exists)
+            {
+                removedRelationships.emplace_back(currentRelationship);
+            }
+        }
+
+        return Models::ArchitectureDelta(
+            std::move(addedResources),
+            std::move(removedResources),
+            std::move(modifiedResources),
+            std::move(addedRelationships),
+            std::move(removedRelationships));
     }
 
 } // namespace BootstrapForge::Engine::Differ

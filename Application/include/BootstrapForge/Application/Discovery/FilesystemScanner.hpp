@@ -1,5 +1,6 @@
 #pragma once
 
+#include <BootstrapForge/Application/Identity/RelationshipFactory.hpp>
 #include <BootstrapForge/Application/Identity/ResourceFactory.hpp>
 
 #include <BootstrapForge/Domain/Models/ArchitectureModel.hpp>
@@ -13,7 +14,8 @@ namespace BootstrapForge::Application::Discovery
     public:
 
         explicit FilesystemScanner(
-            Identity::ResourceFactory& resourceFactory) noexcept;
+            Identity::ResourceFactory& resourceFactory,
+            Identity::RelationshipFactory& relationshipFactory) noexcept;
 
         [[nodiscard]]
         Domain::Models::ArchitectureModel Scan(
@@ -22,6 +24,7 @@ namespace BootstrapForge::Application::Discovery
     private:
 
         Identity::ResourceFactory& m_resourceFactory;
+        Identity::RelationshipFactory& m_relationshipFactory;
     };
 
 } // namespace BootstrapForge::Application::Discovery
