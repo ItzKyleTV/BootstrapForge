@@ -6,11 +6,12 @@
 #include <BootstrapForge/Domain/Operations/ScheduledExecutionPlan.hpp>
 
 #include <BootstrapForge/Engine/Differ/ArchitectureDiffer.hpp>
-#include <BootstrapForge/Engine/Formatting/OperationKindFormatter.hpp>
+#include <BootstrapForge/Engine/Execution/ExecutionExecutor.hpp>
 #include <BootstrapForge/Engine/Planner/ArchitecturePlanner.hpp>
 #include <BootstrapForge/Engine/Scheduler/ExecutionScheduler.hpp>
 
 #include <BootstrapForge/Infrastructure/Cryptography/Hashing/Blake3Hasher.hpp>
+#include <BootstrapForge/Infrastructure/Execution/NullExecutionBackend.hpp>
 
 #include <iostream>
 
@@ -35,6 +36,7 @@ int main()
     Engine::Differ::ArchitectureDiffer differ;
     Engine::Planner::ArchitecturePlanner planner;
     Engine::Scheduler::ExecutionScheduler scheduler;
+    Engine::Execution::ExecutionExecutor executor;
 
     const Domain::Models::ArchitectureDelta delta =
         differ.Compare(desired, current);
@@ -45,15 +47,36 @@ int main()
     const Domain::Operations::ScheduledExecutionPlan scheduledPlan =
         scheduler.Schedule(plan);
 
-    std::cout << "Scheduled Execution Plan\n";
-    std::cout << "------------------------\n";
+    Infrastructure::Execution::NullExecutionBackend backend;
 
-    for (const auto& operation : scheduledPlan.Operations())
+    executor.Execute(
+        scheduledPlan,
+        backend);
+
+    std::cout << "Executed Operations\n";
+    std::cout << "-------------------\n";
+
+    for (const auto& resource : backend.Created())
     {
         std::cout
-            << Engine::Formatting::ToString(operation.Kind())
-            << " : "
-            << operation.Resource().Name().Value()
+            << "Create : "
+            << resource.Name().Value()
+            << '\n';
+    }
+
+    for (const auto& resource : backend.Updated())
+    {
+        std::cout
+            << "Update : "
+            << resource.Name().Value()
+            << '\n';
+    }
+
+    for (const auto& resource : backend.Deleted())
+    {
+        std::cout
+            << "Delete : "
+            << resource.Name().Value()
             << '\n';
     }
 
