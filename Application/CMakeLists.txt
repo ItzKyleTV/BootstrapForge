@@ -7,7 +7,7 @@ add_library(BootstrapForge.Application STATIC)
 target_sources(BootstrapForge.Application
     PRIVATE
         "src/Identity/ResourceFactory.cpp"
- "src/Discovery/FilesystemScanner.cpp")
+ "src/Discovery/FilesystemScanner.cpp" "src/Identity/RelationshipFactory.cpp")
 
 target_include_directories(BootstrapForge.Application
     PUBLIC
