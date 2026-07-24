@@ -23,4 +23,5 @@ namespace BootstrapForge::Application::Identity
 
         BootstrapForge::Contracts::Services::Cryptography::IHasher& m_hasher;
     };
-}
+
+} // namespace BootstrapForge::Application::Identity

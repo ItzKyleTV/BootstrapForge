@@ -41,4 +41,5 @@ namespace BootstrapForge::Application::Identity
             Name(path.filename().string()),
             Path(path));
     }
-}
+
+} // namespace BootstrapForge::Application::Identity

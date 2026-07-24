@@ -23,4 +23,5 @@ namespace BootstrapForge::Application::Discovery
 
         Identity::ResourceFactory& m_resourceFactory;
     };
-}
+
+} // namespace BootstrapForge::Application::Discovery

@@ -1,43 +1,27 @@
-#include <BootstrapForge/Application/Discovery/FilesystemScanner.hpp>
+#pragma once
 
-#include <vector>
+#include <BootstrapForge/Application/Identity/ResourceFactory.hpp>
+
+#include <BootstrapForge/Domain/Models/ArchitectureModel.hpp>
+
+#include <filesystem>
 
 namespace BootstrapForge::Application::Discovery
 {
-    using BootstrapForge::Domain::Models::ArchitectureModel;
-    using BootstrapForge::Domain::Models::Relationship;
-    using BootstrapForge::Domain::Models::Resource;
-
-    FilesystemScanner::FilesystemScanner(
-        Identity::ResourceFactory& resourceFactory) noexcept
-        :
-        m_resourceFactory(resourceFactory)
+    class FilesystemScanner final
     {
-    }
+    public:
 
-    ArchitectureModel FilesystemScanner::Scan(
-        const std::filesystem::path& root) const
-    {
-        std::vector<Resource> resources;
-        std::vector<Relationship> relationships;
+        explicit FilesystemScanner(
+            Identity::ResourceFactory& resourceFactory) noexcept;
 
-        if (!std::filesystem::exists(root))
-        {
-            return {};
-        }
+        [[nodiscard]]
+        Domain::Models::ArchitectureModel Scan(
+            const std::filesystem::path& root) const;
 
-        resources.emplace_back(
-            m_resourceFactory.Create(root));
+    private:
 
-        for (const auto& entry :
-            std::filesystem::recursive_directory_iterator(root))
-        {
-            resources.emplace_back(
-                m_resourceFactory.Create(entry.path()));
-        }
+        Identity::ResourceFactory& m_resourceFactory;
+    };
 
-        return ArchitectureModel(
-            std::move(resources),
-            std::move(relationships));
-    }
-}
+} // namespace BootstrapForge::Application::Discovery
