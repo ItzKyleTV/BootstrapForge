@@ -3,6 +3,7 @@
 #include <BootstrapForge/Domain/Models/ArchitectureDelta.hpp>
 #include <BootstrapForge/Domain/Models/ArchitectureModel.hpp>
 #include <BootstrapForge/Domain/Operations/ExecutionPlan.hpp>
+#include <BootstrapForge/Domain/Operations/ExecutionResult.hpp>
 #include <BootstrapForge/Domain/Operations/ScheduledExecutionPlan.hpp>
 
 #include <BootstrapForge/Engine/Differ/ArchitectureDiffer.hpp>
@@ -49,36 +50,28 @@ int main()
 
     Infrastructure::Execution::NullExecutionBackend backend;
 
-    executor.Execute(
-        scheduledPlan,
-        backend);
+    const Domain::Operations::ExecutionResult result =
+        executor.Execute(
+            scheduledPlan,
+            backend);
 
     std::cout << "Executed Operations\n";
     std::cout << "-------------------\n";
 
-    for (const auto& resource : backend.Created())
+    for (const auto& entry : result.Entries())
     {
         std::cout
-            << "Create : "
-            << resource.Name().Value()
+            << (entry.Success() ? "[OK]   " : "[FAIL] ")
+            << entry.Operation().Resource().Path().Value().generic_string()
             << '\n';
     }
 
-    for (const auto& resource : backend.Updated())
-    {
-        std::cout
-            << "Update : "
-            << resource.Name().Value()
-            << '\n';
-    }
+    std::cout << '\n';
 
-    for (const auto& resource : backend.Deleted())
-    {
-        std::cout
-            << "Delete : "
-            << resource.Name().Value()
-            << '\n';
-    }
+    std::cout
+        << "Total      : " << result.Total() << '\n'
+        << "Successful : " << result.Successful() << '\n'
+        << "Failed     : " << result.Failed() << '\n';
 
-    return 0;
+    return result.Success() ? 0 : 1;
 }

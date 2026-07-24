@@ -32,6 +32,8 @@ target_sources(
         # Operations
         #
         src/Operations/ExecutionPlan.cpp
+        src/Operations/ExecutionResult.cpp
+        src/Operations/ExecutionResultEntry.cpp
 
         #
         # Models
@@ -39,4 +41,34 @@ target_sources(
         src/Models/ArchitectureModel.cpp
         src/Models/Relationship.cpp
         src/Models/Resource.cpp
+)
+
+if(MSVC)
+
+    target_compile_options(
+        BootstrapForge.Domain
+        PRIVATE
+            /W4
+            /permissive-
+            /EHsc
+    )
+
+else()
+
+    target_compile_options(
+        BootstrapForge.Domain
+        PRIVATE
+            -Wall
+            -Wextra
+            -Wpedantic
+    )
+
+endif()
+
+set_target_properties(
+    BootstrapForge.Domain
+    PROPERTIES
+        CXX_STANDARD 23
+        CXX_STANDARD_REQUIRED ON
+        CXX_EXTENSIONS OFF
 )
