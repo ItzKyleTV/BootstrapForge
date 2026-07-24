@@ -8,7 +8,7 @@
 #include <BootstrapForge/Engine/Differ/ArchitectureDiffer.hpp>
 #include <BootstrapForge/Engine/Formatting/OperationKindFormatter.hpp>
 #include <BootstrapForge/Engine/Planner/ArchitecturePlanner.hpp>
-#include "../../Engine/include/BootstrapForge/Engine/Scheduler/ExecutionScheduler.hpp"
+#include <BootstrapForge/Engine/Scheduler/ExecutionScheduler.hpp>
 
 #include <BootstrapForge/Infrastructure/Cryptography/Hashing/Blake3Hasher.hpp>
 

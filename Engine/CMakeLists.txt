@@ -24,9 +24,10 @@ target_sources(
         src/Scheduler/ExecutionScheduler.cpp
 
         #
-        # Formatting
+        # Execution
         #
-        src/Formatting/ExecutionExecutor.cpp
+        src/Execution/ExecutionExecutor.cpp
+
 )
 
 target_include_directories(
@@ -39,6 +40,7 @@ target_link_libraries(
     BootstrapForge.Engine
     PUBLIC
         BootstrapForge.Domain
+        BootstrapForge.Contracts
 )
 
 target_compile_features(
