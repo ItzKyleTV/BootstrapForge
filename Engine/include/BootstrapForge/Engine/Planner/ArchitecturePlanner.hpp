@@ -10,8 +10,7 @@ namespace BootstrapForge::Engine::Planner
     public:
 
         [[nodiscard]]
-        BootstrapForge::Domain::Operations::ExecutionPlan Plan(
-            const BootstrapForge::Domain::Models::ArchitectureDelta& delta) const;
+        Domain::Operations::ExecutionPlan Plan(
+            const Domain::Models::ArchitectureDelta& delta) const;
     };
-
-} // namespace BootstrapForge::Engine::Planner
+}

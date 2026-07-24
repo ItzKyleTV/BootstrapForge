@@ -2,10 +2,13 @@
 
 #include <BootstrapForge/Domain/Models/ArchitectureDelta.hpp>
 #include <BootstrapForge/Domain/Models/ArchitectureModel.hpp>
+#include <BootstrapForge/Domain/Operations/ExecutionPlan.hpp>
+#include <BootstrapForge/Domain/Operations/ScheduledExecutionPlan.hpp>
 
 #include <BootstrapForge/Engine/Differ/ArchitectureDiffer.hpp>
 #include <BootstrapForge/Engine/Formatting/OperationKindFormatter.hpp>
 #include <BootstrapForge/Engine/Planner/ArchitecturePlanner.hpp>
+#include "../../Engine/include/BootstrapForge/Engine/Scheduler/ExecutionScheduler.hpp"
 
 #include <BootstrapForge/Infrastructure/Cryptography/Hashing/Blake3Hasher.hpp>
 
@@ -31,6 +34,7 @@ int main()
 
     Engine::Differ::ArchitectureDiffer differ;
     Engine::Planner::ArchitecturePlanner planner;
+    Engine::Scheduler::ExecutionScheduler scheduler;
 
     const Domain::Models::ArchitectureDelta delta =
         differ.Compare(desired, current);
@@ -38,10 +42,13 @@ int main()
     const Domain::Operations::ExecutionPlan plan =
         planner.Plan(delta);
 
-    std::cout << "Execution Plan\n";
-    std::cout << "--------------\n";
+    const Domain::Operations::ScheduledExecutionPlan scheduledPlan =
+        scheduler.Schedule(plan);
 
-    for (const auto& operation : plan.Operations())
+    std::cout << "Scheduled Execution Plan\n";
+    std::cout << "------------------------\n";
+
+    for (const auto& operation : scheduledPlan.Operations())
     {
         std::cout
             << Engine::Formatting::ToString(operation.Kind())
