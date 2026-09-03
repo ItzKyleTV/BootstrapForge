@@ -2,14 +2,16 @@
 
 namespace BootstrapForge::Domain::Operations
 {
-
     enum class OperationKind
     {
         Create,
         Delete,
         Update,
         Move,
-        Rename
+        Rename,
+
+        AddRelationship,
+        RemoveRelationship
     };
 
 } // namespace BootstrapForge::Domain::Operations

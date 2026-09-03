@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-subbuild\CMakeFiles\2c89cc5a52af9da12c2bf562e8cccbfb\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{EA928B28-9C89-3839-AFC6-73B074821B12}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

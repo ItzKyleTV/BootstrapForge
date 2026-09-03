@@ -1,8 +1,9 @@
 #pragma once
 
-#include <BootstrapForge/Domain/Operations/Operation.hpp>
+#include <BootstrapForge/Domain/Operations/PlannedOperation.hpp>
 
 #include <compare>
+#include <utility>
 #include <vector>
 
 namespace BootstrapForge::Domain::Operations
@@ -14,27 +15,17 @@ namespace BootstrapForge::Domain::Operations
         ExecutionPlan() = default;
 
         explicit ExecutionPlan(
-            std::vector<Operation> operations);
+            std::vector<PlannedOperation> operations);
 
         [[nodiscard]]
-        const std::vector<Operation>& Operations() const noexcept;
+        const std::vector<PlannedOperation>&
+            Operations() const noexcept;
 
         auto operator<=>(const ExecutionPlan&) const = default;
 
     private:
 
-        std::vector<Operation> m_operations;
+        std::vector<PlannedOperation> m_operations;
     };
-
-    inline ExecutionPlan::ExecutionPlan(
-        std::vector<Operation> operations)
-        : m_operations(std::move(operations))
-    {
-    }
-
-    inline const std::vector<Operation>& ExecutionPlan::Operations() const noexcept
-    {
-        return m_operations;
-    }
 
 } // namespace BootstrapForge::Domain::Operations

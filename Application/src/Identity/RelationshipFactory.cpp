@@ -4,42 +4,37 @@
 #include <BootstrapForge/Domain/Types/RelationshipId.hpp>
 
 #include <span>
-#include <string>
+#include <string_view>
 
 namespace BootstrapForge::Application::Identity
 {
-    using BootstrapForge::Domain::Models::Relationship;
-    using BootstrapForge::Domain::Models::Resource;
-    using BootstrapForge::Domain::Types::Hash;
-    using BootstrapForge::Domain::Types::RelationshipId;
-
     RelationshipFactory::RelationshipFactory(
-        BootstrapForge::Contracts::Services::Cryptography::IHasher& hasher) noexcept
+        BootstrapForge::Contracts::Services::Cryptography::IHasher& hasher)
+        noexcept
         :
         m_hasher(hasher)
     {
     }
 
-    Relationship RelationshipFactory::Create(
-        const Resource& source,
-        const Resource& target) const
+    BootstrapForge::Domain::Models::Relationship
+        RelationshipFactory::Create(
+            std::string_view manifestId,
+            const BootstrapForge::Domain::Types::ResourceId& source,
+            const BootstrapForge::Domain::Types::ResourceId& target) const
     {
-        const std::string canonical =
-            "source=" + source.Id().ToString() +
-            "\ntarget=" + target.Id().ToString();
-
         const auto bytes =
             std::as_bytes(
                 std::span(
-                    canonical.data(),
-                    canonical.size()));
+                    manifestId.data(),
+                    manifestId.size()));
 
-        const Hash hash = m_hasher.Compute(bytes);
+        const BootstrapForge::Domain::Types::Hash hash =
+            m_hasher.Compute(bytes);
 
-        return Relationship(
-            RelationshipId(hash),
-            source.Id(),
-            target.Id());
+        return BootstrapForge::Domain::Models::Relationship(
+            BootstrapForge::Domain::Types::RelationshipId(hash),
+            source,
+            target);
     }
 
 } // namespace BootstrapForge::Application::Identity

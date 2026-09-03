@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "resources": [
+    {
+      "id": "src",
+      "path": "/src",
+      "kind": "directory"
+    },
+    {
+      "id": "hello-file",
+      "path": "/src/hello.txt",
+      "kind": "file",
+      "content": "Hello from BootstrapForge"
+    },
+    {
+      "id": "test-link",
+      "path": "/src/test-link",
+      "kind": "symbolic-link"
+    }
+  ],
+  "relationships": []
+}

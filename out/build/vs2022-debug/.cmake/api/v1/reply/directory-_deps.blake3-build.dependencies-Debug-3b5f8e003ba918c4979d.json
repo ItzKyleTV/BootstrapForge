@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "_deps/blake3-build/dependencies",
+		"source" : "out/build/vs2022-debug/_deps/blake3-src/c/dependencies"
+	}
+}

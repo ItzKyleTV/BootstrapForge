@@ -14,15 +14,31 @@ namespace BootstrapForge::Infrastructure::Execution
     public:
 
         [[nodiscard]]
-        bool Create(
+        bool CreateDirectory(
             const Domain::Models::Resource& resource) override;
 
         [[nodiscard]]
-        bool Update(
+        bool CreateFile(
             const Domain::Models::Resource& resource) override;
 
         [[nodiscard]]
-        bool Delete(
+        bool CreateSymbolicLink(
+            const Domain::Models::Resource& resource) override;
+
+        [[nodiscard]]
+        bool UpdateFile(
+            const Domain::Models::Resource& resource) override;
+
+        [[nodiscard]]
+        bool DeleteDirectory(
+            const Domain::Models::Resource& resource) override;
+
+        [[nodiscard]]
+        bool DeleteFile(
+            const Domain::Models::Resource& resource) override;
+
+        [[nodiscard]]
+        bool DeleteSymbolicLink(
             const Domain::Models::Resource& resource) override;
 
         [[nodiscard]]

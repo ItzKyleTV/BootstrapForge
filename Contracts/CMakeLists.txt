@@ -17,6 +17,11 @@ target_sources(
         # Execution
         #
         include/BootstrapForge/Contracts/Execution/IExecutionBackend.hpp
+
+        #
+        # Filesystem
+        #
+        include/BootstrapForge/Contracts/Filesystem/IFilesystemScanner.hpp
 )
 
 target_include_directories(

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.25)
 
 project(BootstrapForge.Engine LANGUAGES CXX)
 
@@ -28,6 +28,10 @@ target_sources(
         #
         src/Execution/ExecutionExecutor.cpp
 
+        #
+        # Reconciliation
+        #
+        src/Reconciliation/ArchitectureReconciler.cpp
 )
 
 target_include_directories(

@@ -3,7 +3,9 @@
 #include <BootstrapForge/Contracts/Services/Cryptography/IHasher.hpp>
 
 #include <BootstrapForge/Domain/Models/Relationship.hpp>
-#include <BootstrapForge/Domain/Models/Resource.hpp>
+#include <BootstrapForge/Domain/Types/ResourceId.hpp>
+
+#include <string_view>
 
 namespace BootstrapForge::Application::Identity
 {
@@ -12,16 +14,19 @@ namespace BootstrapForge::Application::Identity
     public:
 
         explicit RelationshipFactory(
-            BootstrapForge::Contracts::Services::Cryptography::IHasher& hasher) noexcept;
+            BootstrapForge::Contracts::Services::Cryptography::IHasher& hasher)
+            noexcept;
 
         [[nodiscard]]
         BootstrapForge::Domain::Models::Relationship Create(
-            const BootstrapForge::Domain::Models::Resource& source,
-            const BootstrapForge::Domain::Models::Resource& target) const;
+            std::string_view manifestId,
+            const BootstrapForge::Domain::Types::ResourceId& source,
+            const BootstrapForge::Domain::Types::ResourceId& target) const;
 
     private:
 
-        BootstrapForge::Contracts::Services::Cryptography::IHasher& m_hasher;
+        BootstrapForge::Contracts::Services::Cryptography::IHasher&
+            m_hasher;
     };
 
 } // namespace BootstrapForge::Application::Identity

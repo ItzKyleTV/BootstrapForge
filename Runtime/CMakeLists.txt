@@ -4,7 +4,16 @@ project(BootstrapForge.Runtime LANGUAGES CXX)
 
 add_executable(
     BootstrapForge.Runtime
+
     src/main.cpp
+    src/RuntimeOptions.cpp
+    src/RuntimeWorkspace.cpp
+)
+
+target_include_directories(
+    BootstrapForge.Runtime
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 target_link_libraries(

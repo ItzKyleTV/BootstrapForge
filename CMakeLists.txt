@@ -7,33 +7,71 @@ project(
     LANGUAGES C CXX
 )
 
+#
+# Compiler
+#
+
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
+#
+# Output
+#
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+#
+# Third Party
+#
+
+include(cmake/Dependencies.cmake)
+
+#
+# Core Libraries
+#
+
 add_subdirectory(Domain)
 add_subdirectory(Contracts)
 add_subdirectory(Infrastructure)
 
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Engine/CMakeLists.txt")
-    add_subdirectory(Engine)
-endif()
+#
+# Application Layer
+#
 
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Application/CMakeLists.txt")
-    add_subdirectory(Application)
-endif()
+add_subdirectory(Application)
 
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Capabilities/CMakeLists.txt")
-    add_subdirectory(Capabilities)
-endif()
+#
+# Engine Layer
+#
 
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Runtime/CMakeLists.txt")
-    add_subdirectory(Runtime)
-endif()
+add_subdirectory(Engine)
 
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Tests/CMakeLists.txt")
-    enable_testing()
-    add_subdirectory(Tests)
-endif()
+#
+# AI Capabilities
+#
+
+add_subdirectory(Capabilities)
+
+#
+# Architecture Compiler
+#
+
+add_subdirectory(Architecture)
+
+#
+# Runtime
+#
+
+add_subdirectory(Runtime)
+
+#
+# Tests
+#
+
+enable_testing()
+add_subdirectory(Tests)

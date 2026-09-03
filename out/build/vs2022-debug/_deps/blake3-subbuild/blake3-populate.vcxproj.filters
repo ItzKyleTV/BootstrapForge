@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-subbuild\CMakeFiles\24d1f00960a1ad0428a2fd9f175aca15\blake3-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-subbuild\CMakeFiles\24d1f00960a1ad0428a2fd9f175aca15\blake3-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-subbuild\CMakeFiles\24d1f00960a1ad0428a2fd9f175aca15\blake3-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-subbuild\CMakeFiles\24d1f00960a1ad0428a2fd9f175aca15\blake3-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-subbuild\CMakeFiles\24d1f00960a1ad0428a2fd9f175aca15\blake3-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-subbuild\CMakeFiles\24d1f00960a1ad0428a2fd9f175aca15\blake3-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-subbuild\CMakeFiles\24d1f00960a1ad0428a2fd9f175aca15\blake3-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-subbuild\CMakeFiles\24d1f00960a1ad0428a2fd9f175aca15\blake3-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-subbuild\CMakeFiles\fc0f6ae5b7cb672a7f97f43167ce3c25\blake3-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-subbuild\CMakeFiles\a831b76fce70ec61d47227e99ad587f0\blake3-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-subbuild\CMakeFiles\blake3-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{CB8CC517-00FF-39EA-9F77-5368D66B27FE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

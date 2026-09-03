@@ -1,47 +1,76 @@
 #include <BootstrapForge/Engine/Planner/ArchitecturePlanner.hpp>
 
+#include <BootstrapForge/Domain/Operations/Operation.hpp>
+#include <BootstrapForge/Domain/Operations/OperationKind.hpp>
+#include <BootstrapForge/Domain/Operations/RelationshipOperation.hpp>
+
+#include <utility>
 #include <vector>
 
 namespace BootstrapForge::Engine::Planner
 {
     using namespace BootstrapForge::Domain;
 
-    Operations::ExecutionPlan ArchitecturePlanner::Plan(
-        const Models::ArchitectureDelta& delta) const
+    Operations::ExecutionPlan
+        ArchitecturePlanner::Plan(
+            const Models::ArchitectureDelta& delta) const
     {
-        std::vector<Operations::Operation> operations;
+        std::vector<Operations::PlannedOperation> operations;
 
-        //
-        // Create operations
-        //
-        for (const auto& resource : delta.AddedResources())
+        operations.reserve(
+            delta.AddedResources().size() +
+            delta.ModifiedResources().size() +
+            delta.RemovedResources().size() +
+            delta.AddedRelationships().size() +
+            delta.RemovedRelationships().size());
+
+        for (const auto& resource :
+            delta.AddedResources())
         {
             operations.emplace_back(
-                Operations::OperationKind::Create,
-                resource);
+                Operations::Operation(
+                    Operations::OperationKind::Create,
+                    resource));
         }
 
-        //
-        // Update operations
-        //
-        for (const auto& resource : delta.ModifiedResources())
+        for (const auto& resource :
+            delta.ModifiedResources())
         {
             operations.emplace_back(
-                Operations::OperationKind::Update,
-                resource);
+                Operations::Operation(
+                    Operations::OperationKind::Update,
+                    resource));
         }
 
-        //
-        // Delete operations
-        //
-        for (const auto& resource : delta.RemovedResources())
+        for (const auto& resource :
+            delta.RemovedResources())
         {
             operations.emplace_back(
-                Operations::OperationKind::Delete,
-                resource);
+                Operations::Operation(
+                    Operations::OperationKind::Delete,
+                    resource));
+        }
+
+        for (const auto& relationship :
+            delta.AddedRelationships())
+        {
+            operations.emplace_back(
+                Operations::RelationshipOperation(
+                    Operations::OperationKind::AddRelationship,
+                    relationship));
+        }
+
+        for (const auto& relationship :
+            delta.RemovedRelationships())
+        {
+            operations.emplace_back(
+                Operations::RelationshipOperation(
+                    Operations::OperationKind::RemoveRelationship,
+                    relationship));
         }
 
         return Operations::ExecutionPlan(
             std::move(operations));
     }
-}
+
+} // namespace BootstrapForge::Engine::Planner

@@ -2,21 +2,49 @@
 
 namespace BootstrapForge::Infrastructure::Execution
 {
-    bool NullExecutionBackend::Create(
+    bool NullExecutionBackend::CreateDirectory(
         const Domain::Models::Resource& resource)
     {
         m_created.push_back(resource);
         return true;
     }
 
-    bool NullExecutionBackend::Update(
+    bool NullExecutionBackend::CreateFile(
+        const Domain::Models::Resource& resource)
+    {
+        m_created.push_back(resource);
+        return true;
+    }
+
+    bool NullExecutionBackend::CreateSymbolicLink(
+        const Domain::Models::Resource& resource)
+    {
+        m_created.push_back(resource);
+        return true;
+    }
+
+    bool NullExecutionBackend::UpdateFile(
         const Domain::Models::Resource& resource)
     {
         m_updated.push_back(resource);
         return true;
     }
 
-    bool NullExecutionBackend::Delete(
+    bool NullExecutionBackend::DeleteDirectory(
+        const Domain::Models::Resource& resource)
+    {
+        m_deleted.push_back(resource);
+        return true;
+    }
+
+    bool NullExecutionBackend::DeleteFile(
+        const Domain::Models::Resource& resource)
+    {
+        m_deleted.push_back(resource);
+        return true;
+    }
+
+    bool NullExecutionBackend::DeleteSymbolicLink(
         const Domain::Models::Resource& resource)
     {
         m_deleted.push_back(resource);
@@ -40,4 +68,5 @@ namespace BootstrapForge::Infrastructure::Execution
     {
         return m_deleted;
     }
-}
+
+} // namespace BootstrapForge::Infrastructure::Execution

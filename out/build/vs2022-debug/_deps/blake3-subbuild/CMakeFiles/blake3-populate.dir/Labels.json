@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-subbuild/CMakeFiles/blake3-populate"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-subbuild/CMakeFiles/a831b76fce70ec61d47227e99ad587f0/blake3-populate.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-subbuild/CMakeFiles/fc0f6ae5b7cb672a7f97f43167ce3c25/blake3-populate-complete.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-subbuild/CMakeFiles/24d1f00960a1ad0428a2fd9f175aca15/blake3-populate-build.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-subbuild/CMakeFiles/24d1f00960a1ad0428a2fd9f175aca15/blake3-populate-configure.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-subbuild/CMakeFiles/24d1f00960a1ad0428a2fd9f175aca15/blake3-populate-download.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-subbuild/CMakeFiles/24d1f00960a1ad0428a2fd9f175aca15/blake3-populate-install.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-subbuild/CMakeFiles/24d1f00960a1ad0428a2fd9f175aca15/blake3-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-subbuild/CMakeFiles/24d1f00960a1ad0428a2fd9f175aca15/blake3-populate-patch.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-subbuild/CMakeFiles/24d1f00960a1ad0428a2fd9f175aca15/blake3-populate-test.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-subbuild/CMakeFiles/24d1f00960a1ad0428a2fd9f175aca15/blake3-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"blake3-populate"
+		],
+		"name" : "blake3-populate"
+	}
+}

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-subbuild\CMakeFiles\b7e6dabcce9cf9cc3c6f0fb461cd198b\nlohmann_json-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-subbuild\CMakeFiles\b7e6dabcce9cf9cc3c6f0fb461cd198b\nlohmann_json-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-subbuild\CMakeFiles\b7e6dabcce9cf9cc3c6f0fb461cd198b\nlohmann_json-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-subbuild\CMakeFiles\b7e6dabcce9cf9cc3c6f0fb461cd198b\nlohmann_json-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-subbuild\CMakeFiles\b7e6dabcce9cf9cc3c6f0fb461cd198b\nlohmann_json-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-subbuild\CMakeFiles\b7e6dabcce9cf9cc3c6f0fb461cd198b\nlohmann_json-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-subbuild\CMakeFiles\b7e6dabcce9cf9cc3c6f0fb461cd198b\nlohmann_json-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-subbuild\CMakeFiles\b7e6dabcce9cf9cc3c6f0fb461cd198b\nlohmann_json-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-subbuild\CMakeFiles\3f2bfc04d5071def69e6e8f59fbf2712\nlohmann_json-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-subbuild\CMakeFiles\2c89cc5a52af9da12c2bf562e8cccbfb\nlohmann_json-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-subbuild\CMakeFiles\nlohmann_json-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{EA928B28-9C89-3839-AFC6-73B074821B12}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

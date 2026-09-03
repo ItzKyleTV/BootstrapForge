@@ -1,6 +1,6 @@
 #pragma once
 
-#include <BootstrapForge/Domain/Operations/Operation.hpp>
+#include <BootstrapForge/Domain/Operations/PlannedOperation.hpp>
 
 #include <compare>
 #include <utility>
@@ -11,24 +11,29 @@ namespace BootstrapForge::Domain::Operations
     class ScheduledExecutionPlan
     {
     public:
+
         ScheduledExecutionPlan() = default;
 
         explicit ScheduledExecutionPlan(
-            std::vector<Operation> operations)
+            std::vector<PlannedOperation> operations)
             :
             m_operations(std::move(operations))
         {
         }
 
         [[nodiscard]]
-        const std::vector<Operation>& Operations() const noexcept
+        const std::vector<PlannedOperation>&
+            Operations() const noexcept
         {
             return m_operations;
         }
 
-        auto operator<=>(const ScheduledExecutionPlan&) const = default;
+        auto operator<=>(
+            const ScheduledExecutionPlan&) const = default;
 
     private:
-        std::vector<Operation> m_operations;
+
+        std::vector<PlannedOperation> m_operations;
     };
-}
+
+} // namespace BootstrapForge::Domain::Operations

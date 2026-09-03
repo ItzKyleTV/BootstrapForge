@@ -1,0 +1,3 @@
+C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/nlohmann_json-subbuild/CMakeFiles/nlohmann_json-populate.dir
+C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/nlohmann_json-subbuild/CMakeFiles/ALL_BUILD.dir
+C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/nlohmann_json-subbuild/CMakeFiles/ZERO_CHECK.dir

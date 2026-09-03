@@ -3,6 +3,13 @@
 #include <compare>
 #include <filesystem>
 #include <string>
+#include <utility>
+#pragma once
+
+#include <compare>
+#include <filesystem>
+#include <string>
+#include <utility>
 
 namespace BootstrapForge::Domain::Types
 {
@@ -12,42 +19,34 @@ namespace BootstrapForge::Domain::Types
 
         Path() = default;
 
-        explicit Path(std::filesystem::path value);
+        explicit Path(std::filesystem::path value)
+            : m_value(std::move(value))
+        {
+        }
 
         [[nodiscard]]
-        bool IsEmpty() const noexcept;
+        bool IsEmpty() const noexcept
+        {
+            return m_value.empty();
+        }
 
         [[nodiscard]]
-        const std::filesystem::path& Value() const noexcept;
+        const std::filesystem::path& Value() const noexcept
+        {
+            return m_value;
+        }
 
         [[nodiscard]]
-        std::string ToString() const;
+        std::string ToString() const
+        {
+            return m_value.generic_string();
+        }
 
-        auto operator<=>(const Path&) const noexcept = default;
+        auto operator<=>(const Path&) const = default;
 
     private:
 
         std::filesystem::path m_value;
     };
-
-    inline Path::Path(std::filesystem::path value)
-        : m_value(std::move(value))
-    {
-    }
-
-    inline bool Path::IsEmpty() const noexcept
-    {
-        return m_value.empty();
-    }
-
-    inline const std::filesystem::path& Path::Value() const noexcept
-    {
-        return m_value;
-    }
-
-    inline std::string Path::ToString() const
-    {
-        return m_value.generic_string();
-    }
 
 } // namespace BootstrapForge::Domain::Types
