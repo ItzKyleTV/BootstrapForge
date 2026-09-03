@@ -1,27 +1,13 @@
 #pragma once
 
+#include <BootstrapForge/Application/Manifest/ManifestResource.hpp>
+
 #include <cstdint>
 #include <string>
 #include <vector>
 
 namespace BootstrapForge::Application::Manifest
 {
-    enum class ManifestResourceKind
-    {
-        Directory,
-        File,
-        SymbolicLink
-    };
-
-    struct ManifestResource
-    {
-        std::string Id;
-        std::string Path;
-        ManifestResourceKind Kind;
-        std::string Content;
-        bool HasContent = false;
-    };
-
     struct ManifestRelationship
     {
         std::string Id;

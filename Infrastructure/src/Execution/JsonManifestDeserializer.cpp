@@ -58,15 +58,19 @@ namespace BootstrapForge::Infrastructure::Deserialization
 
             std::unordered_set<std::string> manifestIds;
 
-            manifestIds.reserve(resources.size());
+            manifestIds.reserve(
+                resources.size());
 
-            for (const auto& jsonResource : resources)
+            for (const auto& jsonResource :
+                resources)
             {
                 if (!jsonResource.is_object())
                 {
                     throw std::runtime_error(
                         "Manifest resource must be an object.");
                 }
+
+                Application::Manifest::ManifestResource resource;
 
                 //
                 // ID
@@ -84,8 +88,6 @@ namespace BootstrapForge::Infrastructure::Deserialization
                         "Manifest resource 'id' must be a string.");
                 }
 
-                Application::Manifest::ManifestResource resource;
-
                 resource.Id =
                     jsonResource.at("id")
                     .get<std::string>();
@@ -96,7 +98,8 @@ namespace BootstrapForge::Infrastructure::Deserialization
                         "Manifest resource 'id' cannot be empty.");
                 }
 
-                if (!manifestIds.emplace(resource.Id).second)
+                if (!manifestIds.emplace(
+                    resource.Id).second)
                 {
                     throw std::runtime_error(
                         "Duplicate manifest resource id: " +
@@ -172,7 +175,7 @@ namespace BootstrapForge::Infrastructure::Deserialization
                 }
 
                 //
-                // Optional content
+                // Optional file content
                 //
 
                 if (jsonResource.contains("content"))
@@ -188,6 +191,75 @@ namespace BootstrapForge::Infrastructure::Deserialization
                         .get<std::string>();
 
                     resource.HasContent = true;
+                }
+
+                //
+                // Optional symbolic-link target
+                //
+
+                if (jsonResource.contains("target"))
+                {
+                    if (!jsonResource.at("target").is_string())
+                    {
+                        throw std::runtime_error(
+                            "Manifest resource 'target' must be a string.");
+                    }
+
+                    resource.Target =
+                        jsonResource.at("target")
+                        .get<std::string>();
+
+                    if (resource.Target->empty())
+                    {
+                        throw std::runtime_error(
+                            "Manifest resource 'target' cannot be empty.");
+                    }
+
+                    resource.HasTarget = true;
+                }
+
+                //
+                // Validate resource-specific state.
+                //
+
+                if (resource.Kind ==
+                    Application::Manifest::ManifestResourceKind::SymbolicLink)
+                {
+                    if (!resource.HasTarget)
+                    {
+                        throw std::runtime_error(
+                            "Symbolic-link resource '" +
+                            resource.Id +
+                            "' is missing 'target'.");
+                    }
+
+                    if (resource.HasContent)
+                    {
+                        throw std::runtime_error(
+                            "Symbolic-link resource '" +
+                            resource.Id +
+                            "' cannot contain 'content'.");
+                    }
+                }
+                else
+                {
+                    if (resource.HasTarget)
+                    {
+                        throw std::runtime_error(
+                            "Only symbolic-link resources may contain 'target'.");
+                    }
+                }
+
+                //
+                // Content is currently meaningful only for files.
+                //
+
+                if (resource.HasContent &&
+                    resource.Kind !=
+                    Application::Manifest::ManifestResourceKind::File)
+                {
+                    throw std::runtime_error(
+                        "Only file resources may contain 'content'.");
                 }
 
                 manifest.Resources.emplace_back(
@@ -210,7 +282,8 @@ namespace BootstrapForge::Infrastructure::Deserialization
                     "'relationships' must be an array.");
             }
 
-            std::unordered_set<std::string> relationshipIds;
+            std::unordered_set<std::string>
+                relationshipIds;
 
             relationshipIds.reserve(
                 relationships.size());
@@ -222,7 +295,8 @@ namespace BootstrapForge::Infrastructure::Deserialization
             // manifest IDs.
             //
 
-            std::unordered_set<std::string> resourceIds;
+            std::unordered_set<std::string>
+                resourceIds;
 
             resourceIds.reserve(
                 manifest.Resources.size());
@@ -243,6 +317,9 @@ namespace BootstrapForge::Infrastructure::Deserialization
                         "Manifest relationship must be an object.");
                 }
 
+                Application::Manifest::ManifestRelationship
+                    relationship;
+
                 //
                 // Relationship ID
                 //
@@ -258,8 +335,6 @@ namespace BootstrapForge::Infrastructure::Deserialization
                     throw std::runtime_error(
                         "Manifest relationship 'id' must be a string.");
                 }
-
-                Application::Manifest::ManifestRelationship relationship;
 
                 relationship.Id =
                     jsonRelationship.at("id")

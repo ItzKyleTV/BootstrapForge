@@ -10,12 +10,13 @@
       "id": "hello-file",
       "path": "/src/hello.txt",
       "kind": "file",
-      "content": "Hello from BootstrapForge"
+      "content": "Hello from BootstrapForge!\n"
     },
     {
       "id": "test-link",
       "path": "/src/test-link",
-      "kind": "symbolic-link"
+      "kind": "symbolic-link",
+      "target": "/src/hello.txt"
     }
   ],
   "relationships": []

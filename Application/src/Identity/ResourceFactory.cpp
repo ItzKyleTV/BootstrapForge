@@ -2,12 +2,10 @@
 
 #include <BootstrapForge/Domain/Models/Resource.hpp>
 #include <BootstrapForge/Domain/Models/ResourceKind.hpp>
-
 #include <BootstrapForge/Domain/Types/Hash.hpp>
 #include <BootstrapForge/Domain/Types/Name.hpp>
 #include <BootstrapForge/Domain/Types/Path.hpp>
 #include <BootstrapForge/Domain/Types/ResourceId.hpp>
-
 #include <BootstrapForge/Domain/Values/FileContent.hpp>
 #include <BootstrapForge/Domain/Values/SymbolicLinkTarget.hpp>
 
@@ -68,7 +66,7 @@ namespace BootstrapForge::Application::Identity
             Path(path),
             kind,
             resource.Content(),
-            resource.SymbolicLinkTarget());
+            resource.Target());
     }
 
     Resource ResourceFactory::Create(
@@ -88,9 +86,17 @@ namespace BootstrapForge::Application::Identity
         //
         //     id = "hello-file"
         //
-        // remains the same ResourceId even if the resource state
-        // changes.
+        // remains the same ResourceId even if:
         //
+        //     hello.txt
+        //
+        // becomes:
+        //
+        //     docs/hello.txt
+        //
+        // or its content or symbolic-link target changes.
+        //
+
         const auto bytes =
             std::as_bytes(
                 std::span(

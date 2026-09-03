@@ -72,18 +72,36 @@ namespace BootstrapForge::Domain::Models
         }
 
         [[nodiscard]]
-        constexpr const std::optional<Values::FileContent>&
+        constexpr const std::optional<
+            Values::FileContent>&
             Content() const noexcept
         {
             return m_content;
         }
 
+        //
+        // Symbolic-link target.
+        //
+        // A resource that is not a symbolic link has
+        // no target.
+        //
         [[nodiscard]]
         constexpr const std::optional<
             Values::SymbolicLinkTarget>&
-            SymbolicLinkTarget() const noexcept
+            Target() const noexcept
         {
             return m_symbolicLinkTarget;
+        }
+
+        //
+        // Indicates whether this resource has a
+        // symbolic-link target.
+        //
+        [[nodiscard]]
+        constexpr bool
+            HasTarget() const noexcept
+        {
+            return m_symbolicLinkTarget.has_value();
         }
 
         //
@@ -103,14 +121,10 @@ namespace BootstrapForge::Domain::Models
             const Resource& other) const noexcept
         {
             return
-                m_name ==
-                other.m_name &&
-                m_path ==
-                other.m_path &&
-                m_kind ==
-                other.m_kind &&
-                m_content ==
-                other.m_content &&
+                m_name == other.m_name &&
+                m_path == other.m_path &&
+                m_kind == other.m_kind &&
+                m_content == other.m_content &&
                 m_symbolicLinkTarget ==
                 other.m_symbolicLinkTarget;
         }
@@ -118,8 +132,9 @@ namespace BootstrapForge::Domain::Models
         //
         // Identity only.
         //
-        // Content and symbolic-link target are deliberately
-        // excluded because they describe mutable resource state.
+        // This deliberately excludes file content and symbolic-link
+        // target because those describe resource state rather than
+        // resource identity.
         //
         [[nodiscard]]
         std::string IdentityCanonical() const
@@ -134,8 +149,7 @@ namespace BootstrapForge::Domain::Models
             canonical += m_path.ToString();
 
             canonical += "\nname=";
-            canonical += std::string(
-                m_name.Value());
+            canonical += std::string(m_name.Value());
 
             canonical += "\nkind=";
 
@@ -160,7 +174,8 @@ namespace BootstrapForge::Domain::Models
         //
         // Full canonical representation.
         //
-        // This represents the complete state of the resource.
+        // Content and symbolic-link target are included here because
+        // they describe the complete state of the resource.
         //
         [[nodiscard]]
         std::string Canonical() const
@@ -171,15 +186,12 @@ namespace BootstrapForge::Domain::Models
             if (m_content.has_value())
             {
                 canonical += "\ncontent=";
-                canonical +=
-                    m_content->Value();
+                canonical += m_content->Value();
             }
 
             if (m_symbolicLinkTarget.has_value())
             {
-                canonical +=
-                    "\nsymbolic-link-target=";
-
+                canonical += "\ntarget=";
                 canonical +=
                     m_symbolicLinkTarget->ToString();
             }
@@ -190,9 +202,9 @@ namespace BootstrapForge::Domain::Models
         //
         // Structural comparison.
         //
-        // Reconciliation uses SameState() because desired and
-        // current resource identities may originate from different
-        // identity sources.
+        // This remains useful for ordinary value semantics.
+        // Reconciliation uses SameState() because identity
+        // provenance differs between desired and current models.
         //
         auto operator<=>(const Resource&) const noexcept = default;
 
@@ -205,12 +217,10 @@ namespace BootstrapForge::Domain::Models
         ResourceKind m_kind =
             ResourceKind::Directory;
 
-        std::optional<
-            Values::FileContent>
+        std::optional<Values::FileContent>
             m_content;
 
-        std::optional<
-            Values::SymbolicLinkTarget>
+        std::optional<Values::SymbolicLinkTarget>
             m_symbolicLinkTarget;
     };
 

@@ -4,8 +4,11 @@
 #include <BootstrapForge/Application/Identity/ResourceFactory.hpp>
 
 #include <BootstrapForge/Domain/Models/ResourceKind.hpp>
-#include <BootstrapForge/Domain/Values/FileContent.hpp>
 
+#include <BootstrapForge/Domain/Values/FileContent.hpp>
+#include <BootstrapForge/Domain/Values/SymbolicLinkTarget.hpp>
+
+#include <filesystem>
 #include <stdexcept>
 #include <unordered_map>
 #include <utility>
@@ -26,13 +29,30 @@ namespace BootstrapForge::Application::Mapping
         ManifestMapper::MapResource(
             const Manifest::ManifestResource& resource) const
     {
+        //
+        // File content
+        //
+
         std::optional<
             Domain::Values::FileContent> content;
 
         if (resource.HasContent)
         {
-            content.emplace(resource.Content);
+            if (!resource.Content.has_value())
+            {
+                throw std::runtime_error(
+                    "Manifest resource '" +
+                    resource.Id +
+                    "' has HasContent set but no content value.");
+            }
+
+            content.emplace(
+                *resource.Content);
         }
+
+        //
+        // Resource kind
+        //
 
         Domain::Models::ResourceKind kind;
 
@@ -58,11 +78,86 @@ namespace BootstrapForge::Application::Mapping
                 "Unknown manifest resource kind.");
         }
 
+        //
+        // Symbolic-link target
+        //
+
+        std::optional<
+            Domain::Values::SymbolicLinkTarget>
+            symbolicLinkTarget;
+
+        if (resource.HasTarget)
+        {
+            if (!resource.Target.has_value())
+            {
+                throw std::runtime_error(
+                    "Manifest resource '" +
+                    resource.Id +
+                    "' has HasTarget set but no target value.");
+            }
+
+            if (resource.Target->empty())
+            {
+                throw std::runtime_error(
+                    "Manifest resource '" +
+                    resource.Id +
+                    "' has an empty symbolic-link target.");
+            }
+
+            symbolicLinkTarget.emplace(
+                std::filesystem::path(
+                    *resource.Target));
+        }
+
+        //
+        // Resource-specific validation.
+        //
+        // The deserializer already validates these rules, but the
+        // mapper also protects the domain boundary from malformed
+        // Manifest DTOs constructed by another caller.
+        //
+
+        if (kind ==
+            Domain::Models::ResourceKind::SymbolicLink)
+        {
+            if (!symbolicLinkTarget.has_value())
+            {
+                throw std::runtime_error(
+                    "Symbolic-link resource '" +
+                    resource.Id +
+                    "' is missing a target.");
+            }
+
+            if (content.has_value())
+            {
+                throw std::runtime_error(
+                    "Symbolic-link resource '" +
+                    resource.Id +
+                    "' cannot contain file content.");
+            }
+        }
+        else
+        {
+            if (symbolicLinkTarget.has_value())
+            {
+                throw std::runtime_error(
+                    "Only symbolic-link resources may contain a target.");
+            }
+        }
+
+        if (content.has_value() &&
+            kind != Domain::Models::ResourceKind::File)
+        {
+            throw std::runtime_error(
+                "Only file resources may contain content.");
+        }
+
         return m_resourceFactory.Create(
             resource.Id,
             resource.Path,
             kind,
-            std::move(content));
+            std::move(content),
+            std::move(symbolicLinkTarget));
     }
 
     Domain::Models::Relationship
@@ -125,7 +220,8 @@ namespace BootstrapForge::Application::Mapping
             manifest.Resources)
         {
             auto resource =
-                MapResource(manifestResource);
+                MapResource(
+                    manifestResource);
 
             resourceIds.emplace(
                 manifestResource.Id,

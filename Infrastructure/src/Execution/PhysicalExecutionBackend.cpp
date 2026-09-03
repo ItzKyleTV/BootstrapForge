@@ -187,15 +187,105 @@ namespace BootstrapForge::Infrastructure::Execution
     }
 
     bool PhysicalExecutionBackend::CreateSymbolicLink(
-        const Domain::Models::Resource&)
+        const Domain::Models::Resource& resource)
     {
-        return false;
+        try
+        {
+            if (!resource.Target().has_value())
+            {
+                return false;
+            }
+
+            const auto linkPath =
+                Resolve(resource);
+
+            std::filesystem::path targetPath =
+                resource.Target()
+                ->Value()
+                .Value();
+
+            if (targetPath.has_root_directory())
+            {
+                targetPath =
+                    targetPath.relative_path();
+
+                targetPath =
+                    m_workspaceRoot /
+                    targetPath;
+            }
+            else
+            {
+                targetPath =
+                    linkPath.parent_path() /
+                    targetPath;
+            }
+
+            std::filesystem::create_directories(
+                linkPath.parent_path());
+
+            if (std::filesystem::exists(linkPath))
+            {
+                return false;
+            }
+
+            //
+            // A directory symbolic link must use
+            // create_directory_symlink().
+            //
+            // A file symbolic link uses create_symlink().
+            //
+            if (std::filesystem::is_directory(targetPath))
+            {
+                std::filesystem::create_directory_symlink(
+                    targetPath,
+                    linkPath);
+            }
+            else
+            {
+                std::filesystem::create_symlink(
+                    targetPath,
+                    linkPath);
+            }
+
+            return true;
+        }
+        catch (const std::filesystem::filesystem_error&)
+        {
+            return false;
+        }
     }
 
     bool PhysicalExecutionBackend::DeleteSymbolicLink(
-        const Domain::Models::Resource&)
+        const Domain::Models::Resource& resource)
     {
-        return false;
+        try
+        {
+            const auto linkPath =
+                Resolve(resource);
+
+            if (!std::filesystem::exists(
+                linkPath) &&
+                !std::filesystem::is_symlink(
+                    linkPath))
+            {
+                return true;
+            }
+
+            //
+            // remove() is intentional here.
+            //
+            // We must remove the link itself rather than
+            // recursively deleting the resource it points to.
+            //
+            std::filesystem::remove(
+                linkPath);
+
+            return true;
+        }
+        catch (const std::filesystem::filesystem_error&)
+        {
+            return false;
+        }
     }
 
     bool PhysicalExecutionBackend::AddRelationship(
