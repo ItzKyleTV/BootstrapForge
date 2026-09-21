@@ -1,0 +1,70 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "blake3::@9d3c3f4fc440dab8acdd"
+		},
+		{
+			"id" : "BootstrapForge.Domain::@8cd51453df5484cab347"
+		},
+		{
+			"id" : "BootstrapForge.Infrastructure::@362f43c2ca28654b9b2f"
+		},
+		{
+			"id" : "BootstrapForge.Engine::@8f69bdd092c897d92c1e"
+		},
+		{
+			"id" : "BootstrapForge.Application::@66720fd680612643f4de"
+		},
+		{
+			"id" : "BootstrapForge.Architecture::@8e5f4f276750de217453"
+		},
+		{
+			"id" : "BootstrapForge.Runtime::@3bdb40abe12afe69a388"
+		},
+		{
+			"id" : "BootstrapForge.ArchitectureDifferTests::@3e3005ae7443f751ac85"
+		},
+		{
+			"id" : "BootstrapForge.ArchitecturePlannerTests::@3e3005ae7443f751ac85"
+		},
+		{
+			"id" : "BootstrapForge.ExecutionSchedulerTests::@3e3005ae7443f751ac85"
+		},
+		{
+			"id" : "BootstrapForge.ExecutionExecutorTests::@3e3005ae7443f751ac85"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "CMakePredefinedTargets"
+	},
+	"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+	"isGeneratorProvided" : true,
+	"name" : "ALL_BUILD",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

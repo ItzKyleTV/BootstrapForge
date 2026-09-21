@@ -1,0 +1,2448 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						26
+					]
+				},
+				{
+					"build" : "_deps/blake3-build",
+					"childIndexes" : 
+					[
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.blake3-build-Debug-aac57ffb146c81ec6698.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.9"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "out/build/vs2022-debug/_deps/blake3-src/c",
+					"targetIndexes" : 
+					[
+						5,
+						22,
+						23,
+						24,
+						25,
+						27
+					]
+				},
+				{
+					"build" : "_deps/blake3-build/dependencies",
+					"jsonFile" : "directory-_deps.blake3-build.dependencies-Debug-3b5f8e003ba918c4979d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.9"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "out/build/vs2022-debug/_deps/blake3-src/c/dependencies"
+				},
+				{
+					"build" : "_deps/nlohmann_json-build",
+					"jsonFile" : "directory-_deps.nlohmann_json-build-Debug-3197effa52aa32ca7112.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "out/build/vs2022-debug/_deps/nlohmann_json-src",
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"build" : "Domain",
+					"jsonFile" : "directory-Domain-Debug-946ac86b3671e5299ad1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "Domain",
+					"targetIndexes" : 
+					[
+						11,
+						16
+					]
+				},
+				{
+					"build" : "Contracts",
+					"jsonFile" : "directory-Contracts-Debug-2d7a11ebfe94052b614a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 4,
+					"source" : "Contracts",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "Infrastructure",
+					"jsonFile" : "directory-Infrastructure-Debug-7f34f5e7a03d20d0edf6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 5,
+					"source" : "Infrastructure",
+					"targetIndexes" : 
+					[
+						6,
+						20
+					]
+				},
+				{
+					"build" : "Application",
+					"jsonFile" : "directory-Application-Debug-3f164fa072234d0a0467.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 6,
+					"source" : "Application",
+					"targetIndexes" : 
+					[
+						10,
+						12
+					]
+				},
+				{
+					"build" : "Engine",
+					"jsonFile" : "directory-Engine-Debug-e7cda9100e735d363573.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 7,
+					"source" : "Engine",
+					"targetIndexes" : 
+					[
+						7,
+						17
+					]
+				},
+				{
+					"build" : "Capabilities",
+					"jsonFile" : "directory-Capabilities-Debug-d172015b22ed2f6ec129.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 8,
+					"source" : "Capabilities",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "Architecture",
+					"jsonFile" : "directory-Architecture-Debug-ea9cb23f33604063c125.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 9,
+					"source" : "Architecture",
+					"targetIndexes" : 
+					[
+						1,
+						13
+					]
+				},
+				{
+					"build" : "Runtime",
+					"jsonFile" : "directory-Runtime-Debug-cb4034f8acc3b6cc345d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 10,
+					"source" : "Runtime",
+					"targetIndexes" : 
+					[
+						3,
+						21
+					]
+				},
+				{
+					"build" : "Tests",
+					"jsonFile" : "directory-Tests-Debug-4930e65484166898b195.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 11,
+					"source" : "Tests",
+					"targetIndexes" : 
+					[
+						2,
+						14,
+						15,
+						18,
+						19
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "BootstrapForge",
+					"targetIndexes" : 
+					[
+						0,
+						26
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2
+					],
+					"name" : "libblake3",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						5,
+						22,
+						23,
+						24,
+						25,
+						27
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "nlohmann_json",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4
+					],
+					"name" : "BootstrapForge.Domain",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						11,
+						16
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "BootstrapForge.Contracts",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						6
+					],
+					"name" : "BootstrapForge.Infrastructure",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						6,
+						20
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						7
+					],
+					"name" : "BootstrapForge.Application",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						10,
+						12
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						8
+					],
+					"name" : "BootstrapForge.Engine",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						7,
+						17
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						9
+					],
+					"name" : "BootstrapForge.Capabilities",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						10
+					],
+					"name" : "BootstrapForge.Architecture",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						13
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						11
+					],
+					"name" : "BootstrapForge.Runtime",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						3,
+						21
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						12
+					],
+					"name" : "BootstrapForge.Tests",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						14,
+						15,
+						18,
+						19
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-Debug-c5f237359ca9e43c2aca.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "ALL_BUILD::@8e5f4f276750de217453",
+					"jsonFile" : "target-ALL_BUILD-Debug-36259d31914edea3468f.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "ALL_BUILD::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-ALL_BUILD-Debug-a2c0f99dbb9cf1640848.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "ALL_BUILD::@3bdb40abe12afe69a388",
+					"jsonFile" : "target-ALL_BUILD-Debug-00ac56fa9126c8b8041a.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "ALL_BUILD::@b2a78782ced03350221b",
+					"jsonFile" : "target-ALL_BUILD-Debug-a4d7d1708474b4686689.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 8
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ALL_BUILD::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-ALL_BUILD-Debug-c05d18135771318cb665.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "ALL_BUILD::@362f43c2ca28654b9b2f",
+					"jsonFile" : "target-ALL_BUILD-Debug-6bb19a3065be80484b33.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ALL_BUILD::@8f69bdd092c897d92c1e",
+					"jsonFile" : "target-ALL_BUILD-Debug-84637aec251a7fe331d2.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 7
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "ALL_BUILD::@480c2607d396edadec1f",
+					"jsonFile" : "target-ALL_BUILD-Debug-00c7454561204859da38.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ALL_BUILD::@7ad6b70f65d238af1bcf",
+					"jsonFile" : "target-ALL_BUILD-Debug-df0effe32ebb762e1368.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ALL_BUILD::@66720fd680612643f4de",
+					"jsonFile" : "target-ALL_BUILD-Debug-8ebf0a9cff9d4cab9623.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "ALL_BUILD::@8cd51453df5484cab347",
+					"jsonFile" : "target-ALL_BUILD-Debug-3f821c08e4069558a1d2.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "BootstrapForge.Application::@66720fd680612643f4de",
+					"jsonFile" : "target-BootstrapForge.Application-Debug-c24776d531711a992363.json",
+					"name" : "BootstrapForge.Application",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "BootstrapForge.Architecture::@8e5f4f276750de217453",
+					"jsonFile" : "target-BootstrapForge.Architecture-Debug-d9930dcb3fb0d7d4a5b6.json",
+					"name" : "BootstrapForge.Architecture",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ArchitectureDifferTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ArchitectureDifferTests-Debug-dc27c876ff25b449cdf0.json",
+					"name" : "BootstrapForge.ArchitectureDifferTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ArchitecturePlannerTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ArchitecturePlannerTests-Debug-d31af33aa75215b16ad0.json",
+					"name" : "BootstrapForge.ArchitecturePlannerTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "BootstrapForge.Domain::@8cd51453df5484cab347",
+					"jsonFile" : "target-BootstrapForge.Domain-Debug-795b45f9f9ab41f42368.json",
+					"name" : "BootstrapForge.Domain",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "BootstrapForge.Engine::@8f69bdd092c897d92c1e",
+					"jsonFile" : "target-BootstrapForge.Engine-Debug-0e2bde91d060a1489142.json",
+					"name" : "BootstrapForge.Engine",
+					"projectIndex" : 7
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ExecutionExecutorTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ExecutionExecutorTests-Debug-06389826a12157251025.json",
+					"name" : "BootstrapForge.ExecutionExecutorTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ExecutionSchedulerTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ExecutionSchedulerTests-Debug-4af5bd10a49768a10f5c.json",
+					"name" : "BootstrapForge.ExecutionSchedulerTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "BootstrapForge.Infrastructure::@362f43c2ca28654b9b2f",
+					"jsonFile" : "target-BootstrapForge.Infrastructure-Debug-029c0a9b14e83b568eed.json",
+					"name" : "BootstrapForge.Infrastructure",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "BootstrapForge.Runtime::@3bdb40abe12afe69a388",
+					"jsonFile" : "target-BootstrapForge.Runtime-Debug-0627145da38015af4c89.json",
+					"name" : "BootstrapForge.Runtime",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Continuous::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-Continuous-Debug-a0e313be7b1f583129bd.json",
+					"name" : "Continuous",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Experimental::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-Experimental-Debug-a2d7dcff90d54584edb9.json",
+					"name" : "Experimental",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Nightly::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-Nightly-Debug-6b175943f2e9fe11b2c3.json",
+					"name" : "Nightly",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyMemoryCheck::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-NightlyMemoryCheck-Debug-14424e4b2bce1fa95934.json",
+					"name" : "NightlyMemoryCheck",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-Debug-e8eda4713b511f74a252.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "blake3::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-blake3-Debug-dcb202fbf6652fbd5c98.json",
+					"name" : "blake3",
+					"projectIndex" : 1
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						26
+					]
+				},
+				{
+					"build" : "_deps/blake3-build",
+					"childIndexes" : 
+					[
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.blake3-build-Release-938854ba8d7cef87ea5d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.9"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "out/build/vs2022-debug/_deps/blake3-src/c",
+					"targetIndexes" : 
+					[
+						5,
+						22,
+						23,
+						24,
+						25,
+						27
+					]
+				},
+				{
+					"build" : "_deps/blake3-build/dependencies",
+					"jsonFile" : "directory-_deps.blake3-build.dependencies-Release-3b5f8e003ba918c4979d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.9"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "out/build/vs2022-debug/_deps/blake3-src/c/dependencies"
+				},
+				{
+					"build" : "_deps/nlohmann_json-build",
+					"jsonFile" : "directory-_deps.nlohmann_json-build-Release-3197effa52aa32ca7112.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "out/build/vs2022-debug/_deps/nlohmann_json-src",
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"build" : "Domain",
+					"jsonFile" : "directory-Domain-Release-946ac86b3671e5299ad1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "Domain",
+					"targetIndexes" : 
+					[
+						11,
+						16
+					]
+				},
+				{
+					"build" : "Contracts",
+					"jsonFile" : "directory-Contracts-Release-2d7a11ebfe94052b614a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 4,
+					"source" : "Contracts",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "Infrastructure",
+					"jsonFile" : "directory-Infrastructure-Release-7f34f5e7a03d20d0edf6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 5,
+					"source" : "Infrastructure",
+					"targetIndexes" : 
+					[
+						6,
+						20
+					]
+				},
+				{
+					"build" : "Application",
+					"jsonFile" : "directory-Application-Release-3f164fa072234d0a0467.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 6,
+					"source" : "Application",
+					"targetIndexes" : 
+					[
+						10,
+						12
+					]
+				},
+				{
+					"build" : "Engine",
+					"jsonFile" : "directory-Engine-Release-e7cda9100e735d363573.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 7,
+					"source" : "Engine",
+					"targetIndexes" : 
+					[
+						7,
+						17
+					]
+				},
+				{
+					"build" : "Capabilities",
+					"jsonFile" : "directory-Capabilities-Release-d172015b22ed2f6ec129.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 8,
+					"source" : "Capabilities",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "Architecture",
+					"jsonFile" : "directory-Architecture-Release-ea9cb23f33604063c125.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 9,
+					"source" : "Architecture",
+					"targetIndexes" : 
+					[
+						1,
+						13
+					]
+				},
+				{
+					"build" : "Runtime",
+					"jsonFile" : "directory-Runtime-Release-cb4034f8acc3b6cc345d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 10,
+					"source" : "Runtime",
+					"targetIndexes" : 
+					[
+						3,
+						21
+					]
+				},
+				{
+					"build" : "Tests",
+					"jsonFile" : "directory-Tests-Release-4930e65484166898b195.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 11,
+					"source" : "Tests",
+					"targetIndexes" : 
+					[
+						2,
+						14,
+						15,
+						18,
+						19
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "BootstrapForge",
+					"targetIndexes" : 
+					[
+						0,
+						26
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2
+					],
+					"name" : "libblake3",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						5,
+						22,
+						23,
+						24,
+						25,
+						27
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "nlohmann_json",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4
+					],
+					"name" : "BootstrapForge.Domain",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						11,
+						16
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "BootstrapForge.Contracts",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						6
+					],
+					"name" : "BootstrapForge.Infrastructure",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						6,
+						20
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						7
+					],
+					"name" : "BootstrapForge.Application",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						10,
+						12
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						8
+					],
+					"name" : "BootstrapForge.Engine",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						7,
+						17
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						9
+					],
+					"name" : "BootstrapForge.Capabilities",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						10
+					],
+					"name" : "BootstrapForge.Architecture",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						13
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						11
+					],
+					"name" : "BootstrapForge.Runtime",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						3,
+						21
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						12
+					],
+					"name" : "BootstrapForge.Tests",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						14,
+						15,
+						18,
+						19
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-Release-c5f237359ca9e43c2aca.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "ALL_BUILD::@8e5f4f276750de217453",
+					"jsonFile" : "target-ALL_BUILD-Release-36259d31914edea3468f.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "ALL_BUILD::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-ALL_BUILD-Release-a2c0f99dbb9cf1640848.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "ALL_BUILD::@3bdb40abe12afe69a388",
+					"jsonFile" : "target-ALL_BUILD-Release-00ac56fa9126c8b8041a.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "ALL_BUILD::@b2a78782ced03350221b",
+					"jsonFile" : "target-ALL_BUILD-Release-a4d7d1708474b4686689.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 8
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ALL_BUILD::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-ALL_BUILD-Release-c05d18135771318cb665.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "ALL_BUILD::@362f43c2ca28654b9b2f",
+					"jsonFile" : "target-ALL_BUILD-Release-6bb19a3065be80484b33.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ALL_BUILD::@8f69bdd092c897d92c1e",
+					"jsonFile" : "target-ALL_BUILD-Release-84637aec251a7fe331d2.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 7
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "ALL_BUILD::@480c2607d396edadec1f",
+					"jsonFile" : "target-ALL_BUILD-Release-00c7454561204859da38.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ALL_BUILD::@7ad6b70f65d238af1bcf",
+					"jsonFile" : "target-ALL_BUILD-Release-df0effe32ebb762e1368.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ALL_BUILD::@66720fd680612643f4de",
+					"jsonFile" : "target-ALL_BUILD-Release-8ebf0a9cff9d4cab9623.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "ALL_BUILD::@8cd51453df5484cab347",
+					"jsonFile" : "target-ALL_BUILD-Release-3f821c08e4069558a1d2.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "BootstrapForge.Application::@66720fd680612643f4de",
+					"jsonFile" : "target-BootstrapForge.Application-Release-7037645ba8272f7d8131.json",
+					"name" : "BootstrapForge.Application",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "BootstrapForge.Architecture::@8e5f4f276750de217453",
+					"jsonFile" : "target-BootstrapForge.Architecture-Release-241754b7cf7c8c16c1d3.json",
+					"name" : "BootstrapForge.Architecture",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ArchitectureDifferTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ArchitectureDifferTests-Release-3e5f345f7c710e8d1437.json",
+					"name" : "BootstrapForge.ArchitectureDifferTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ArchitecturePlannerTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ArchitecturePlannerTests-Release-a2f546155068e0644f16.json",
+					"name" : "BootstrapForge.ArchitecturePlannerTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "BootstrapForge.Domain::@8cd51453df5484cab347",
+					"jsonFile" : "target-BootstrapForge.Domain-Release-45ab18367bacb2f593c9.json",
+					"name" : "BootstrapForge.Domain",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "BootstrapForge.Engine::@8f69bdd092c897d92c1e",
+					"jsonFile" : "target-BootstrapForge.Engine-Release-1ca4fc6a847232f44d14.json",
+					"name" : "BootstrapForge.Engine",
+					"projectIndex" : 7
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ExecutionExecutorTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ExecutionExecutorTests-Release-38aab48b0413d320f650.json",
+					"name" : "BootstrapForge.ExecutionExecutorTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ExecutionSchedulerTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ExecutionSchedulerTests-Release-29f8f1314d46efeaea7d.json",
+					"name" : "BootstrapForge.ExecutionSchedulerTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "BootstrapForge.Infrastructure::@362f43c2ca28654b9b2f",
+					"jsonFile" : "target-BootstrapForge.Infrastructure-Release-c7b387b57e6a2c51f985.json",
+					"name" : "BootstrapForge.Infrastructure",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "BootstrapForge.Runtime::@3bdb40abe12afe69a388",
+					"jsonFile" : "target-BootstrapForge.Runtime-Release-1360b015d2e94be7b085.json",
+					"name" : "BootstrapForge.Runtime",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Continuous::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-Continuous-Release-a0e313be7b1f583129bd.json",
+					"name" : "Continuous",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Experimental::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-Experimental-Release-a2d7dcff90d54584edb9.json",
+					"name" : "Experimental",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Nightly::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-Nightly-Release-6b175943f2e9fe11b2c3.json",
+					"name" : "Nightly",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyMemoryCheck::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-NightlyMemoryCheck-Release-14424e4b2bce1fa95934.json",
+					"name" : "NightlyMemoryCheck",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-Release-e8eda4713b511f74a252.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "blake3::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-blake3-Release-9c2006f6587da9d60f2c.json",
+					"name" : "blake3",
+					"projectIndex" : 1
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-MinSizeRel-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						26
+					]
+				},
+				{
+					"build" : "_deps/blake3-build",
+					"childIndexes" : 
+					[
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.blake3-build-MinSizeRel-974e930ef1e23bce12ff.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.9"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "out/build/vs2022-debug/_deps/blake3-src/c",
+					"targetIndexes" : 
+					[
+						5,
+						22,
+						23,
+						24,
+						25,
+						27
+					]
+				},
+				{
+					"build" : "_deps/blake3-build/dependencies",
+					"jsonFile" : "directory-_deps.blake3-build.dependencies-MinSizeRel-3b5f8e003ba918c4979d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.9"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "out/build/vs2022-debug/_deps/blake3-src/c/dependencies"
+				},
+				{
+					"build" : "_deps/nlohmann_json-build",
+					"jsonFile" : "directory-_deps.nlohmann_json-build-MinSizeRel-3197effa52aa32ca7112.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "out/build/vs2022-debug/_deps/nlohmann_json-src",
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"build" : "Domain",
+					"jsonFile" : "directory-Domain-MinSizeRel-946ac86b3671e5299ad1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "Domain",
+					"targetIndexes" : 
+					[
+						11,
+						16
+					]
+				},
+				{
+					"build" : "Contracts",
+					"jsonFile" : "directory-Contracts-MinSizeRel-2d7a11ebfe94052b614a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 4,
+					"source" : "Contracts",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "Infrastructure",
+					"jsonFile" : "directory-Infrastructure-MinSizeRel-7f34f5e7a03d20d0edf6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 5,
+					"source" : "Infrastructure",
+					"targetIndexes" : 
+					[
+						6,
+						20
+					]
+				},
+				{
+					"build" : "Application",
+					"jsonFile" : "directory-Application-MinSizeRel-3f164fa072234d0a0467.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 6,
+					"source" : "Application",
+					"targetIndexes" : 
+					[
+						10,
+						12
+					]
+				},
+				{
+					"build" : "Engine",
+					"jsonFile" : "directory-Engine-MinSizeRel-e7cda9100e735d363573.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 7,
+					"source" : "Engine",
+					"targetIndexes" : 
+					[
+						7,
+						17
+					]
+				},
+				{
+					"build" : "Capabilities",
+					"jsonFile" : "directory-Capabilities-MinSizeRel-d172015b22ed2f6ec129.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 8,
+					"source" : "Capabilities",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "Architecture",
+					"jsonFile" : "directory-Architecture-MinSizeRel-ea9cb23f33604063c125.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 9,
+					"source" : "Architecture",
+					"targetIndexes" : 
+					[
+						1,
+						13
+					]
+				},
+				{
+					"build" : "Runtime",
+					"jsonFile" : "directory-Runtime-MinSizeRel-cb4034f8acc3b6cc345d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 10,
+					"source" : "Runtime",
+					"targetIndexes" : 
+					[
+						3,
+						21
+					]
+				},
+				{
+					"build" : "Tests",
+					"jsonFile" : "directory-Tests-MinSizeRel-4930e65484166898b195.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 11,
+					"source" : "Tests",
+					"targetIndexes" : 
+					[
+						2,
+						14,
+						15,
+						18,
+						19
+					]
+				}
+			],
+			"name" : "MinSizeRel",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "BootstrapForge",
+					"targetIndexes" : 
+					[
+						0,
+						26
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2
+					],
+					"name" : "libblake3",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						5,
+						22,
+						23,
+						24,
+						25,
+						27
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "nlohmann_json",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4
+					],
+					"name" : "BootstrapForge.Domain",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						11,
+						16
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "BootstrapForge.Contracts",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						6
+					],
+					"name" : "BootstrapForge.Infrastructure",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						6,
+						20
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						7
+					],
+					"name" : "BootstrapForge.Application",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						10,
+						12
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						8
+					],
+					"name" : "BootstrapForge.Engine",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						7,
+						17
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						9
+					],
+					"name" : "BootstrapForge.Capabilities",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						10
+					],
+					"name" : "BootstrapForge.Architecture",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						13
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						11
+					],
+					"name" : "BootstrapForge.Runtime",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						3,
+						21
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						12
+					],
+					"name" : "BootstrapForge.Tests",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						14,
+						15,
+						18,
+						19
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-c5f237359ca9e43c2aca.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "ALL_BUILD::@8e5f4f276750de217453",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-36259d31914edea3468f.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "ALL_BUILD::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-a2c0f99dbb9cf1640848.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "ALL_BUILD::@3bdb40abe12afe69a388",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-00ac56fa9126c8b8041a.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "ALL_BUILD::@b2a78782ced03350221b",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-a4d7d1708474b4686689.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 8
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ALL_BUILD::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-c05d18135771318cb665.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "ALL_BUILD::@362f43c2ca28654b9b2f",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-6bb19a3065be80484b33.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ALL_BUILD::@8f69bdd092c897d92c1e",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-84637aec251a7fe331d2.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 7
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "ALL_BUILD::@480c2607d396edadec1f",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-00c7454561204859da38.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ALL_BUILD::@7ad6b70f65d238af1bcf",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-df0effe32ebb762e1368.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ALL_BUILD::@66720fd680612643f4de",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-8ebf0a9cff9d4cab9623.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "ALL_BUILD::@8cd51453df5484cab347",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-3f821c08e4069558a1d2.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "BootstrapForge.Application::@66720fd680612643f4de",
+					"jsonFile" : "target-BootstrapForge.Application-MinSizeRel-89ec2aa39c6d2aacc603.json",
+					"name" : "BootstrapForge.Application",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "BootstrapForge.Architecture::@8e5f4f276750de217453",
+					"jsonFile" : "target-BootstrapForge.Architecture-MinSizeRel-3f1ab83827765888596f.json",
+					"name" : "BootstrapForge.Architecture",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ArchitectureDifferTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ArchitectureDifferTests-MinSizeRel-8b1ad837028238c2e46f.json",
+					"name" : "BootstrapForge.ArchitectureDifferTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ArchitecturePlannerTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ArchitecturePlannerTests-MinSizeRel-f8aa73488b97db50e1b6.json",
+					"name" : "BootstrapForge.ArchitecturePlannerTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "BootstrapForge.Domain::@8cd51453df5484cab347",
+					"jsonFile" : "target-BootstrapForge.Domain-MinSizeRel-d15e25277599845b5a58.json",
+					"name" : "BootstrapForge.Domain",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "BootstrapForge.Engine::@8f69bdd092c897d92c1e",
+					"jsonFile" : "target-BootstrapForge.Engine-MinSizeRel-20ba86d6ce510a377be1.json",
+					"name" : "BootstrapForge.Engine",
+					"projectIndex" : 7
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ExecutionExecutorTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ExecutionExecutorTests-MinSizeRel-1ab8bb3eb77a7363eb60.json",
+					"name" : "BootstrapForge.ExecutionExecutorTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ExecutionSchedulerTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ExecutionSchedulerTests-MinSizeRel-047487ea0fedd9158964.json",
+					"name" : "BootstrapForge.ExecutionSchedulerTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "BootstrapForge.Infrastructure::@362f43c2ca28654b9b2f",
+					"jsonFile" : "target-BootstrapForge.Infrastructure-MinSizeRel-158c2341ec57d498740e.json",
+					"name" : "BootstrapForge.Infrastructure",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "BootstrapForge.Runtime::@3bdb40abe12afe69a388",
+					"jsonFile" : "target-BootstrapForge.Runtime-MinSizeRel-b4c67e4e1d15dc81bd51.json",
+					"name" : "BootstrapForge.Runtime",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Continuous::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-Continuous-MinSizeRel-a0e313be7b1f583129bd.json",
+					"name" : "Continuous",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Experimental::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-Experimental-MinSizeRel-a2d7dcff90d54584edb9.json",
+					"name" : "Experimental",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Nightly::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-Nightly-MinSizeRel-6b175943f2e9fe11b2c3.json",
+					"name" : "Nightly",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyMemoryCheck::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-NightlyMemoryCheck-MinSizeRel-14424e4b2bce1fa95934.json",
+					"name" : "NightlyMemoryCheck",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-MinSizeRel-e8eda4713b511f74a252.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "blake3::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-blake3-MinSizeRel-4b415184127d2674284e.json",
+					"name" : "blake3",
+					"projectIndex" : 1
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-RelWithDebInfo-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						26
+					]
+				},
+				{
+					"build" : "_deps/blake3-build",
+					"childIndexes" : 
+					[
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.blake3-build-RelWithDebInfo-c879373ec76c8f7d57ad.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.9"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "out/build/vs2022-debug/_deps/blake3-src/c",
+					"targetIndexes" : 
+					[
+						5,
+						22,
+						23,
+						24,
+						25,
+						27
+					]
+				},
+				{
+					"build" : "_deps/blake3-build/dependencies",
+					"jsonFile" : "directory-_deps.blake3-build.dependencies-RelWithDebInfo-3b5f8e003ba918c4979d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.9"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "out/build/vs2022-debug/_deps/blake3-src/c/dependencies"
+				},
+				{
+					"build" : "_deps/nlohmann_json-build",
+					"jsonFile" : "directory-_deps.nlohmann_json-build-RelWithDebInfo-3197effa52aa32ca7112.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "out/build/vs2022-debug/_deps/nlohmann_json-src",
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"build" : "Domain",
+					"jsonFile" : "directory-Domain-RelWithDebInfo-946ac86b3671e5299ad1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "Domain",
+					"targetIndexes" : 
+					[
+						11,
+						16
+					]
+				},
+				{
+					"build" : "Contracts",
+					"jsonFile" : "directory-Contracts-RelWithDebInfo-2d7a11ebfe94052b614a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 4,
+					"source" : "Contracts",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "Infrastructure",
+					"jsonFile" : "directory-Infrastructure-RelWithDebInfo-7f34f5e7a03d20d0edf6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 5,
+					"source" : "Infrastructure",
+					"targetIndexes" : 
+					[
+						6,
+						20
+					]
+				},
+				{
+					"build" : "Application",
+					"jsonFile" : "directory-Application-RelWithDebInfo-3f164fa072234d0a0467.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 6,
+					"source" : "Application",
+					"targetIndexes" : 
+					[
+						10,
+						12
+					]
+				},
+				{
+					"build" : "Engine",
+					"jsonFile" : "directory-Engine-RelWithDebInfo-e7cda9100e735d363573.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 7,
+					"source" : "Engine",
+					"targetIndexes" : 
+					[
+						7,
+						17
+					]
+				},
+				{
+					"build" : "Capabilities",
+					"jsonFile" : "directory-Capabilities-RelWithDebInfo-d172015b22ed2f6ec129.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 8,
+					"source" : "Capabilities",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "Architecture",
+					"jsonFile" : "directory-Architecture-RelWithDebInfo-ea9cb23f33604063c125.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 9,
+					"source" : "Architecture",
+					"targetIndexes" : 
+					[
+						1,
+						13
+					]
+				},
+				{
+					"build" : "Runtime",
+					"jsonFile" : "directory-Runtime-RelWithDebInfo-cb4034f8acc3b6cc345d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 10,
+					"source" : "Runtime",
+					"targetIndexes" : 
+					[
+						3,
+						21
+					]
+				},
+				{
+					"build" : "Tests",
+					"jsonFile" : "directory-Tests-RelWithDebInfo-4930e65484166898b195.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 11,
+					"source" : "Tests",
+					"targetIndexes" : 
+					[
+						2,
+						14,
+						15,
+						18,
+						19
+					]
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "BootstrapForge",
+					"targetIndexes" : 
+					[
+						0,
+						26
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2
+					],
+					"name" : "libblake3",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						5,
+						22,
+						23,
+						24,
+						25,
+						27
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "nlohmann_json",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4
+					],
+					"name" : "BootstrapForge.Domain",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						11,
+						16
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "BootstrapForge.Contracts",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						6
+					],
+					"name" : "BootstrapForge.Infrastructure",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						6,
+						20
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						7
+					],
+					"name" : "BootstrapForge.Application",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						10,
+						12
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						8
+					],
+					"name" : "BootstrapForge.Engine",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						7,
+						17
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						9
+					],
+					"name" : "BootstrapForge.Capabilities",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						10
+					],
+					"name" : "BootstrapForge.Architecture",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						13
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						11
+					],
+					"name" : "BootstrapForge.Runtime",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						3,
+						21
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						12
+					],
+					"name" : "BootstrapForge.Tests",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						14,
+						15,
+						18,
+						19
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-c5f237359ca9e43c2aca.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "ALL_BUILD::@8e5f4f276750de217453",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-36259d31914edea3468f.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "ALL_BUILD::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-a2c0f99dbb9cf1640848.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "ALL_BUILD::@3bdb40abe12afe69a388",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-00ac56fa9126c8b8041a.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "ALL_BUILD::@b2a78782ced03350221b",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-a4d7d1708474b4686689.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 8
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ALL_BUILD::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-c05d18135771318cb665.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "ALL_BUILD::@362f43c2ca28654b9b2f",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-6bb19a3065be80484b33.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ALL_BUILD::@8f69bdd092c897d92c1e",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-84637aec251a7fe331d2.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 7
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "ALL_BUILD::@480c2607d396edadec1f",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-00c7454561204859da38.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ALL_BUILD::@7ad6b70f65d238af1bcf",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-df0effe32ebb762e1368.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ALL_BUILD::@66720fd680612643f4de",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-8ebf0a9cff9d4cab9623.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "ALL_BUILD::@8cd51453df5484cab347",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-3f821c08e4069558a1d2.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "BootstrapForge.Application::@66720fd680612643f4de",
+					"jsonFile" : "target-BootstrapForge.Application-RelWithDebInfo-fbbb3ca83f8d8068c5c6.json",
+					"name" : "BootstrapForge.Application",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "BootstrapForge.Architecture::@8e5f4f276750de217453",
+					"jsonFile" : "target-BootstrapForge.Architecture-RelWithDebInfo-4fbd2862465b7d36e5ce.json",
+					"name" : "BootstrapForge.Architecture",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ArchitectureDifferTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ArchitectureDifferTests-RelWithDebInfo-acfd7310e6e98f5de8ed.json",
+					"name" : "BootstrapForge.ArchitectureDifferTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ArchitecturePlannerTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ArchitecturePlannerTests-RelWithDebInfo-822ca1772d7109af8777.json",
+					"name" : "BootstrapForge.ArchitecturePlannerTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "BootstrapForge.Domain::@8cd51453df5484cab347",
+					"jsonFile" : "target-BootstrapForge.Domain-RelWithDebInfo-0550de70e322d93d59de.json",
+					"name" : "BootstrapForge.Domain",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "BootstrapForge.Engine::@8f69bdd092c897d92c1e",
+					"jsonFile" : "target-BootstrapForge.Engine-RelWithDebInfo-122fe95a5542f93c362d.json",
+					"name" : "BootstrapForge.Engine",
+					"projectIndex" : 7
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ExecutionExecutorTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ExecutionExecutorTests-RelWithDebInfo-e0ccbdd34c383f85ce43.json",
+					"name" : "BootstrapForge.ExecutionExecutorTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ExecutionSchedulerTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ExecutionSchedulerTests-RelWithDebInfo-e7ec674a73bc9610c216.json",
+					"name" : "BootstrapForge.ExecutionSchedulerTests",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "BootstrapForge.Infrastructure::@362f43c2ca28654b9b2f",
+					"jsonFile" : "target-BootstrapForge.Infrastructure-RelWithDebInfo-a1bfea1f3a30fe08e145.json",
+					"name" : "BootstrapForge.Infrastructure",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "BootstrapForge.Runtime::@3bdb40abe12afe69a388",
+					"jsonFile" : "target-BootstrapForge.Runtime-RelWithDebInfo-a6174d6ba49df4ecd02e.json",
+					"name" : "BootstrapForge.Runtime",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Continuous::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-Continuous-RelWithDebInfo-a0e313be7b1f583129bd.json",
+					"name" : "Continuous",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Experimental::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-Experimental-RelWithDebInfo-a2d7dcff90d54584edb9.json",
+					"name" : "Experimental",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Nightly::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-Nightly-RelWithDebInfo-6b175943f2e9fe11b2c3.json",
+					"name" : "Nightly",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyMemoryCheck::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-NightlyMemoryCheck-RelWithDebInfo-14424e4b2bce1fa95934.json",
+					"name" : "NightlyMemoryCheck",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-RelWithDebInfo-e8eda4713b511f74a252.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "blake3::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-blake3-RelWithDebInfo-50a7bad8c2123877734d.json",
+					"name" : "blake3",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug",
+		"source" : "C:/EndlessProjects/BootstrapForge"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}

@@ -183,6 +183,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{60A9D3E3-2E6C-3B17-9467-74A4D784A564}</Project>
       <Name>BootstrapForge.Architecture</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Tests\BootstrapForge.ArchitectureDifferTests.vcxproj">
+      <Project>{1563BD77-1E01-39B9-B93D-6370AD841462}</Project>
+      <Name>BootstrapForge.ArchitectureDifferTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Tests\BootstrapForge.ArchitecturePlannerTests.vcxproj">
+      <Project>{9F3D3867-8468-3875-8416-6288097A4DA8}</Project>
+      <Name>BootstrapForge.ArchitecturePlannerTests</Name>
+    </ProjectReference>
     <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Domain\BootstrapForge.Domain.vcxproj">
       <Project>{EFCEF277-CE1E-37D2-BA04-66235D96A3B3}</Project>
       <Name>BootstrapForge.Domain</Name>
@@ -191,6 +199,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{629D5EC4-1810-3E75-A7EE-9E617B3D49C2}</Project>
       <Name>BootstrapForge.Engine</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Tests\BootstrapForge.ExecutionExecutorTests.vcxproj">
+      <Project>{334B292C-2AB9-3207-A030-93A07E6854C8}</Project>
+      <Name>BootstrapForge.ExecutionExecutorTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Tests\BootstrapForge.ExecutionSchedulerTests.vcxproj">
+      <Project>{F69AE08D-78DE-369D-ADE7-9EEE78DFD138}</Project>
+      <Name>BootstrapForge.ExecutionSchedulerTests</Name>
+    </ProjectReference>
     <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Infrastructure\BootstrapForge.Infrastructure.vcxproj">
       <Project>{6B95805E-DBEA-3E72-88EE-0EBB82787C78}</Project>
       <Name>BootstrapForge.Infrastructure</Name>
@@ -198,10 +214,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Runtime\BootstrapForge.Runtime.vcxproj">
       <Project>{0D5805BF-9729-34AC-9799-6CCA8C483B62}</Project>
       <Name>BootstrapForge.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Tests\BootstrapForge.Tests.vcxproj">
-      <Project>{0890514E-3D08-36BD-9371-C1BB57553BD1}</Project>
-      <Name>BootstrapForge.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-build\blake3.vcxproj">
       <Project>{D0F3FFAE-9535-3F3F-B738-C16DBF631A81}</Project>
