@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "bin/MinSizeRel/BootstrapForge.Tests.exe"
+			"path" : "bin/MinSizeRel/BootstrapForge.Runtime.exe"
 		},
 		{
-			"path" : "bin/MinSizeRel/BootstrapForge.Tests.pdb"
+			"path" : "bin/MinSizeRel/BootstrapForge.Runtime.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -16,11 +16,13 @@
 			"add_executable",
 			"target_link_libraries",
 			"target_compile_options",
+			"target_include_directories",
 			"target_compile_features"
 		],
 		"files" : 
 		[
-			"Tests/CMakeLists.txt"
+			"Runtime/CMakeLists.txt",
+			"Infrastructure/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -30,25 +32,40 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 12,
+				"line" : 5,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 22,
+				"line" : 19,
 				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 50,
+				"parent" : 3
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 45,
+				"line" : 36,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 33,
+				"line" : 13,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 28,
 				"parent" : 0
 			}
 		]
@@ -62,23 +79,23 @@
 					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /O1 /Ob1 /DNDEBUG -std:c++latest -MD"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 5,
 					"fragment" : "/W4"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 5,
 					"fragment" : "/permissive-"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 5,
 					"fragment" : "/EHsc"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 2,
-					"path" : "C:/EndlessProjects/BootstrapForge/Engine/include"
+					"backtrace" : 6,
+					"path" : "C:/EndlessProjects/BootstrapForge/Runtime/include"
 				},
 				{
 					"backtrace" : 2,
@@ -86,7 +103,27 @@
 				},
 				{
 					"backtrace" : 2,
+					"path" : "C:/EndlessProjects/BootstrapForge/Engine/include"
+				},
+				{
+					"backtrace" : 2,
 					"path" : "C:/EndlessProjects/BootstrapForge/Contracts/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/EndlessProjects/BootstrapForge/Application/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/EndlessProjects/BootstrapForge/Infrastructure/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-src/c"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/nlohmann_json-src/include"
 				}
 			],
 			"language" : "CXX",
@@ -94,13 +131,17 @@
 			{
 				"backtraces" : 
 				[
-					4
+					7,
+					2,
+					2
 				],
 				"standard" : "23"
 			},
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1,
+				2
 			]
 		}
 	],
@@ -108,21 +149,29 @@
 	[
 		{
 			"backtrace" : 2,
+			"id" : "blake3::@9d3c3f4fc440dab8acdd"
+		},
+		{
+			"backtrace" : 2,
 			"id" : "BootstrapForge.Domain::@8cd51453df5484cab347"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "BootstrapForge.Application::@66720fd680612643f4de"
 		},
 		{
 			"backtrace" : 2,
 			"id" : "BootstrapForge.Engine::@8f69bdd092c897d92c1e"
 		},
 		{
+			"backtrace" : 2,
+			"id" : "BootstrapForge.Infrastructure::@362f43c2ca28654b9b2f"
+		},
+		{
 			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
 		}
 	],
-	"folder" : 
-	{
-		"name" : "BootstrapForge/Tests"
-	},
-	"id" : "BootstrapForge.Tests::@3e3005ae7443f751ac85",
+	"id" : "BootstrapForge.Runtime::@3bdb40abe12afe69a388",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -137,17 +186,37 @@
 			},
 			{
 				"backtrace" : 2,
+				"fragment" : "..\\lib\\MinSizeRel\\BootstrapForge.Domain.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
 				"fragment" : "..\\lib\\MinSizeRel\\BootstrapForge.Engine.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "..\\lib\\MinSizeRel\\BootstrapForge.Domain.lib",
+				"fragment" : "..\\lib\\MinSizeRel\\BootstrapForge.Application.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\lib\\MinSizeRel\\BootstrapForge.Infrastructure.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\lib\\MinSizeRel\\BootstrapForge.Application.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
 				"fragment" : "..\\lib\\MinSizeRel\\BootstrapForge.Domain.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "..\\lib\\MinSizeRel\\blake3.lib",
 				"role" : "libraries"
 			},
 			{
@@ -157,12 +226,12 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "BootstrapForge.Tests",
-	"nameOnDisk" : "BootstrapForge.Tests.exe",
+	"name" : "BootstrapForge.Runtime",
+	"nameOnDisk" : "BootstrapForge.Runtime.exe",
 	"paths" : 
 	{
-		"build" : "Tests",
-		"source" : "Tests"
+		"build" : "Runtime",
+		"source" : "Runtime"
 	},
 	"sourceGroups" : 
 	[
@@ -170,16 +239,25 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1,
+				2
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				1,
-				2,
-				3
+				3,
+				4,
+				5
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				6
 			]
 		}
 	],
@@ -188,7 +266,19 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Tests/src/ArchitectureDifferTests.cpp",
+			"path" : "Runtime/src/main.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Runtime/src/RuntimeOptions.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Runtime/src/RuntimeWorkspace.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -205,6 +295,11 @@
 			"backtrace" : 2,
 			"path" : "Contracts/include/BootstrapForge/Contracts/Filesystem/IFilesystemScanner.hpp",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "out/build/vs2022-debug/_deps/nlohmann_json-src/nlohmann_json.natvis",
+			"sourceGroupIndex" : 2
 		}
 	],
 	"type" : "EXECUTABLE"

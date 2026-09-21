@@ -149,15 +149,11 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "BootstrapForge.Domain::@8cd51453df5484cab347"
-		},
-		{
-			"backtrace" : 2,
 			"id" : "blake3::@9d3c3f4fc440dab8acdd"
 		},
 		{
 			"backtrace" : 2,
-			"id" : "BootstrapForge.Infrastructure::@362f43c2ca28654b9b2f"
+			"id" : "BootstrapForge.Domain::@8cd51453df5484cab347"
 		},
 		{
 			"backtrace" : 2,
@@ -166,6 +162,10 @@
 		{
 			"backtrace" : 2,
 			"id" : "BootstrapForge.Engine::@8f69bdd092c897d92c1e"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "BootstrapForge.Infrastructure::@362f43c2ca28654b9b2f"
 		},
 		{
 			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"

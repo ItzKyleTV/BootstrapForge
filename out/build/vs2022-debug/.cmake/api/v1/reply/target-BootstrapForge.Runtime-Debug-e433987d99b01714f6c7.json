@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "bin/MinSizeRel/BootstrapForge.Runtime.exe"
+			"path" : "bin/Debug/BootstrapForge.Runtime.exe"
 		},
 		{
-			"path" : "bin/MinSizeRel/BootstrapForge.Runtime.pdb"
+			"path" : "bin/Debug/BootstrapForge.Runtime.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -76,7 +76,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /O1 /Ob1 /DNDEBUG -std:c++latest -MD"
+					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++latest -MDd -Zi"
 				},
 				{
 					"backtrace" : 5,
@@ -149,15 +149,11 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "BootstrapForge.Domain::@8cd51453df5484cab347"
-		},
-		{
-			"backtrace" : 2,
 			"id" : "blake3::@9d3c3f4fc440dab8acdd"
 		},
 		{
 			"backtrace" : 2,
-			"id" : "BootstrapForge.Infrastructure::@362f43c2ca28654b9b2f"
+			"id" : "BootstrapForge.Domain::@8cd51453df5484cab347"
 		},
 		{
 			"backtrace" : 2,
@@ -166,6 +162,10 @@
 		{
 			"backtrace" : 2,
 			"id" : "BootstrapForge.Engine::@8f69bdd092c897d92c1e"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "BootstrapForge.Infrastructure::@362f43c2ca28654b9b2f"
 		},
 		{
 			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
@@ -177,46 +177,46 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /O1 /Ob1 /DNDEBUG -MD",
+				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /INCREMENTAL:NO /subsystem:console",
+				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
 				"role" : "flags"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "..\\lib\\MinSizeRel\\BootstrapForge.Domain.lib",
+				"fragment" : "..\\lib\\Debug\\BootstrapForge.Domain.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "..\\lib\\MinSizeRel\\BootstrapForge.Engine.lib",
+				"fragment" : "..\\lib\\Debug\\BootstrapForge.Engine.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "..\\lib\\MinSizeRel\\BootstrapForge.Application.lib",
+				"fragment" : "..\\lib\\Debug\\BootstrapForge.Application.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "..\\lib\\MinSizeRel\\BootstrapForge.Infrastructure.lib",
+				"fragment" : "..\\lib\\Debug\\BootstrapForge.Infrastructure.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "..\\lib\\MinSizeRel\\BootstrapForge.Application.lib",
+				"fragment" : "..\\lib\\Debug\\BootstrapForge.Application.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "..\\lib\\MinSizeRel\\BootstrapForge.Domain.lib",
+				"fragment" : "..\\lib\\Debug\\BootstrapForge.Domain.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 4,
-				"fragment" : "..\\lib\\MinSizeRel\\blake3.lib",
+				"fragment" : "..\\lib\\Debug\\blake3.lib",
 				"role" : "libraries"
 			},
 			{

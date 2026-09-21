@@ -5,19 +5,18 @@ project(
     LANGUAGES CXX
 )
 
-# 
+#
 # Test executable
-# 
+#
 
 add_executable(
     BootstrapForge.Tests
-
     src/ArchitectureDifferTests.cpp
 )
 
-# 
+#
 # Dependencies
-# 
+#
 
 target_link_libraries(
     BootstrapForge.Tests
@@ -26,9 +25,9 @@ target_link_libraries(
         BootstrapForge.Domain
 )
 
-# 
+#
 # Compiler features
-# 
+#
 
 target_compile_features(
     BootstrapForge.Tests
@@ -36,9 +35,9 @@ target_compile_features(
         cxx_std_23
 )
 
-# 
+#
 # Compiler options
-# 
+#
 
 if(MSVC)
 
@@ -62,9 +61,9 @@ else()
 
 endif()
 
-# 
+#
 # Target properties
-# 
+#
 
 set_target_properties(
     BootstrapForge.Tests
@@ -75,11 +74,11 @@ set_target_properties(
         FOLDER "BootstrapForge/Tests"
 )
 
-# 
+#
 # CTest
-# 
+#
 
 add_test(
-    NAME BootstrapForge.ArchitectureDiffer
+    NAME BootstrapForge.Tests
     COMMAND BootstrapForge.Tests
 )
