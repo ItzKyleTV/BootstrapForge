@@ -16,33 +16,32 @@ namespace BootstrapForge::Engine::Planner
         ArchitecturePlanner::Plan(
             const Models::ArchitectureDelta& delta) const
     {
-        std::vector<Operations::PlannedOperation> operations;
+        std::vector<Operations::PlannedOperation>
+            operations;
 
         //
-        // A modified symbolic link becomes two physical operations:
+        // Modified resources can produce either:
         //
-        //     DELETE existing symbolic link
-        //     CREATE symbolic link with desired target
+        //     UPDATE desired resource
         //
-        // The execution backend intentionally exposes symbolic-link
-        // creation and deletion rather than an UpdateSymbolicLink()
-        // operation.
+        // or:
         //
-        // The delete operation uses the resource path, while the
-        // create operation uses the desired symbolic-link target.
+        //     DELETE current resource
+        //     CREATE desired resource
+        //
+        // Replacement is required when the physical resource kind
+        // changes, or when a symbolic-link target changes.
         //
         operations.reserve(
             delta.AddedResources().size() +
-            delta.ModifiedResources().size() +
+            delta.ModifiedResources().size() * 2 +
             delta.RemovedResources().size() +
-            delta.ModifiedResources().size() +
             delta.AddedRelationships().size() +
             delta.RemovedRelationships().size());
 
         //
         // Added resources.
         //
-
         for (const auto& resource :
             delta.AddedResources())
         {
@@ -55,41 +54,79 @@ namespace BootstrapForge::Engine::Planner
         //
         // Modified resources.
         //
-        // Ordinary resources use UPDATE.
+        // ResourceModification preserves both the physical current
+        // resource and the desired resource.
         //
-        // Symbolic links are replaced because the execution backend
-        // has no physical UpdateSymbolicLink() operation.
-        //
-
-        for (const auto& resource :
+        for (const auto& modification :
             delta.ModifiedResources())
         {
-            if (resource.Kind() ==
-                Models::ResourceKind::SymbolicLink)
+            const auto& current =
+                modification.Current();
+
+            const auto& desired =
+                modification.Desired();
+
+            //
+            // A resource-kind transition cannot be represented by
+            // the backend's Update operations.
+            //
+            // For example:
+            //
+            //     File -> Directory
+            //
+            // must become:
+            //
+            //     DELETE current file
+            //     CREATE desired directory
+            //
+            const bool kindChanged =
+                current.Kind() !=
+                desired.Kind();
+
+            //
+            // Symbolic links do not have a physical update operation.
+            //
+            // A target change therefore becomes:
+            //
+            //     DELETE current symbolic link
+            //     CREATE desired symbolic link
+            //
+            const bool symbolicLinkReplacement =
+                current.Kind() ==
+                Models::ResourceKind::SymbolicLink &&
+                desired.Kind() ==
+                Models::ResourceKind::SymbolicLink;
+
+            if (kindChanged ||
+                symbolicLinkReplacement)
             {
                 operations.emplace_back(
                     Operations::Operation(
                         Operations::OperationKind::Delete,
-                        resource));
+                        current));
 
                 operations.emplace_back(
                     Operations::Operation(
                         Operations::OperationKind::Create,
-                        resource));
+                        desired));
 
                 continue;
             }
 
+            //
+            // Same-kind ordinary resource modification.
+            //
+            // Currently this is primarily a file content update.
+            //
             operations.emplace_back(
                 Operations::Operation(
                     Operations::OperationKind::Update,
-                    resource));
+                    desired));
         }
 
         //
         // Removed resources.
         //
-
         for (const auto& resource :
             delta.RemovedResources())
         {
@@ -102,7 +139,6 @@ namespace BootstrapForge::Engine::Planner
         //
         // Added relationships.
         //
-
         for (const auto& relationship :
             delta.AddedRelationships())
         {
@@ -115,7 +151,6 @@ namespace BootstrapForge::Engine::Planner
         //
         // Removed relationships.
         //
-
         for (const auto& relationship :
             delta.RemovedRelationships())
         {

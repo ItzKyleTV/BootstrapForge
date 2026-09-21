@@ -12,7 +12,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "lib/RelWithDebInfo/BootstrapForge.Infrastructure.lib"
+			"path" : "lib/Release/BootstrapForge.Infrastructure.lib"
 		}
 	],
 	"backtrace" : 1,
@@ -80,7 +80,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /O2 /Ob1 /DNDEBUG -std:c++latest -MD -Zi"
+					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD"
 				},
 				{
 					"backtrace" : 3,
@@ -149,11 +149,11 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "blake3::@9d3c3f4fc440dab8acdd"
+			"id" : "BootstrapForge.Domain::@8cd51453df5484cab347"
 		},
 		{
 			"backtrace" : 2,
-			"id" : "BootstrapForge.Domain::@8cd51453df5484cab347"
+			"id" : "blake3::@9d3c3f4fc440dab8acdd"
 		},
 		{
 			"backtrace" : 2,

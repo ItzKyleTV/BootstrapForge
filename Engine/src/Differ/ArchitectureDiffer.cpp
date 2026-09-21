@@ -1,6 +1,7 @@
 #include <BootstrapForge/Engine/Differ/ArchitectureDiffer.hpp>
 
 #include <BootstrapForge/Domain/Models/ResourceKind.hpp>
+#include <BootstrapForge/Domain/Models/ResourceModification.hpp>
 
 #include <algorithm>
 #include <filesystem>
@@ -48,16 +49,26 @@ namespace BootstrapForge::Engine::Differ
         }
     }
 
-    Models::ArchitectureDelta ArchitectureDiffer::Compare(
-        const Models::ArchitectureModel& desired,
-        const Models::ArchitectureModel& current) const
+    Models::ArchitectureDelta
+        ArchitectureDiffer::Compare(
+            const Models::ArchitectureModel& desired,
+            const Models::ArchitectureModel& current) const
     {
-        std::vector<Models::Resource> addedResources;
-        std::vector<Models::Resource> removedResources;
-        std::vector<Models::Resource> modifiedResources;
+        std::vector<Models::Resource>
+            addedResources;
 
-        std::vector<Models::Relationship> addedRelationships;
-        std::vector<Models::Relationship> removedRelationships;
+        std::vector<Models::Resource>
+            removedResources;
+
+        std::vector<
+            Models::ResourceModification>
+            modifiedResources;
+
+        std::vector<Models::Relationship>
+            addedRelationships;
+
+        std::vector<Models::Relationship>
+            removedRelationships;
 
         //
         // Added and modified resources.
@@ -70,7 +81,8 @@ namespace BootstrapForge::Engine::Differ
         // stable manifest-based IDs while physical resources receive
         // path-based IDs.
         //
-        for (const auto& desiredResource : desired.Resources())
+        for (const auto& desiredResource :
+            desired.Resources())
         {
             const auto currentIt =
                 std::ranges::find_if(
@@ -87,7 +99,8 @@ namespace BootstrapForge::Engine::Differ
                             desiredResource.Path();
                     });
 
-            if (currentIt == current.Resources().end())
+            if (currentIt ==
+                current.Resources().end())
             {
                 addedResources.emplace_back(
                     desiredResource);
@@ -100,9 +113,15 @@ namespace BootstrapForge::Engine::Differ
             //
             // Compare its actual state rather than its identity.
             //
-            if (!desiredResource.SameState(*currentIt))
+            // Preserve both the current and desired resources so
+            // the planner can determine whether the modification
+            // can be performed in place or requires replacement.
+            //
+            if (!desiredResource.SameState(
+                *currentIt))
             {
                 modifiedResources.emplace_back(
+                    *currentIt,
                     desiredResource);
             }
         }
@@ -110,7 +129,8 @@ namespace BootstrapForge::Engine::Differ
         //
         // Removed resources.
         //
-        for (const auto& currentResource : current.Resources())
+        for (const auto& currentResource :
+            current.Resources())
         {
             const bool exists =
                 std::ranges::any_of(
@@ -158,8 +178,12 @@ namespace BootstrapForge::Engine::Differ
                         [&](const auto& desiredResource)
                         {
                             return IsAncestorPath(
-                                currentResource.Path().Value(),
-                                desiredResource.Path().Value());
+                                currentResource
+                                .Path()
+                                .Value(),
+                                desiredResource
+                                .Path()
+                                .Value());
                         });
 
                 if (isRequiredParent)
@@ -183,7 +207,8 @@ namespace BootstrapForge::Engine::Differ
                     current.Relationships(),
                     [&](const auto& currentRelationship)
                     {
-                        return currentRelationship.Id() ==
+                        return
+                            currentRelationship.Id() ==
                             desiredRelationship.Id();
                     });
 
@@ -205,7 +230,8 @@ namespace BootstrapForge::Engine::Differ
                     desired.Relationships(),
                     [&](const auto& desiredRelationship)
                     {
-                        return desiredRelationship.Id() ==
+                        return
+                            desiredRelationship.Id() ==
                             currentRelationship.Id();
                     });
 

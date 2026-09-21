@@ -1,11 +1,8 @@
 {
-	"backtrace" : 1,
+	"backtrace" : 0,
 	"backtraceGraph" : 
 	{
-		"commands" : 
-		[
-			"add_custom_target"
-		],
+		"commands" : [],
 		"files" : 
 		[
 			"Tests/CMakeLists.txt"
@@ -14,27 +11,25 @@
 		[
 			{
 				"file" : 0
-			},
-			{
-				"command" : 0,
-				"file" : 0,
-				"line" : 12,
-				"parent" : 0
 			}
 		]
 	},
 	"dependencies" : 
 	[
 		{
+			"id" : "BootstrapForge.Tests::@3e3005ae7443f751ac85"
+		},
+		{
 			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
 		}
 	],
 	"folder" : 
 	{
-		"name" : "BootstrapForge/Tests"
+		"name" : "CMakePredefinedTargets"
 	},
-	"id" : "BootstrapForge.Tests::@3e3005ae7443f751ac85",
-	"name" : "BootstrapForge.Tests",
+	"id" : "ALL_BUILD::@3e3005ae7443f751ac85",
+	"isGeneratorProvided" : true,
+	"name" : "ALL_BUILD",
 	"paths" : 
 	{
 		"build" : "Tests",

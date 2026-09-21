@@ -199,6 +199,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{0D5805BF-9729-34AC-9799-6CCA8C483B62}</Project>
       <Name>BootstrapForge.Runtime</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Tests\BootstrapForge.Tests.vcxproj">
+      <Project>{0890514E-3D08-36BD-9371-C1BB57553BD1}</Project>
+      <Name>BootstrapForge.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-build\blake3.vcxproj">
       <Project>{D0F3FFAE-9535-3F3F-B738-C16DBF631A81}</Project>
       <Name>blake3</Name>

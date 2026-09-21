@@ -1,12 +1,14 @@
 #include <BootstrapForge/Engine/Scheduler/ExecutionScheduler.hpp>
 
 #include <BootstrapForge/Domain/Models/Relationship.hpp>
+#include <BootstrapForge/Domain/Models/ResourceKind.hpp>
 #include <BootstrapForge/Domain/Operations/Operation.hpp>
 #include <BootstrapForge/Domain/Operations/OperationKind.hpp>
 #include <BootstrapForge/Domain/Operations/PlannedOperation.hpp>
 #include <BootstrapForge/Domain/Operations/RelationshipOperation.hpp>
 #include <BootstrapForge/Domain/Types/ResourceId.hpp>
 
+#include <filesystem>
 #include <queue>
 #include <stdexcept>
 #include <unordered_map>
@@ -27,6 +29,9 @@ namespace BootstrapForge::Engine::Scheduler
 
         using OperationKind =
             BootstrapForge::Domain::Operations::OperationKind;
+
+        using ResourceKind =
+            BootstrapForge::Domain::Models::ResourceKind;
 
         using Relationship =
             BootstrapForge::Domain::Models::Relationship;
@@ -51,28 +56,141 @@ namespace BootstrapForge::Engine::Scheduler
                 std::size_t left,
                 std::size_t right) const
             {
-                const auto& leftPath =
-                    (*Operations)[left]
+                const auto& leftOperation =
+                    (*Operations)[left];
+
+                const auto& rightOperation =
+                    (*Operations)[right];
+
+                const std::string leftPath =
+                    leftOperation
                     .Resource()
                     .Path()
                     .Value()
                     .generic_string();
 
-                const auto& rightPath =
-                    (*Operations)[right]
+                const std::string rightPath =
+                    rightOperation
                     .Resource()
                     .Path()
                     .Value()
                     .generic_string();
 
+                if (leftPath != rightPath)
+                {
+                    //
+                    // priority_queue puts the "largest" item first,
+                    // so reverse the comparison to obtain lexical
+                    // ascending path order.
+                    //
+                    return leftPath > rightPath;
+                }
+
+                const auto leftKind =
+                    static_cast<int>(
+                        leftOperation.Kind());
+
+                const auto rightKind =
+                    static_cast<int>(
+                        rightOperation.Kind());
+
+                if (leftKind != rightKind)
+                {
+                    return leftKind > rightKind;
+                }
+
                 //
-                // priority_queue puts the "largest" item first,
-                // so reverse the comparison to obtain lexical
-                // ascending order.
+                // Finally make equal-path/equal-kind operations
+                // deterministic.
                 //
-                return leftPath > rightPath;
+                return left > right;
             }
         };
+
+        //
+        // Returns true when ancestor is a strict lexical ancestor
+        // of descendant.
+        //
+        // Example:
+        //
+        //     /src
+        //         /src/file.txt
+        //
+        // returns true.
+        //
+        // But:
+        //
+        //     /src
+        //     /src-old/file.txt
+        //
+        // returns false.
+        //
+        [[nodiscard]]
+        bool IsAncestorPath(
+            const std::filesystem::path& ancestor,
+            const std::filesystem::path& descendant)
+        {
+            if (ancestor.empty() ||
+                descendant.empty() ||
+                ancestor == descendant)
+            {
+                return false;
+            }
+
+            const auto relative =
+                descendant.lexically_relative(
+                    ancestor);
+
+            if (relative.empty())
+            {
+                return false;
+            }
+
+            const auto first =
+                relative.begin();
+
+            if (first == relative.end())
+            {
+                return false;
+            }
+
+            return
+                *first != "." &&
+                *first != "..";
+        }
+
+        //
+        // Adds an edge to the execution graph unless the edge
+        // already exists.
+        //
+        static void AddDependency(
+            std::vector<std::vector<std::size_t>>& outgoing,
+            std::vector<std::size_t>& indegree,
+            std::size_t from,
+            std::size_t to)
+        {
+            if (from == to)
+            {
+                return;
+            }
+
+            const auto& edges =
+                outgoing[from];
+
+            for (const auto existing :
+                edges)
+            {
+                if (existing == to)
+                {
+                    return;
+                }
+            }
+
+            outgoing[from].push_back(
+                to);
+
+            ++indegree[to];
+        }
 
         //
         // Performs a topological sort over a set of resource
@@ -130,6 +248,105 @@ namespace BootstrapForge::Engine::Scheduler
                     operations.size(),
                     0);
 
+            //
+            // Resource hierarchy dependencies.
+            //
+            // CREATE:
+            //
+            //     parent directory -> child
+            //
+            // DELETE:
+            //
+            //     child -> parent directory
+            //
+            // Only an operation whose resource is a directory
+            // establishes a parent/child filesystem dependency.
+            //
+            for (std::size_t parentIndex = 0;
+                parentIndex < operations.size();
+                ++parentIndex)
+            {
+                const auto& parent =
+                    operations[parentIndex];
+
+                if (parent.Resource().Kind() !=
+                    ResourceKind::Directory)
+                {
+                    continue;
+                }
+
+                const auto& parentPath =
+                    parent.Resource()
+                    .Path()
+                    .Value();
+
+                for (std::size_t childIndex = 0;
+                    childIndex < operations.size();
+                    ++childIndex)
+                {
+                    if (parentIndex == childIndex)
+                    {
+                        continue;
+                    }
+
+                    const auto& child =
+                        operations[childIndex];
+
+                    const auto& childPath =
+                        child.Resource()
+                        .Path()
+                        .Value();
+
+                    if (!IsAncestorPath(
+                        parentPath,
+                        childPath))
+                    {
+                        continue;
+                    }
+
+                    if (reverse)
+                    {
+                        //
+                        // DELETE:
+                        //
+                        // child must be removed before
+                        // its parent directory.
+                        //
+                        AddDependency(
+                            outgoing,
+                            indegree,
+                            childIndex,
+                            parentIndex);
+                    }
+                    else
+                    {
+                        //
+                        // CREATE:
+                        //
+                        // parent directory must exist before
+                        // its child.
+                        //
+                        AddDependency(
+                            outgoing,
+                            indegree,
+                            parentIndex,
+                            childIndex);
+                    }
+                }
+            }
+
+            //
+            // Architecture relationships.
+            //
+            // Forward:
+            //
+            //     Source -> Target
+            //
+            // Reverse:
+            //
+            //     Target -> Source
+            //
+
             for (const auto& relationship :
                 relationships)
             {
@@ -168,32 +385,11 @@ namespace BootstrapForge::Engine::Scheduler
                     ? source
                     : target;
 
-                //
-                // Avoid duplicate dependency edges.
-                //
-                const auto& edges =
-                    outgoing[from];
-
-                bool alreadyExists = false;
-
-                for (const auto existing :
-                    edges)
-                {
-                    if (existing == to)
-                    {
-                        alreadyExists = true;
-                        break;
-                    }
-                }
-
-                if (alreadyExists)
-                {
-                    continue;
-                }
-
-                outgoing[from].push_back(to);
-
-                ++indegree[to];
+                AddDependency(
+                    outgoing,
+                    indegree,
+                    from,
+                    to);
             }
 
             std::priority_queue<
@@ -403,6 +599,16 @@ namespace BootstrapForge::Engine::Scheduler
         //     B
         //     A
         //
+        // Filesystem hierarchy:
+        //
+        //     /a
+        //       /a/b
+        //
+        // Execution:
+        //
+        //     /a/b
+        //     /a
+        //
         // Dependencies are therefore reversed.
         //
 
@@ -441,6 +647,16 @@ namespace BootstrapForge::Engine::Scheduler
         //
         //     A
         //     B
+        //
+        // Filesystem hierarchy:
+        //
+        //     /a
+        //       /a/b
+        //
+        // Execution:
+        //
+        //     /a
+        //     /a/b
         //
 
         creates =

@@ -1,18 +1,5 @@
 {
   "version": 1,
-  "resources": [
-    {
-      "id": "test-file",
-      "path": "/src/target.txt",
-      "kind": "file",
-      "content": "BootstrapForge symbolic-link test\n"
-    },
-    {
-      "id": "test-link",
-      "path": "/src/test-link",
-      "kind": "symbolic-link",
-      "target": "/src/target.txt"
-    }
-  ],
+  "resources": [],
   "relationships": []
 }
