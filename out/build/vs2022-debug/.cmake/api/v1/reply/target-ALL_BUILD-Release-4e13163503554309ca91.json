@@ -17,25 +17,25 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "BootstrapForge.Domain::@8cd51453df5484cab347"
-		},
-		{
 			"id" : "blake3::@9d3c3f4fc440dab8acdd"
 		},
 		{
-			"id" : "BootstrapForge.Infrastructure::@362f43c2ca28654b9b2f"
+			"id" : "BootstrapForge.Domain::@8cd51453df5484cab347"
 		},
 		{
 			"id" : "BootstrapForge.Application::@66720fd680612643f4de"
 		},
 		{
+			"id" : "BootstrapForge.Infrastructure::@362f43c2ca28654b9b2f"
+		},
+		{
 			"id" : "BootstrapForge.Engine::@8f69bdd092c897d92c1e"
 		},
 		{
-			"id" : "BootstrapForge.Architecture::@8e5f4f276750de217453"
+			"id" : "BootstrapForge.Runtime::@3bdb40abe12afe69a388"
 		},
 		{
-			"id" : "BootstrapForge.Runtime::@3bdb40abe12afe69a388"
+			"id" : "BootstrapForge.Architecture::@8e5f4f276750de217453"
 		},
 		{
 			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"

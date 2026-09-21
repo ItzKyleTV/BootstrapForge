@@ -149,19 +149,19 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "BootstrapForge.Domain::@8cd51453df5484cab347"
-		},
-		{
-			"backtrace" : 2,
 			"id" : "blake3::@9d3c3f4fc440dab8acdd"
 		},
 		{
 			"backtrace" : 2,
-			"id" : "BootstrapForge.Infrastructure::@362f43c2ca28654b9b2f"
+			"id" : "BootstrapForge.Domain::@8cd51453df5484cab347"
 		},
 		{
 			"backtrace" : 2,
 			"id" : "BootstrapForge.Application::@66720fd680612643f4de"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "BootstrapForge.Infrastructure::@362f43c2ca28654b9b2f"
 		},
 		{
 			"backtrace" : 2,

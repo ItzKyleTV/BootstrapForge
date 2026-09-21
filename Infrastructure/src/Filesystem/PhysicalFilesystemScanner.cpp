@@ -8,6 +8,7 @@
 #include <BootstrapForge/Domain/Types/Hash.hpp>
 #include <BootstrapForge/Domain/Types/RelationshipId.hpp>
 #include <BootstrapForge/Domain/Types/ResourceId.hpp>
+#include <BootstrapForge/Domain/Values/SymbolicLinkTarget.hpp>
 
 #include <array>
 #include <cstddef>
@@ -290,15 +291,29 @@ namespace BootstrapForge::Infrastructure::Filesystem
             const auto& entry =
                 *iterator;
 
-            std::error_code relativeError;
+            //
+            // Use lexical path manipulation here.
+            //
+            // std::filesystem::relative() can resolve a symbolic
+            // link before calculating the relative path. That would
+            // turn:
+            //
+            //     /src/test-link
+            //
+            // into the link target:
+            //
+            //     /src/target.txt
+            //
+            // Resource identity must always represent the physical
+            // entry itself. The symbolic-link target is captured
+            // separately below with read_symlink().
+            //
 
             const std::filesystem::path relative =
-                std::filesystem::relative(
-                    entry.path(),
-                    root,
-                    relativeError);
+                entry.path().lexically_relative(
+                    root);
 
-            if (relativeError)
+            if (relative.empty())
             {
                 iterator.increment(
                     iteratorError);
@@ -397,11 +412,47 @@ namespace BootstrapForge::Infrastructure::Filesystem
                         value);
             }
 
+            std::optional<
+                Domain::Values::SymbolicLinkTarget>
+                symbolicLinkTarget =
+                std::nullopt;
+
+            if (*kind ==
+                Domain::Models::ResourceKind::SymbolicLink)
+            {
+                std::error_code targetError;
+
+                const std::filesystem::path target =
+                    std::filesystem::read_symlink(
+                        entry.path(),
+                        targetError);
+
+                if (targetError)
+                {
+                    iterator.increment(
+                        iteratorError);
+
+                    continue;
+                }
+
+                if (target.empty())
+                {
+                    iterator.increment(
+                        iteratorError);
+
+                    continue;
+                }
+
+                symbolicLinkTarget.emplace(
+                    target);
+            }
+
             resources.emplace_back(
                 resourceFactory.Create(
                     logicalPath,
                     *kind,
-                    std::move(content)));
+                    std::move(content),
+                    std::move(symbolicLinkTarget)));
 
             iterator.increment(
                 iteratorError);

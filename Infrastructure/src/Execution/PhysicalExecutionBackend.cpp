@@ -223,7 +223,15 @@ namespace BootstrapForge::Infrastructure::Execution
             std::filesystem::create_directories(
                 linkPath.parent_path());
 
-            if (std::filesystem::exists(linkPath))
+            //
+            // exists() does not reliably identify a
+            // dangling symbolic link because its target
+            // does not exist.
+            //
+            // is_symlink() identifies the link itself.
+            //
+            if (std::filesystem::exists(linkPath) ||
+                std::filesystem::is_symlink(linkPath))
             {
                 return false;
             }

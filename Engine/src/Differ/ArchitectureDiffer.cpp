@@ -1,11 +1,52 @@
 #include <BootstrapForge/Engine/Differ/ArchitectureDiffer.hpp>
 
+#include <BootstrapForge/Domain/Models/ResourceKind.hpp>
+
 #include <algorithm>
+#include <filesystem>
+#include <utility>
 #include <vector>
 
 namespace BootstrapForge::Engine::Differ
 {
     using namespace BootstrapForge::Domain;
+
+    namespace
+    {
+        [[nodiscard]]
+        bool IsAncestorPath(
+            const std::filesystem::path& ancestor,
+            const std::filesystem::path& descendant)
+        {
+            if (ancestor.empty() ||
+                descendant.empty() ||
+                ancestor == descendant)
+            {
+                return false;
+            }
+
+            const auto relative =
+                descendant.lexically_relative(
+                    ancestor);
+
+            if (relative.empty())
+            {
+                return false;
+            }
+
+            const auto first =
+                relative.begin();
+
+            if (first == relative.end())
+            {
+                return false;
+            }
+
+            return
+                *first != "." &&
+                *first != "..";
+        }
+    }
 
     Models::ArchitectureDelta ArchitectureDiffer::Compare(
         const Models::ArchitectureModel& desired,
@@ -86,11 +127,49 @@ namespace BootstrapForge::Engine::Differ
                             currentResource.Path();
                     });
 
-            if (!exists)
+            if (exists)
             {
-                removedResources.emplace_back(
-                    currentResource);
+                continue;
             }
+
+            //
+            // A directory that is an ancestor of a desired resource
+            // is structural infrastructure for that desired resource.
+            //
+            // It must remain available even when the directory itself
+            // is not explicitly declared in the desired architecture.
+            //
+            // For example:
+            //
+            //     current:
+            //         /src
+            //
+            //     desired:
+            //         /src/target.txt
+            //
+            // /src must not be classified as removed.
+            //
+            if (currentResource.Kind() ==
+                Models::ResourceKind::Directory)
+            {
+                const bool isRequiredParent =
+                    std::ranges::any_of(
+                        desired.Resources(),
+                        [&](const auto& desiredResource)
+                        {
+                            return IsAncestorPath(
+                                currentResource.Path().Value(),
+                                desiredResource.Path().Value());
+                        });
+
+                if (isRequiredParent)
+                {
+                    continue;
+                }
+            }
+
+            removedResources.emplace_back(
+                currentResource);
         }
 
         //

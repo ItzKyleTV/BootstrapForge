@@ -2,21 +2,16 @@
   "version": 1,
   "resources": [
     {
-      "id": "src",
-      "path": "/src",
-      "kind": "directory"
-    },
-    {
-      "id": "hello-file",
-      "path": "/src/hello.txt",
+      "id": "test-file",
+      "path": "/src/target.txt",
       "kind": "file",
-      "content": "Hello from BootstrapForge!\n"
+      "content": "BootstrapForge symbolic-link test\n"
     },
     {
       "id": "test-link",
       "path": "/src/test-link",
       "kind": "symbolic-link",
-      "target": "/src/hello.txt"
+      "target": "/src/target.txt"
     }
   ],
   "relationships": []
