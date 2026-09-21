@@ -75,3 +75,9 @@ add_subdirectory(Runtime)
 
 enable_testing()
 add_subdirectory(Tests)
+
+#
+# Client
+#
+
+add_subdirectory(Client)

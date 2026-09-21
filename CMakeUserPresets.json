@@ -1,0 +1,45 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "vs2022-debug-qt",
+      "displayName": "Visual Studio 2022 - Debug - Qt 6.11.2",
+      "inherits": "vs2022-debug",
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.11.2/msvc2022_64",
+        "Qt6_DIR": "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6"
+      }
+    },
+    {
+      "name": "vs2022-release-qt",
+      "displayName": "Visual Studio 2022 - Release - Qt 6.11.2",
+      "inherits": "vs2022-release",
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.11.2/msvc2022_64",
+        "Qt6_DIR": "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug-qt",
+      "displayName": "Build Debug - Qt 6.11.2",
+      "configurePreset": "vs2022-debug-qt"
+    },
+    {
+      "name": "release-qt",
+      "displayName": "Build Release - Qt 6.11.2",
+      "configurePreset": "vs2022-release-qt"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "test-debug-qt",
+      "displayName": "Test Debug - Qt 6.11.2",
+      "configurePreset": "vs2022-debug-qt",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}

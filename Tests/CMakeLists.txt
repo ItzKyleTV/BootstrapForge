@@ -1,123 +1,56 @@
-cmake_minimum_required(VERSION 3.28)
-
-project(
-    BootstrapForge.Tests
-    LANGUAGES CXX
+add_executable(
+    BootstrapForge.ReconciliationIntegrationTests
+    src/ReconciliationIntegrationTests.cpp
 )
 
-#
-# Shared test configuration
-#
-
-function(
-    bootstrapforge_configure_test
-    target
+target_link_libraries(
+    BootstrapForge.ReconciliationIntegrationTests
+    PRIVATE
+        BootstrapForge.Engine
+        BootstrapForge.Application
+        BootstrapForge.Infrastructure
+        BootstrapForge.Domain
+        BootstrapForge.Contracts
 )
-    target_include_directories(
-        ${target}
+
+target_compile_features(
+    BootstrapForge.ReconciliationIntegrationTests
+    PRIVATE
+        cxx_std_23
+)
+
+if(MSVC)
+
+    target_compile_options(
+        BootstrapForge.ReconciliationIntegrationTests
         PRIVATE
-            ${CMAKE_CURRENT_SOURCE_DIR}/include
+            /W4
+            /permissive-
+            /EHsc
     )
 
-    target_link_libraries(
-        ${target}
+else()
+
+    target_compile_options(
+        BootstrapForge.ReconciliationIntegrationTests
         PRIVATE
-            BootstrapForge.Engine
-            BootstrapForge.Domain
-            BootstrapForge.Contracts
+            -Wall
+            -Wextra
+            -Wpedantic
     )
 
-    target_compile_features(
-        ${target}
-        PRIVATE
-            cxx_std_23
-    )
+endif()
 
-    if(MSVC)
-
-        target_compile_options(
-            ${target}
-            PRIVATE
-                /W4
-                /permissive-
-                /EHsc
-        )
-
-    else()
-
-        target_compile_options(
-            ${target}
-            PRIVATE
-                -Wall
-                -Wextra
-                -Wpedantic
-        )
-
-    endif()
-
-    set_target_properties(
-        ${target}
-        PROPERTIES
-            CXX_STANDARD 23
-            CXX_STANDARD_REQUIRED ON
-            CXX_EXTENSIONS OFF
-            FOLDER "BootstrapForge/Tests"
-    )
-
-    add_test(
-        NAME ${target}
-        COMMAND ${target}
-    )
-endfunction()
-
-#
-# Architecture Differ tests
-#
-
-add_executable(
-    BootstrapForge.ArchitectureDifferTests
-    src/ArchitectureDifferTests.cpp
+set_target_properties(
+    BootstrapForge.ReconciliationIntegrationTests
+    PROPERTIES
+        CXX_STANDARD 23
+        CXX_STANDARD_REQUIRED ON
+        CXX_EXTENSIONS OFF
+        FOLDER "BootstrapForge/Tests"
 )
 
-bootstrapforge_configure_test(
-    BootstrapForge.ArchitectureDifferTests
-)
-
-#
-# Architecture Planner tests
-#
-
-add_executable(
-    BootstrapForge.ArchitecturePlannerTests
-    src/ArchitecturePlannerTests.cpp
-)
-
-bootstrapforge_configure_test(
-    BootstrapForge.ArchitecturePlannerTests
-)
-
-#
-# Execution Scheduler tests
-#
-
-add_executable(
-    BootstrapForge.ExecutionSchedulerTests
-    src/ExecutionSchedulerTests.cpp
-)
-
-bootstrapforge_configure_test(
-    BootstrapForge.ExecutionSchedulerTests
-)
-
-#
-# Execution Executor tests
-#
-
-add_executable(
-    BootstrapForge.ExecutionExecutorTests
-    src/ExecutionExecutorTests.cpp
-)
-
-bootstrapforge_configure_test(
-    BootstrapForge.ExecutionExecutorTests
+add_test(
+    NAME BootstrapForge.ReconciliationIntegrationTests
+    COMMAND BootstrapForge.ReconciliationIntegrationTests
 )

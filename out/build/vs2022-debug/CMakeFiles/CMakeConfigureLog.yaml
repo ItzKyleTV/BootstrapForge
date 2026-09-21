@@ -8,6 +8,16 @@ events:
       - "CMakeLists.txt:3 (project)"
     message: |
       The system is: Windows - 10.0.26200 - AMD64
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      The system is: Windows - 10.0.26200 - AMD64
   -
     kind: "message-v1"
     backtrace:
@@ -24,7 +34,7 @@ events:
       The output was:
       0
       MSBuild version 17.14.51+25f168cee for .NET Framework
-      Build started 8/28/2026 10:40:10 AM.
+      Build started 9/21/2026 11:17:03 AM.
       
       Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\3.31.6-msvc6\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -59,7 +69,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.44
+      Time Elapsed 00:00:00.47
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -85,7 +95,7 @@ events:
       The output was:
       0
       MSBuild version 17.14.51+25f168cee for .NET Framework
-      Build started 8/28/2026 10:40:10 AM.
+      Build started 9/21/2026 11:17:04 AM.
       
       Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\3.31.6-msvc6\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -120,7 +130,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.42
+      Time Elapsed 00:00:00.64
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -139,8 +149,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-suln93"
-      binary: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-suln93"
+      source: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-kr6znv"
+      binary: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-kr6znv"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -149,23 +159,23 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-suln93'
+        Change Dir: 'C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-kr6znv'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_4e3a4.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_fc11c.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.14.51+25f168cee for .NET Framework
-        Build started 8/28/2026 10:40:11 AM.
+        Build started 9/21/2026 11:17:05 AM.
         
-        Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-suln93\\cmTC_4e3a4.vcxproj" on node 1 (default targets).
+        Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-kr6znv\\cmTC_fc11c.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_4e3a4.dir\\Debug\\".
+          Creating directory "cmTC_fc11c.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-suln93\\Debug\\".
-          Creating directory "cmTC_4e3a4.dir\\Debug\\cmTC_4e3a4.tlog\\".
+          Creating directory "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-kr6znv\\Debug\\".
+          Creating directory "cmTC_fc11c.dir\\Debug\\cmTC_fc11c.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_4e3a4.dir\\Debug\\cmTC_4e3a4.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_4e3a4.dir\\Debug\\cmTC_4e3a4.tlog\\unsuccessfulbuild".
+          Creating "cmTC_fc11c.dir\\Debug\\cmTC_fc11c.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_fc11c.dir\\Debug\\cmTC_fc11c.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4e3a4.dir\\Debug\\\\" /Fd"cmTC_4e3a4.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue 
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_fc11c.dir\\Debug\\\\" /Fd"cmTC_fc11c.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue 
           				/permissive-
           				/Zc:__cplusplus
           				/Zc:preprocessor
@@ -174,7 +184,7 @@ events:
           			 "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35228 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4e3a4.dir\\Debug\\\\" /Fd"cmTC_4e3a4.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue
+          cl /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_fc11c.dir\\Debug\\\\" /Fd"cmTC_fc11c.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue
              				/permissive-
              				/Zc:__cplusplus
              				/Zc:preprocessor
@@ -182,18 +192,18 @@ events:
              			 "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-suln93\\Debug\\cmTC_4e3a4.exe" /INCREMENTAL /ILK:"cmTC_4e3a4.dir\\Debug\\cmTC_4e3a4.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-suln93/Debug/cmTC_4e3a4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-suln93/Debug/cmTC_4e3a4.lib" /MACHINE:X64  /machine:x64 cmTC_4e3a4.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_4e3a4.vcxproj -> C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-suln93\\Debug\\cmTC_4e3a4.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-kr6znv\\Debug\\cmTC_fc11c.exe" /INCREMENTAL /ILK:"cmTC_fc11c.dir\\Debug\\cmTC_fc11c.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-kr6znv/Debug/cmTC_fc11c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-kr6znv/Debug/cmTC_fc11c.lib" /MACHINE:X64  /machine:x64 cmTC_fc11c.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_fc11c.vcxproj -> C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-kr6znv\\Debug\\cmTC_fc11c.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_4e3a4.dir\\Debug\\cmTC_4e3a4.tlog\\unsuccessfulbuild".
-          Touching "cmTC_4e3a4.dir\\Debug\\cmTC_4e3a4.tlog\\cmTC_4e3a4.lastbuildstate".
-        Done Building Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-suln93\\cmTC_4e3a4.vcxproj" (default targets).
+          Deleting file "cmTC_fc11c.dir\\Debug\\cmTC_fc11c.tlog\\unsuccessfulbuild".
+          Touching "cmTC_fc11c.dir\\Debug\\cmTC_fc11c.tlog\\cmTC_fc11c.lastbuildstate".
+        Done Building Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-kr6znv\\cmTC_fc11c.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.67
+        Time Elapsed 00:00:00.64
         
       exitCode: 0
   -
@@ -233,8 +243,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-ms5bok"
-      binary: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-ms5bok"
+      source: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-jc0kae"
+      binary: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-jc0kae"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -244,23 +254,23 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-ms5bok'
+        Change Dir: 'C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-jc0kae'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_00abf.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_999e3.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.14.51+25f168cee for .NET Framework
-        Build started 8/28/2026 10:40:12 AM.
+        Build started 9/21/2026 11:17:06 AM.
         
-        Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-ms5bok\\cmTC_00abf.vcxproj" on node 1 (default targets).
+        Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-jc0kae\\cmTC_999e3.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_00abf.dir\\Debug\\".
+          Creating directory "cmTC_999e3.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-ms5bok\\Debug\\".
-          Creating directory "cmTC_00abf.dir\\Debug\\cmTC_00abf.tlog\\".
+          Creating directory "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-jc0kae\\Debug\\".
+          Creating directory "cmTC_999e3.dir\\Debug\\cmTC_999e3.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_00abf.dir\\Debug\\cmTC_00abf.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_00abf.dir\\Debug\\cmTC_00abf.tlog\\unsuccessfulbuild".
+          Creating "cmTC_999e3.dir\\Debug\\cmTC_999e3.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_999e3.dir\\Debug\\cmTC_999e3.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_00abf.dir\\Debug\\\\" /Fd"cmTC_00abf.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue 
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_999e3.dir\\Debug\\\\" /Fd"cmTC_999e3.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue 
           				/permissive-
           				/Zc:__cplusplus
           				/Zc:preprocessor
@@ -269,7 +279,7 @@ events:
           			 "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35228 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_00abf.dir\\Debug\\\\" /Fd"cmTC_00abf.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue
+          cl /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_999e3.dir\\Debug\\\\" /Fd"cmTC_999e3.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue
              				/permissive-
              				/Zc:__cplusplus
              				/Zc:preprocessor
@@ -277,18 +287,18 @@ events:
              			 "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-ms5bok\\Debug\\cmTC_00abf.exe" /INCREMENTAL /ILK:"cmTC_00abf.dir\\Debug\\cmTC_00abf.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-ms5bok/Debug/cmTC_00abf.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-ms5bok/Debug/cmTC_00abf.lib" /MACHINE:X64  /machine:x64 cmTC_00abf.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_00abf.vcxproj -> C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-ms5bok\\Debug\\cmTC_00abf.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-jc0kae\\Debug\\cmTC_999e3.exe" /INCREMENTAL /ILK:"cmTC_999e3.dir\\Debug\\cmTC_999e3.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-jc0kae/Debug/cmTC_999e3.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-jc0kae/Debug/cmTC_999e3.lib" /MACHINE:X64  /machine:x64 cmTC_999e3.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_999e3.vcxproj -> C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-jc0kae\\Debug\\cmTC_999e3.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_00abf.dir\\Debug\\cmTC_00abf.tlog\\unsuccessfulbuild".
-          Touching "cmTC_00abf.dir\\Debug\\cmTC_00abf.tlog\\cmTC_00abf.lastbuildstate".
-        Done Building Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-ms5bok\\cmTC_00abf.vcxproj" (default targets).
+          Deleting file "cmTC_999e3.dir\\Debug\\cmTC_999e3.tlog\\unsuccessfulbuild".
+          Touching "cmTC_999e3.dir\\Debug\\cmTC_999e3.tlog\\cmTC_999e3.lastbuildstate".
+        Done Building Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-jc0kae\\cmTC_999e3.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.40
+        Time Elapsed 00:00:00.38
         
       exitCode: 0
   -
@@ -888,4 +898,315 @@ events:
           prompt - prompt to immediately send report
           queue - at next admin logon, prompt to send report
           send - send report automatically
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/Qt6Dependencies.cmake:38 (_qt_internal_find_third_party_dependencies)"
+      - "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake:196 (include)"
+      - "Client/CMakeLists.txt:22 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-qnvlol"
+      binary: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-qnvlol"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6;C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-qnvlol'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_56a08.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.51+25f168cee for .NET Framework
+        Build started 9/21/2026 11:18:49 AM.
+        
+        Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qnvlol\\cmTC_56a08.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_56a08.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qnvlol\\Debug\\".
+          Creating directory "cmTC_56a08.dir\\Debug\\cmTC_56a08.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_56a08.dir\\Debug\\cmTC_56a08.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_56a08.dir\\Debug\\cmTC_56a08.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_56a08.dir\\Debug\\\\" /Fd"cmTC_56a08.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue 
+          				/permissive-
+          				/Zc:__cplusplus
+          				/Zc:preprocessor
+          				/utf-8
+          				
+          			 "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qnvlol\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35228 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_56a08.dir\\Debug\\\\" /Fd"cmTC_56a08.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue
+             				/permissive-
+             				/Zc:__cplusplus
+             				/Zc:preprocessor
+             				/utf-8
+             			 "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qnvlol\\src.c"
+          src.c
+        C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qnvlol\\src.c(1,1): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qnvlol\\cmTC_56a08.vcxproj]
+        Done Building Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qnvlol\\cmTC_56a08.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qnvlol\\cmTC_56a08.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qnvlol\\src.c(1,1): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qnvlol\\cmTC_56a08.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.26
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/CheckLibraryExists.cmake:78 (try_compile)"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/FindThreads.cmake:175 (_threads_check_lib)"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/Qt6Dependencies.cmake:38 (_qt_internal_find_third_party_dependencies)"
+      - "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake:196 (include)"
+      - "Client/CMakeLists.txt:22 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-171s0m"
+      binary: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-171s0m"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6;C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-171s0m'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_10634.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.51+25f168cee for .NET Framework
+        Build started 9/21/2026 11:18:50 AM.
+        
+        Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-171s0m\\cmTC_10634.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_10634.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-171s0m\\Debug\\".
+          Creating directory "cmTC_10634.dir\\Debug\\cmTC_10634.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_10634.dir\\Debug\\cmTC_10634.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_10634.dir\\Debug\\cmTC_10634.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_10634.dir\\Debug\\\\" /Fd"cmTC_10634.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue 
+          				/permissive-
+          				/Zc:__cplusplus
+          				/Zc:preprocessor
+          				/utf-8
+          				
+          			 "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-171s0m\\CheckFunctionExists.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35228 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_10634.dir\\Debug\\\\" /Fd"cmTC_10634.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue
+             				/permissive-
+             				/Zc:__cplusplus
+             				/Zc:preprocessor
+             				/utf-8
+             			 "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-171s0m\\CheckFunctionExists.c"
+          CheckFunctionExists.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-171s0m\\Debug\\cmTC_10634.exe" /INCREMENTAL /ILK:"cmTC_10634.dir\\Debug\\cmTC_10634.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-171s0m/Debug/cmTC_10634.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-171s0m/Debug/cmTC_10634.lib" /MACHINE:X64  /machine:x64 cmTC_10634.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-171s0m\\cmTC_10634.vcxproj]
+        Done Building Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-171s0m\\cmTC_10634.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-171s0m\\cmTC_10634.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-171s0m\\cmTC_10634.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.31
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/CheckLibraryExists.cmake:78 (try_compile)"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/FindThreads.cmake:176 (_threads_check_lib)"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/Qt6Dependencies.cmake:38 (_qt_internal_find_third_party_dependencies)"
+      - "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake:196 (include)"
+      - "Client/CMakeLists.txt:22 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-8aersh"
+      binary: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-8aersh"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6;C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-8aersh'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_1a354.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.51+25f168cee for .NET Framework
+        Build started 9/21/2026 11:18:50 AM.
+        
+        Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-8aersh\\cmTC_1a354.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_1a354.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-8aersh\\Debug\\".
+          Creating directory "cmTC_1a354.dir\\Debug\\cmTC_1a354.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_1a354.dir\\Debug\\cmTC_1a354.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_1a354.dir\\Debug\\cmTC_1a354.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1a354.dir\\Debug\\\\" /Fd"cmTC_1a354.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue 
+          				/permissive-
+          				/Zc:__cplusplus
+          				/Zc:preprocessor
+          				/utf-8
+          				
+          			 "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-8aersh\\CheckFunctionExists.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35228 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1a354.dir\\Debug\\\\" /Fd"cmTC_1a354.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue
+             				/permissive-
+             				/Zc:__cplusplus
+             				/Zc:preprocessor
+             				/utf-8
+             			 "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-8aersh\\CheckFunctionExists.c"
+          CheckFunctionExists.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-8aersh\\Debug\\cmTC_1a354.exe" /INCREMENTAL /ILK:"cmTC_1a354.dir\\Debug\\cmTC_1a354.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-8aersh/Debug/cmTC_1a354.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-8aersh/Debug/cmTC_1a354.lib" /MACHINE:X64  /machine:x64 cmTC_1a354.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-8aersh\\cmTC_1a354.vcxproj]
+        Done Building Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-8aersh\\cmTC_1a354.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-8aersh\\cmTC_1a354.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-8aersh\\cmTC_1a354.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.30
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/CheckCXXSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/FindWrapAtomic.cmake:36 (check_cxx_source_compiles)"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake:37 (_qt_internal_find_third_party_dependencies)"
+      - "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:42 (include)"
+      - "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake:257 (find_package)"
+      - "Client/CMakeLists.txt:22 (find_package)"
+    checks:
+      - "Performing Test HAVE_STDATOMIC"
+    directories:
+      source: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-or23y2"
+      binary: "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-or23y2"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6;C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "HAVE_STDATOMIC"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-or23y2'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_e7394.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.51+25f168cee for .NET Framework
+        Build started 9/21/2026 11:18:51 AM.
+        
+        Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-or23y2\\cmTC_e7394.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_e7394.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-or23y2\\Debug\\".
+          Creating directory "cmTC_e7394.dir\\Debug\\cmTC_e7394.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_e7394.dir\\Debug\\cmTC_e7394.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_e7394.dir\\Debug\\cmTC_e7394.tlog\\unsuccessfulbuild".
+        ComputeStdModulesCompileInputs:
+          Reading library manifest file 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\modules\\modules.json' which provides data for library 'microsoft/STL'.
+          Adding module source 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\modules\\std.ixx' from library 'microsoft/STL' to be built with this project.
+          Adding module source 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\modules\\std.compat.ixx' from library 'microsoft/STL' to be built with this project.
+        MakeDirsForCl:
+          Creating directory "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-or23y2\\cmTC_e7394.dir\\Debug\\microsoft\\STL".
+        SetModuleDependencies:
+          Creating directory "cmTC_e7394.dir\\Debug\\cmTC_e7394_MD.tlog\\".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D HAVE_STDATOMIC /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++latest /Fo"cmTC_e7394.dir\\Debug\\\\" /Fd"cmTC_e7394.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue 
+          				/permissive-
+          				/Zc:__cplusplus
+          				/Zc:preprocessor
+          				/utf-8
+          				
+          			 "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-or23y2\\src.cxx"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35228 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          /std:c++latest is provided as a preview of language features from the latest C++
+          working draft, and we're eager to hear about bugs and suggestions for improvements.
+          However, note that these features are provided as-is without support, and subject
+          to changes or removal as the working draft evolves. See
+          https://go.microsoft.com/fwlink/?linkid=2045807 for details.
+          cl /c /Zi /W1 /WX- /diagnostics:column /FS /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D HAVE_STDATOMIC /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++latest /Fo"cmTC_e7394.dir\\Debug\\\\" /Fd"cmTC_e7394.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue
+             				/permissive-
+             				/Zc:__cplusplus
+             				/Zc:preprocessor
+             				/utf-8
+             			 "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-or23y2\\src.cxx"
+          src.cxx
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-or23y2\\Debug\\cmTC_e7394.exe" /INCREMENTAL /ILK:"cmTC_e7394.dir\\Debug\\cmTC_e7394.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-or23y2/Debug/cmTC_e7394.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/CMakeFiles/CMakeScratch/TryCompile-or23y2/Debug/cmTC_e7394.lib" /MACHINE:X64  /machine:x64 cmTC_e7394.dir\\Debug\\src.obj
+          cmTC_e7394.vcxproj -> C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-or23y2\\Debug\\cmTC_e7394.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_e7394.dir\\Debug\\cmTC_e7394.tlog\\unsuccessfulbuild".
+          Touching "cmTC_e7394.dir\\Debug\\cmTC_e7394.tlog\\cmTC_e7394.lastbuildstate".
+        Done Building Project "C:\\EndlessProjects\\BootstrapForge\\out\\build\\vs2022-debug\\CMakeFiles\\CMakeScratch\\TryCompile-or23y2\\cmTC_e7394.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.49
+        
+      exitCode: 0
 ...

@@ -197,7 +197,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Tests\ALL_BUILD.vcxproj">
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-build\ALL_BUILD.vcxproj">
       <Project>{88DD6D54-FB40-3EE1-87CF-1E90C490C333}</Project>
       <Name>ALL_BUILD</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
