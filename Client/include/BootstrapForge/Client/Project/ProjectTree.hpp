@@ -5,6 +5,8 @@
 #include <QString>
 
 class QFileSystemModel;
+class QLabel;
+class QStackedWidget;
 class QTreeView;
 
 namespace BootstrapForge::Client::Project
@@ -26,6 +28,8 @@ namespace BootstrapForge::Client::Project
         bool SetWorkspaceRoot(
             const QString& path);
 
+        void Refresh();
+
     signals:
 
         void PathSelected(
@@ -35,9 +39,6 @@ namespace BootstrapForge::Client::Project
             const QString& path);
 
     private:
-
-        [[nodiscard]]
-        static QString DiscoverWorkspaceRoot();
 
         [[nodiscard]]
         static bool IsWorkspaceRoot(
@@ -52,6 +53,10 @@ namespace BootstrapForge::Client::Project
         void SelectWorkspaceRoot();
 
         QFileSystemModel* m_model = nullptr;
+
+        QStackedWidget* m_stack = nullptr;
+
+        QLabel* m_emptyStateLabel = nullptr;
 
         QTreeView* m_tree = nullptr;
 

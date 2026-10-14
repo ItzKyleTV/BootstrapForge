@@ -276,6 +276,12 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Build/CMakeProjectController.hpp",
+			"MU",
+			"5B3NP35EXT/moc_CMakeProjectController.cpp",
+			null
+		],
+		[
 			"C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Editor/CppSyntaxHighlighter.hpp",
 			"MU",
 			"OYSNIQNRIZ/moc_CppSyntaxHighlighter.cpp",
@@ -291,6 +297,12 @@
 			"C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Editor/EditorManager.hpp",
 			"MU",
 			"OYSNIQNRIZ/moc_EditorManager.cpp",
+			null
+		],
+		[
+			"C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Generation/GenerateDialog.hpp",
+			"MU",
+			"GJOSBXC3IU/moc_GenerateDialog.cpp",
 			null
 		],
 		[
@@ -338,6 +350,7 @@
 	"MOC_DEFINITIONS" : [],
 	"MOC_DEFINITIONS_Debug" : 
 	[
+		"BOOTSTRAPFORGE_QT6_CMAKE_DIR=\"C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6\"",
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
 		"QT_WIDGETS_LIB",
@@ -350,6 +363,7 @@
 	],
 	"MOC_DEFINITIONS_MinSizeRel" : 
 	[
+		"BOOTSTRAPFORGE_QT6_CMAKE_DIR=\"C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6\"",
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
 		"QT_NO_DEBUG",
@@ -363,6 +377,7 @@
 	],
 	"MOC_DEFINITIONS_RelWithDebInfo" : 
 	[
+		"BOOTSTRAPFORGE_QT6_CMAKE_DIR=\"C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6\"",
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
 		"QT_NO_DEBUG",
@@ -376,6 +391,7 @@
 	],
 	"MOC_DEFINITIONS_Release" : 
 	[
+		"BOOTSTRAPFORGE_QT6_CMAKE_DIR=\"C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6\"",
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
 		"QT_NO_DEBUG",
@@ -401,6 +417,7 @@
 		"C:/EndlessProjects/BootstrapForge/Domain/include",
 		"C:/EndlessProjects/BootstrapForge/Contracts/include",
 		"C:/EndlessProjects/BootstrapForge/Application/include",
+		"C:/EndlessProjects/BootstrapForge/Architecture/include",
 		"C:/EndlessProjects/BootstrapForge/Engine/include",
 		"C:/EndlessProjects/BootstrapForge/Infrastructure/include",
 		"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-src/c",
@@ -417,6 +434,7 @@
 		"C:/EndlessProjects/BootstrapForge/Domain/include",
 		"C:/EndlessProjects/BootstrapForge/Contracts/include",
 		"C:/EndlessProjects/BootstrapForge/Application/include",
+		"C:/EndlessProjects/BootstrapForge/Architecture/include",
 		"C:/EndlessProjects/BootstrapForge/Engine/include",
 		"C:/EndlessProjects/BootstrapForge/Infrastructure/include",
 		"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-src/c",
@@ -433,6 +451,7 @@
 		"C:/EndlessProjects/BootstrapForge/Domain/include",
 		"C:/EndlessProjects/BootstrapForge/Contracts/include",
 		"C:/EndlessProjects/BootstrapForge/Application/include",
+		"C:/EndlessProjects/BootstrapForge/Architecture/include",
 		"C:/EndlessProjects/BootstrapForge/Engine/include",
 		"C:/EndlessProjects/BootstrapForge/Infrastructure/include",
 		"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-src/c",
@@ -449,6 +468,7 @@
 		"C:/EndlessProjects/BootstrapForge/Domain/include",
 		"C:/EndlessProjects/BootstrapForge/Contracts/include",
 		"C:/EndlessProjects/BootstrapForge/Application/include",
+		"C:/EndlessProjects/BootstrapForge/Architecture/include",
 		"C:/EndlessProjects/BootstrapForge/Engine/include",
 		"C:/EndlessProjects/BootstrapForge/Infrastructure/include",
 		"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/_deps/blake3-src/c",
@@ -501,6 +521,11 @@
 	"SOURCES" : 
 	[
 		[
+			"C:/EndlessProjects/BootstrapForge/Client/src/Build/CMakeProjectController.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/EndlessProjects/BootstrapForge/Client/src/Editor/CppSyntaxHighlighter.cpp",
 			"MU",
 			null
@@ -512,6 +537,11 @@
 		],
 		[
 			"C:/EndlessProjects/BootstrapForge/Client/src/Editor/EditorManager.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/EndlessProjects/BootstrapForge/Client/src/Generation/GenerateDialog.cpp",
 			"MU",
 			null
 		],

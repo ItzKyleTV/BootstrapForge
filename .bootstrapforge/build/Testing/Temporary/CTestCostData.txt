@@ -1,0 +1,4 @@
+BootstrapForge.ReconciliationIntegrationTests 2 0.0071521
+BootstrapForge.ArchitectureParserTests 1 0.0339768
+BootstrapForge.GenerationTests 1 0.0791775
+---

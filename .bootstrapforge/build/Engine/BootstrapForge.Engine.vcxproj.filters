@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Engine\src\Differ\ArchitectureDiffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Engine\src\Planner\ArchitecturePlanner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Engine\src\Scheduler\ExecutionScheduler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Engine\src\Execution\ExecutionExecutor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Engine\src\Reconciliation\ArchitectureReconciler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Services\Cryptography\IHasher.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Execution\IExecutionBackend.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Filesystem\IFilesystemScanner.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\Engine\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5CC83308-73B3-3E79-99BD-EB5C2A6553CE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1EA037F8-3BD3-3D10-93ED-F2D2F143E4BD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

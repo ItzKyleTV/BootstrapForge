@@ -9,19 +9,55 @@
 
 #include <BootstrapForge/Architecture/Grammar/TokenKind.hpp>
 
+#include <exception>
 #include <memory>
-#include <stdexcept>
 #include <string>
 #include <utility>
 #include <vector>
 
 namespace BootstrapForge::Architecture::Parsing
 {
+    namespace
+    {
+        class ParseFailure final : public std::exception
+        {
+        public:
+
+            ParseFailure(
+                SourceSpan span,
+                std::string message)
+                :
+                m_span(span),
+                m_message(std::move(message))
+            {
+            }
+
+            [[nodiscard]]
+            const SourceSpan& Span() const noexcept
+            {
+                return m_span;
+            }
+
+            [[nodiscard]]
+            const char* what() const noexcept override
+            {
+                return m_message.c_str();
+            }
+
+        private:
+
+            SourceSpan m_span;
+            std::string m_message;
+        };
+    }
+
     Parser::Parser(
         const Grammar::Grammar& grammar,
+        Diagnostics::DiagnosticEngine& diagnostics,
         std::string_view source)
         :
         m_grammar(grammar),
+        m_diagnostics(diagnostics),
         m_tokens(grammar, source)
     {
     }
@@ -36,8 +72,39 @@ namespace BootstrapForge::Architecture::Parsing
 
         while (!m_tokens.IsAtEnd())
         {
-            declarations.emplace_back(
-                ParseDeclaration());
+            const std::size_t positionBefore =
+                m_tokens.Position();
+
+            try
+            {
+                auto declaration = ParseDeclaration();
+
+                if (declaration != nullptr)
+                {
+                    declarations.emplace_back(
+                        std::move(declaration));
+                }
+            }
+            catch (const ParseFailure& failure)
+            {
+                ReportSyntaxError(
+                    failure.Span(),
+                    failure.what());
+
+                Synchronize();
+            }
+
+            // Unsupported top-level tokens are consumed by Synchronize().
+            // Each supported declaration parser consumes its declaration
+            // keyword before it can report a malformed declaration, so a
+            // supported start left by Synchronize() is the next iteration's
+            // input and is never consumed as recovery debris.
+            if (!m_tokens.IsAtEnd() &&
+                m_tokens.Position() == positionBefore &&
+                !IsDeclarationStart(m_tokens.Current().Kind()))
+            {
+                m_tokens.Advance();
+            }
         }
 
         const SourceLocation end =
@@ -81,7 +148,8 @@ namespace BootstrapForge::Architecture::Parsing
             return ParseGenerator();
 
         default:
-            throw std::runtime_error(
+            throw ParseFailure(
+                CurrentSpan(),
                 "Unexpected token '" +
                 m_tokens.Current().Lexeme() +
                 "' while parsing an architecture declaration.");
@@ -94,8 +162,7 @@ namespace BootstrapForge::Architecture::Parsing
         const SourceLocation begin =
             m_tokens.Current().Span().Begin();
 
-        m_tokens.Expect(
-            Grammar::TokenKind::KeywordProject);
+        m_tokens.Advance();
 
         const std::string name =
             ParseIdentifier();
@@ -114,8 +181,7 @@ namespace BootstrapForge::Architecture::Parsing
         const SourceLocation begin =
             m_tokens.Current().Span().Begin();
 
-        m_tokens.Expect(
-            Grammar::TokenKind::KeywordModule);
+        m_tokens.Advance();
 
         const std::string name =
             ParseIdentifier();
@@ -166,14 +232,18 @@ namespace BootstrapForge::Architecture::Parsing
         const SourceLocation begin =
             m_tokens.Current().Span().Begin();
 
-        m_tokens.Expect(
-            Grammar::TokenKind::KeywordRelationship);
+        m_tokens.Advance();
 
         const std::string source =
             ParseIdentifier();
 
-        m_tokens.Expect(
-            Grammar::TokenKind::Arrow);
+        if (!m_tokens.Consume(
+            Grammar::TokenKind::Arrow))
+        {
+            throw ParseFailure(
+                CurrentSpan(),
+                "Expected '->' in relationship declaration.");
+        }
 
         const std::string target =
             ParseIdentifier();
@@ -193,8 +263,7 @@ namespace BootstrapForge::Architecture::Parsing
         const SourceLocation begin =
             m_tokens.Current().Span().Begin();
 
-        m_tokens.Expect(
-            Grammar::TokenKind::KeywordBuild);
+        m_tokens.Advance();
 
         const std::string target =
             ParseIdentifier();
@@ -213,8 +282,7 @@ namespace BootstrapForge::Architecture::Parsing
         const SourceLocation begin =
             m_tokens.Current().Span().Begin();
 
-        m_tokens.Expect(
-            Grammar::TokenKind::KeywordGenerator);
+        m_tokens.Advance();
 
         const std::string generator =
             ParseIdentifier();
@@ -233,25 +301,49 @@ namespace BootstrapForge::Architecture::Parsing
 
     std::string Parser::ParseIdentifier()
     {
-        const Token& token =
-            m_tokens.Expect(
-                Grammar::TokenKind::Identifier);
+        if (!m_tokens.Match(
+            Grammar::TokenKind::Identifier))
+        {
+            throw ParseFailure(
+                CurrentSpan(),
+                "Expected an identifier, but found '" +
+                m_tokens.Current().Lexeme() +
+                "'.");
+        }
 
-        return token.Lexeme();
+        const std::string identifier =
+            m_tokens.Current().Lexeme();
+
+        m_tokens.Advance();
+
+        return identifier;
     }
 
     std::string Parser::ParseString()
     {
-        const Token& token =
-            m_tokens.Expect(
-                Grammar::TokenKind::StringLiteral);
-
-        const std::string& lexeme =
-            token.Lexeme();
-
-        if (lexeme.size() < 2)
+        if (!m_tokens.Match(
+            Grammar::TokenKind::StringLiteral))
         {
-            return {};
+            throw ParseFailure(
+                CurrentSpan(),
+                "Expected a string literal, but found '" +
+                m_tokens.Current().Lexeme() +
+                "'.");
+        }
+
+        const Token& token = m_tokens.Current();
+        const SourceSpan literalSpan = token.Span();
+        const std::string lexeme = token.Lexeme();
+
+        m_tokens.Advance();
+
+        if (lexeme.size() < 2 ||
+            lexeme.front() != '"' ||
+            lexeme.back() != '"')
+        {
+            throw ParseFailure(
+                literalSpan,
+                "Invalid string literal.");
         }
 
         return lexeme.substr(
@@ -262,6 +354,53 @@ namespace BootstrapForge::Architecture::Parsing
     SourceSpan Parser::CurrentSpan() const noexcept
     {
         return m_tokens.Current().Span();
+    }
+
+    void Parser::ReportSyntaxError(
+        SourceSpan span,
+        std::string message)
+    {
+        m_diagnostics.Error(
+            span,
+            std::move(message));
+    }
+
+    bool Parser::IsDeclarationStart(
+        Grammar::TokenKind kind) const noexcept
+    {
+        switch (kind)
+        {
+        case Grammar::TokenKind::KeywordProject:
+        case Grammar::TokenKind::KeywordModule:
+        case Grammar::TokenKind::KeywordDirectory:
+        case Grammar::TokenKind::KeywordFile:
+        case Grammar::TokenKind::KeywordRelationship:
+        case Grammar::TokenKind::KeywordBuild:
+        case Grammar::TokenKind::KeywordGenerator:
+            return true;
+
+        default:
+            return false;
+        }
+    }
+
+    void Parser::Synchronize()
+    {
+        // The current token may already be the next valid declaration,
+        // for example: "project module Core".
+        if (m_tokens.IsAtEnd() ||
+            IsDeclarationStart(m_tokens.Current().Kind()))
+        {
+            return;
+        }
+
+        // Skip the malformed declaration and any unsupported tokens
+        // until another supported declaration begins or EOF is reached.
+        while (!m_tokens.IsAtEnd() &&
+               !IsDeclarationStart(m_tokens.Current().Kind()))
+        {
+            m_tokens.Advance();
+        }
     }
 
 } // namespace BootstrapForge::Architecture::Parsing

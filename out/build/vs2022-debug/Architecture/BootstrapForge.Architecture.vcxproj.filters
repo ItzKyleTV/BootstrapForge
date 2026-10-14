@@ -22,6 +22,9 @@
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\AST\Parser.cpp">
       <Filter>Source Files\AST</Filter>
     </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\AST\GenerateCommandParser.cpp">
+      <Filter>Source Files\AST</Filter>
+    </ClCompile>
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\IR\IRBuilder.cpp">
       <Filter>Source Files\IR</Filter>
     </ClCompile>

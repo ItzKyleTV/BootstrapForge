@@ -39,6 +39,8 @@ target_sources(
 
         src/Execution/NullExecutionBackend.cpp
         src/Execution/PhysicalExecutionBackend.cpp
+
+        src/Generation/GenerationExecutor.cpp
 )
 
 target_include_directories(

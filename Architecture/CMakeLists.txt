@@ -50,6 +50,7 @@ set(
     #
 
     src/AST/Parser.cpp
+    src/AST/GenerateCommandParser.cpp
 
     #
     # IR

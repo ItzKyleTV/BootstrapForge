@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/blake3-subbuild/CMakeFiles/blake3-populate"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/blake3-subbuild/CMakeFiles/1600157c18c1a6ecf0690fe7223cf9cd/blake3-populate.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/blake3-subbuild/CMakeFiles/8ea5adec6d467cf7cf2cc8e5c3bcc6e3/blake3-populate-complete.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/blake3-subbuild/CMakeFiles/7a2c6323f2d4c46921719d09009074b8/blake3-populate-build.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/blake3-subbuild/CMakeFiles/7a2c6323f2d4c46921719d09009074b8/blake3-populate-configure.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/blake3-subbuild/CMakeFiles/7a2c6323f2d4c46921719d09009074b8/blake3-populate-download.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/blake3-subbuild/CMakeFiles/7a2c6323f2d4c46921719d09009074b8/blake3-populate-install.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/blake3-subbuild/CMakeFiles/7a2c6323f2d4c46921719d09009074b8/blake3-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/blake3-subbuild/CMakeFiles/7a2c6323f2d4c46921719d09009074b8/blake3-populate-patch.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/blake3-subbuild/CMakeFiles/7a2c6323f2d4c46921719d09009074b8/blake3-populate-test.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/blake3-subbuild/CMakeFiles/7a2c6323f2d4c46921719d09009074b8/blake3-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"blake3-populate"
+		],
+		"name" : "blake3-populate"
+	}
+}

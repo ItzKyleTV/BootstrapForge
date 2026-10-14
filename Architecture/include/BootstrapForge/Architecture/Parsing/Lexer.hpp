@@ -37,6 +37,9 @@ namespace BootstrapForge::Architecture::Parsing
         Token ReadString();
 
         [[nodiscard]]
+        Token ReadRawString();
+
+        [[nodiscard]]
         Token ReadOperator();
 
         [[nodiscard]]

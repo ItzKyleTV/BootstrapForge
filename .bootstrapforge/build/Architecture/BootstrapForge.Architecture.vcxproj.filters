@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\Grammar\Grammar.cpp">
+      <Filter>Source Files\Grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\Grammar\KeywordTable.cpp">
+      <Filter>Source Files\Grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\Grammar\OperatorTable.cpp">
+      <Filter>Source Files\Grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\Parsing\SourceReader.cpp">
+      <Filter>Source Files\Parsing</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\Parsing\Lexer.cpp">
+      <Filter>Source Files\Parsing</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\Parsing\TokenStream.cpp">
+      <Filter>Source Files\Parsing</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\AST\Parser.cpp">
+      <Filter>Source Files\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\AST\GenerateCommandParser.cpp">
+      <Filter>Source Files\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\IR\IRBuilder.cpp">
+      <Filter>Source Files\IR</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\Diagnostics\DiagnosticBag.cpp">
+      <Filter>Source Files\Diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\Diagnostics\DiagnosticEngine.cpp">
+      <Filter>Source Files\Diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\Diagnostics\DiagnosticFormatter.cpp">
+      <Filter>Source Files\Diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\Diagnostics\DiagnosticRenderer.cpp">
+      <Filter>Source Files\Diagnostics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Services\Cryptography\IHasher.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Execution\IExecutionBackend.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Filesystem\IFilesystemScanner.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\Architecture\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5CC83308-73B3-3E79-99BD-EB5C2A6553CE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1EA037F8-3BD3-3D10-93ED-F2D2F143E4BD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AST">
+      <UniqueIdentifier>{57E9F494-EB0C-33A1-AB27-7B095A7445C3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Diagnostics">
+      <UniqueIdentifier>{64B8703D-594B-3601-B017-E7AF220FE6DE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Grammar">
+      <UniqueIdentifier>{D0BC56D1-BB46-37D0-A7F1-31F448B6A459}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IR">
+      <UniqueIdentifier>{3C6C7A95-076A-333E-8709-E46EC10BDDB1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Parsing">
+      <UniqueIdentifier>{9F26B15E-8929-3708-B519-B23799533345}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

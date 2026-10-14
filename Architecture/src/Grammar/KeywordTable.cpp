@@ -8,6 +8,8 @@ namespace BootstrapForge::Architecture::Grammar
         {
             Keyword{ "architecture", TokenKind::KeywordArchitecture },
 
+            Keyword{ "generate", TokenKind::KeywordGenerate },
+
             Keyword{ "project", TokenKind::KeywordProject },
             Keyword{ "module", TokenKind::KeywordModule },
 
@@ -15,6 +17,8 @@ namespace BootstrapForge::Architecture::Grammar
             Keyword{ "file", TokenKind::KeywordFile },
 
             Keyword{ "branch", TokenKind::KeywordBranch },
+            Keyword{ "subbranch", TokenKind::KeywordSubbranch },
+            Keyword{ "folder", TokenKind::KeywordFolder },
             Keyword{ "relationship", TokenKind::KeywordRelationship },
 
             Keyword{ "build", TokenKind::KeywordBuild },

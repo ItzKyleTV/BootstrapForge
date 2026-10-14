@@ -57,9 +57,13 @@ add_executable(
     BootstrapForge.Client
     src/main.cpp
 
+    src/Build/CMakeProjectController.cpp
+
     src/Editor/EditorDocument.cpp
     src/Editor/EditorManager.cpp
     src/Editor/CppSyntaxHighlighter.cpp
+
+    src/Generation/GenerateDialog.cpp
 
     src/Project/ProjectTree.cpp
     src/UI/MainWindow.cpp
@@ -67,6 +71,8 @@ add_executable(
     include/BootstrapForge/Client/Editor/EditorDocument.hpp
     include/BootstrapForge/Client/Editor/EditorManager.hpp
     include/BootstrapForge/Client/Editor/CppSyntaxHighlighter.hpp
+    include/BootstrapForge/Client/Build/CMakeProjectController.hpp
+    include/BootstrapForge/Client/Generation/GenerateDialog.hpp
     include/BootstrapForge/Client/Project/ProjectTree.hpp
     include/BootstrapForge/Client/UI/MainWindow.hpp
 )
@@ -77,6 +83,12 @@ target_include_directories(
         "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
 
+target_compile_definitions(
+    BootstrapForge.Client
+    PRIVATE
+        "BOOTSTRAPFORGE_QT6_CMAKE_DIR=\"${Qt6_DIR}\""
+)
+
 target_link_libraries(
     BootstrapForge.Client
     PRIVATE
@@ -85,6 +97,7 @@ target_link_libraries(
         BootstrapForge.Application
         BootstrapForge.Engine
         BootstrapForge.Infrastructure
+        BootstrapForge.Architecture
         Qt6::Core
         Qt6::Gui
         Qt6::Widgets

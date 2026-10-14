@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\.bootstrapforge\build\_deps\blake3-subbuild\CMakeFiles\1600157c18c1a6ecf0690fe7223cf9cd\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{A8AD5396-9774-3AA9-AEF6-6F94E0CF770B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

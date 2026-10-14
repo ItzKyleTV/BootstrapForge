@@ -1,0 +1,118 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"out/build/vs2022-debug/_deps/blake3-src/c/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 292,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 293,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 298,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 314,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 367,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				"out/build/vs2022-debug/_deps/blake3-src/c/blake3.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"lib/Release/blake3.lib"
+			],
+			"targetId" : "blake3::@9d3c3f4fc440dab8acdd",
+			"targetIndex" : 27,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/blake3",
+			"exportName" : "blake3-targets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "blake3::@9d3c3f4fc440dab8acdd",
+					"index" : 27
+				}
+			],
+			"paths" : 
+			[
+				"_deps/blake3-build/CMakeFiles/Export/29264059f05ee613eed25797c3cafaee/blake3-targets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/blake3",
+			"paths" : 
+			[
+				"out/build/vs2022-debug/_deps/blake3-build/blake3-config.cmake",
+				"out/build/vs2022-debug/_deps/blake3-build/blake3-config-version.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "Unspecified",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"out/build/vs2022-debug/libblake3.pc"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/blake3-build",
+		"source" : "out/build/vs2022-debug/_deps/blake3-src/c"
+	}
+}

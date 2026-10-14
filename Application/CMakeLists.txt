@@ -12,6 +12,8 @@ target_sources(BootstrapForge.Application
 
         "src/Mapping/ManifestMapper.cpp"
 
+        src/Generation/GenerationPlanner.cpp
+
         src/Validation/ManifestValidator.cpp
 )
 
@@ -24,6 +26,7 @@ target_link_libraries(BootstrapForge.Application
     PUBLIC
         BootstrapForge.Domain
         BootstrapForge.Contracts
+        BootstrapForge.Architecture
 )
 
 target_compile_features(BootstrapForge.Application

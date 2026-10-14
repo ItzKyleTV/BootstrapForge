@@ -54,12 +54,17 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Infrastructure/cmake_install.cmake")
+  include("C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Architecture/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Application/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Infrastructure/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -70,11 +75,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Capabilities/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Architecture/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/nlohmann_json-populate"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/ce7b1537812177750822a1dbcc997524/nlohmann_json-populate.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/688c0a72bd4e4205df8dc36ca80220c3/nlohmann_json-populate-complete.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-build.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-configure.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-download.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-install.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-patch.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-test.rule"
+		},
+		{
+			"file" : "C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"nlohmann_json-populate"
+		],
+		"name" : "nlohmann_json-populate"
+	}
+}

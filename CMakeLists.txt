@@ -37,13 +37,14 @@ include(cmake/Dependencies.cmake)
 
 add_subdirectory(Domain)
 add_subdirectory(Contracts)
-add_subdirectory(Infrastructure)
+add_subdirectory(Architecture)
 
 #
 # Application Layer
 #
 
 add_subdirectory(Application)
+add_subdirectory(Infrastructure)
 
 #
 # Engine Layer
@@ -56,12 +57,6 @@ add_subdirectory(Engine)
 #
 
 add_subdirectory(Capabilities)
-
-#
-# Architecture Compiler
-#
-
-add_subdirectory(Architecture)
 
 #
 # Runtime

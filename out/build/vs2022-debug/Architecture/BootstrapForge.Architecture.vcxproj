@@ -320,6 +320,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\Parsing\Lexer.cpp" />
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\Parsing\TokenStream.cpp" />
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\AST\Parser.cpp" />
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\AST\GenerateCommandParser.cpp" />
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\IR\IRBuilder.cpp" />
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\Diagnostics\DiagnosticBag.cpp" />
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Architecture\src\Diagnostics\DiagnosticEngine.cpp" />

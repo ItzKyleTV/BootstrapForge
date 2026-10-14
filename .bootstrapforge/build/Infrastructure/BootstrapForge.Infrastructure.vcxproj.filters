@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Infrastructure\src\Cryptography\Hashing\Blake3Hasher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Infrastructure\src\Execution\JsonManifestDeserializer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Infrastructure\src\Filesystem\ManifestFileReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Infrastructure\src\Filesystem\PhysicalFilesystemScanner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Infrastructure\src\Loading\JsonDesiredArchitectureLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Infrastructure\src\Execution\NullExecutionBackend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Infrastructure\src\Execution\PhysicalExecutionBackend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Infrastructure\src\Generation\GenerationExecutor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Services\Cryptography\IHasher.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Execution\IExecutionBackend.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Filesystem\IFilesystemScanner.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\Infrastructure\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="C:\EndlessProjects\BootstrapForge\.bootstrapforge\build\_deps\nlohmann_json-src\nlohmann_json.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5CC83308-73B3-3E79-99BD-EB5C2A6553CE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1EA037F8-3BD3-3D10-93ED-F2D2F143E4BD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

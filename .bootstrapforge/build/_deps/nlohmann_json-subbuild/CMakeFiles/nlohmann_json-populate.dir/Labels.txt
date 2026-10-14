@@ -1,0 +1,14 @@
+# Target labels
+ nlohmann_json-populate
+# Source files and their labels
+C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/nlohmann_json-populate
+C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/ce7b1537812177750822a1dbcc997524/nlohmann_json-populate.rule
+C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/688c0a72bd4e4205df8dc36ca80220c3/nlohmann_json-populate-complete.rule
+C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-build.rule
+C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-configure.rule
+C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-download.rule
+C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-install.rule
+C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-mkdir.rule
+C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-patch.rule
+C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-test.rule
+C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/_deps/nlohmann_json-subbuild/CMakeFiles/76164b4d646d931395cc5cd5cd73bb3e/nlohmann_json-populate-update.rule

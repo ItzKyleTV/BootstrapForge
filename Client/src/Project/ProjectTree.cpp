@@ -1,12 +1,13 @@
 #include <BootstrapForge/Client/Project/ProjectTree.hpp>
 
-#include <QCoreApplication>
 #include <QDir>
 #include <QFileInfo>
 #include <QFileSystemModel>
 #include <QHeaderView>
 #include <QItemSelectionModel>
+#include <QLabel>
 #include <QModelIndex>
+#include <QStackedWidget>
 #include <QTreeView>
 #include <QVBoxLayout>
 
@@ -22,9 +23,6 @@ namespace BootstrapForge::Client::Project
 
         m_tree =
             new QTreeView(this);
-
-        m_workspaceRoot =
-            DiscoverWorkspaceRoot();
 
         ConfigureModel();
 
@@ -68,98 +66,23 @@ namespace BootstrapForge::Client::Project
         return true;
     }
 
-    QString ProjectTree::DiscoverWorkspaceRoot()
+    void ProjectTree::Refresh()
     {
-        const QStringList startingPaths =
+        if (m_workspaceRoot.isEmpty())
         {
-            QDir::currentPath(),
-            QCoreApplication::applicationDirPath()
-        };
-
-        for (const QString& startingPath :
-            startingPaths)
-        {
-            QDir directory(
-                startingPath);
-
-            if (!directory.exists())
-            {
-                continue;
-            }
-
-            while (true)
-            {
-                const QString candidate =
-                    directory.absolutePath();
-
-                if (IsWorkspaceRoot(candidate))
-                {
-                    return QDir::cleanPath(
-                        candidate);
-                }
-
-                const QString parentPath =
-                    directory.absolutePath();
-
-                if (!directory.cdUp())
-                {
-                    break;
-                }
-
-                if (directory.absolutePath() ==
-                    parentPath)
-                {
-                    break;
-                }
-            }
+            return;
         }
 
-        return {};
+        const QModelIndex rootIndex =
+            m_model->setRootPath(m_workspaceRoot);
+        m_tree->setRootIndex(rootIndex);
     }
 
     bool ProjectTree::IsWorkspaceRoot(
         const QString& path)
     {
-        const QDir directory(path);
-
-        if (!directory.exists())
-        {
-            return false;
-        }
-
-        const QFileInfo cmakeFile(
-            directory.filePath(
-                QStringLiteral(
-                    "CMakeLists.txt")));
-
-        const QStringList requiredDirectories =
-        {
-            QStringLiteral("Domain"),
-            QStringLiteral("Engine"),
-            QStringLiteral("Client")
-        };
-
-        if (!cmakeFile.exists() ||
-            !cmakeFile.isFile())
-        {
-            return false;
-        }
-
-        for (const QString& requiredDirectory :
-            requiredDirectories)
-        {
-            const QFileInfo directoryInfo(
-                directory.filePath(
-                    requiredDirectory));
-
-            if (!directoryInfo.exists() ||
-                !directoryInfo.isDir())
-            {
-                return false;
-            }
-        }
-
-        return true;
+        const QFileInfo directoryInfo(path);
+        return directoryInfo.exists() && directoryInfo.isDir();
     }
 
     void ProjectTree::ConfigureModel()
@@ -229,17 +152,18 @@ namespace BootstrapForge::Client::Project
             0,
             QHeaderView::Stretch);
 
-        auto* layout =
-            new QVBoxLayout(this);
+        m_stack = new QStackedWidget(this);
+        m_emptyStateLabel = new QLabel(
+            QStringLiteral("No project open\n\nCreate or open a project to view its files."),
+            m_stack);
+        m_emptyStateLabel->setAlignment(Qt::AlignCenter);
+        m_emptyStateLabel->setWordWrap(true);
+        m_stack->addWidget(m_emptyStateLabel);
+        m_stack->addWidget(m_tree);
 
-        layout->setContentsMargins(
-            0,
-            0,
-            0,
-            0);
-
-        layout->addWidget(
-            m_tree);
+        auto* layout = new QVBoxLayout(this);
+        layout->setContentsMargins(0, 0, 0, 0);
+        layout->addWidget(m_stack);
     }
 
     void ProjectTree::ConnectSignals()
@@ -290,16 +214,9 @@ namespace BootstrapForge::Client::Project
     {
         if (m_workspaceRoot.isEmpty())
         {
-            const QString fallbackPath =
-                QDir::currentPath();
-
-            const QModelIndex rootIndex =
-                m_model->setRootPath(
-                    fallbackPath);
-
-            m_tree->setRootIndex(
-                rootIndex);
-
+            m_model->setRootPath(QString{});
+            m_tree->setRootIndex(QModelIndex{});
+            m_stack->setCurrentWidget(m_emptyStateLabel);
             return;
         }
 
@@ -312,6 +229,7 @@ namespace BootstrapForge::Client::Project
 
         m_tree->setCurrentIndex(
             rootIndex);
+        m_stack->setCurrentWidget(m_tree);
     }
 
 } // namespace BootstrapForge::Client::Project

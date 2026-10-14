@@ -7,6 +7,9 @@
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Client\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Client\src\Build\CMakeProjectController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Client\src\Editor\EditorDocument.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -14,6 +17,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Client\src\Editor\CppSyntaxHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Client\src\Generation\GenerateDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Client\src\Project\ProjectTree.cpp">
@@ -40,6 +46,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\EndlessProjects\BootstrapForge\Client\include\BootstrapForge\Client\Editor\CppSyntaxHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Client\include\BootstrapForge\Client\Build\CMakeProjectController.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Client\include\BootstrapForge\Client\Generation\GenerateDialog.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\EndlessProjects\BootstrapForge\Client\include\BootstrapForge\Client\Project\ProjectTree.hpp">

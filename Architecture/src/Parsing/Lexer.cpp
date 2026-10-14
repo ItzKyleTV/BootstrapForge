@@ -56,6 +56,11 @@ namespace BootstrapForge::Architecture::Parsing
 
         if (character == '"')
         {
+            if (m_reader.Match("\"\"\""))
+            {
+                return ReadRawString();
+            }
+
             return ReadString();
         }
 
@@ -210,6 +215,30 @@ namespace BootstrapForge::Architecture::Parsing
 
         return MakeToken(
             Grammar::TokenKind::StringLiteral,
+            begin,
+            Grammar::LiteralKind::String);
+    }
+
+    Token Lexer::ReadRawString()
+    {
+        const SourceLocation begin =
+            m_reader.Location();
+
+        m_reader.Advance(3);
+
+        while (!m_reader.IsEnd() &&
+            !m_reader.Match("\"\"\""))
+        {
+            m_reader.Advance();
+        }
+
+        if (m_reader.Match("\"\"\""))
+        {
+            m_reader.Advance(3);
+        }
+
+        return MakeToken(
+            Grammar::TokenKind::RawStringLiteral,
             begin,
             Grammar::LiteralKind::String);
     }

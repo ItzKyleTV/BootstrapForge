@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E2F8361B-6D02-39BB-8384-4AEBD42B3DF2}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>BootstrapForge.GenerationTests</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BootstrapForge.GenerationTests.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BootstrapForge.GenerationTests</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">BootstrapForge.GenerationTests.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">BootstrapForge.GenerationTests</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\bin\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">BootstrapForge.GenerationTests.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">BootstrapForge.GenerationTests</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\bin\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">BootstrapForge.GenerationTests.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">BootstrapForge.GenerationTests</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <MASM>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <IncludePaths>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(IncludePaths)</IncludePaths>
+      <AdditionalOptions>%(AdditionalOptions) /W4 /permissive- /EHsc</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </MASM>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\Debug\BootstrapForge.Architecture.lib;..\lib\Debug\BootstrapForge.Infrastructure.lib;..\lib\Debug\BootstrapForge.Application.lib;..\lib\Debug\BootstrapForge.Architecture.lib;..\lib\Debug\BootstrapForge.Domain.lib;..\lib\Debug\blake3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/lib/Debug/BootstrapForge.GenerationTests.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/Debug/BootstrapForge.GenerationTests.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <MASM>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <IncludePaths>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(IncludePaths)</IncludePaths>
+      <AdditionalOptions>%(AdditionalOptions) /W4 /permissive- /EHsc</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </MASM>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\Release\BootstrapForge.Architecture.lib;..\lib\Release\BootstrapForge.Infrastructure.lib;..\lib\Release\BootstrapForge.Application.lib;..\lib\Release\BootstrapForge.Architecture.lib;..\lib\Release\BootstrapForge.Domain.lib;..\lib\Release\blake3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/lib/Release/BootstrapForge.GenerationTests.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/Release/BootstrapForge.GenerationTests.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <MASM>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <IncludePaths>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(IncludePaths)</IncludePaths>
+      <AdditionalOptions>%(AdditionalOptions) /W4 /permissive- /EHsc</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </MASM>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\MinSizeRel\BootstrapForge.Architecture.lib;..\lib\MinSizeRel\BootstrapForge.Infrastructure.lib;..\lib\MinSizeRel\BootstrapForge.Application.lib;..\lib\MinSizeRel\BootstrapForge.Architecture.lib;..\lib\MinSizeRel\BootstrapForge.Domain.lib;..\lib\MinSizeRel\blake3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/lib/MinSizeRel/BootstrapForge.GenerationTests.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/MinSizeRel/BootstrapForge.GenerationTests.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <MASM>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <IncludePaths>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(IncludePaths)</IncludePaths>
+      <AdditionalOptions>%(AdditionalOptions) /W4 /permissive- /EHsc</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </MASM>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\EndlessProjects\BootstrapForge\Tests\include;C:\EndlessProjects\BootstrapForge\Architecture\include;C:\EndlessProjects\BootstrapForge\Domain\include;C:\EndlessProjects\BootstrapForge\Contracts\include;C:\EndlessProjects\BootstrapForge\Infrastructure\include;C:\EndlessProjects\BootstrapForge\Application\include;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-src\c;C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\RelWithDebInfo\BootstrapForge.Architecture.lib;..\lib\RelWithDebInfo\BootstrapForge.Infrastructure.lib;..\lib\RelWithDebInfo\BootstrapForge.Application.lib;..\lib\RelWithDebInfo\BootstrapForge.Architecture.lib;..\lib\RelWithDebInfo\BootstrapForge.Domain.lib;..\lib\RelWithDebInfo\blake3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/lib/RelWithDebInfo/BootstrapForge.GenerationTests.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/RelWithDebInfo/BootstrapForge.GenerationTests.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\Tests\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/EndlessProjects/BootstrapForge/Tests/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/EndlessProjects/BootstrapForge -BC:/EndlessProjects/BootstrapForge/out/build/vs2022-debug --check-stamp-file C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Tests/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Tests\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/EndlessProjects/BootstrapForge/Tests/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/EndlessProjects/BootstrapForge -BC:/EndlessProjects/BootstrapForge/out/build/vs2022-debug --check-stamp-file C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Tests/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Tests\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/EndlessProjects/BootstrapForge/Tests/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/EndlessProjects/BootstrapForge -BC:/EndlessProjects/BootstrapForge/out/build/vs2022-debug --check-stamp-file C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Tests/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Tests\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/EndlessProjects/BootstrapForge/Tests/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/EndlessProjects/BootstrapForge -BC:/EndlessProjects/BootstrapForge/out/build/vs2022-debug --check-stamp-file C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Tests/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Tests\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Tests\src\GenerationTests.cpp" />
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Services\Cryptography\IHasher.hpp" />
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Execution\IExecutionBackend.hpp" />
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Filesystem\IFilesystemScanner.hpp" />
+    <Natvis Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\nlohmann_json.natvis">
+    </Natvis>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\ZERO_CHECK.vcxproj">
+      <Project>{7DCC8350-21C3-3E5A-9BA2-6D46A08BBA2F}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Application\BootstrapForge.Application.vcxproj">
+      <Project>{F545866C-AC45-3D7A-A82C-86079196EBAC}</Project>
+      <Name>BootstrapForge.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Architecture\BootstrapForge.Architecture.vcxproj">
+      <Project>{60A9D3E3-2E6C-3B17-9467-74A4D784A564}</Project>
+      <Name>BootstrapForge.Architecture</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Domain\BootstrapForge.Domain.vcxproj">
+      <Project>{EFCEF277-CE1E-37D2-BA04-66235D96A3B3}</Project>
+      <Name>BootstrapForge.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Infrastructure\BootstrapForge.Infrastructure.vcxproj">
+      <Project>{6B95805E-DBEA-3E72-88EE-0EBB82787C78}</Project>
+      <Name>BootstrapForge.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\blake3-build\blake3.vcxproj">
+      <Project>{D0F3FFAE-9535-3F3F-B738-C16DBF631A81}</Project>
+      <Name>blake3</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>

@@ -26,6 +26,7 @@ namespace BootstrapForge::Architecture::Grammar
         IntegerLiteral,
         FloatLiteral,
         StringLiteral,
+    RawStringLiteral,
         BooleanLiteral,
         PathLiteral,
 
@@ -56,12 +57,15 @@ namespace BootstrapForge::Architecture::Grammar
         Arrow,
         ForwardSlash,
         BackSlash,
+        Minus,
 
         //
         // Keywords
         //
 
         KeywordArchitecture,
+
+        KeywordGenerate,
 
         KeywordProject,
         KeywordModule,
@@ -70,6 +74,8 @@ namespace BootstrapForge::Architecture::Grammar
         KeywordFile,
 
         KeywordBranch,
+        KeywordSubbranch,
+        KeywordFolder,
         KeywordRelationship,
 
         KeywordBuild,

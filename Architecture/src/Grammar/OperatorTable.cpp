@@ -25,7 +25,8 @@ namespace BootstrapForge::Architecture::Grammar
             { "->", TokenKind::Arrow },
 
             { "/",  TokenKind::ForwardSlash },
-            { "\\", TokenKind::BackSlash }
+            { "\\", TokenKind::BackSlash },
+            { "-",  TokenKind::Minus }
         };
     }
 

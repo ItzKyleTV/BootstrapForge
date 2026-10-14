@@ -10,6 +10,9 @@
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Application\src\Mapping\ManifestMapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Application\src\Generation\GenerationPlanner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Application\src\Validation\ManifestValidator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
