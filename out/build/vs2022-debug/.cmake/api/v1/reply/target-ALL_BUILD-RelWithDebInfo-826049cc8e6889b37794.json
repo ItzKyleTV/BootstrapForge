@@ -29,13 +29,16 @@
 			"id" : "BootstrapForge.Application::@66720fd680612643f4de"
 		},
 		{
-			"id" : "BootstrapForge.Architecture::@8e5f4f276750de217453"
-		},
-		{
 			"id" : "BootstrapForge.Engine::@8f69bdd092c897d92c1e"
 		},
 		{
+			"id" : "BootstrapForge.Architecture::@8e5f4f276750de217453"
+		},
+		{
 			"id" : "BootstrapForge.Runtime::@3bdb40abe12afe69a388"
+		},
+		{
+			"id" : "BootstrapForge.ArchitectureParserTests::@3e3005ae7443f751ac85"
 		},
 		{
 			"id" : "BootstrapForge.ReconciliationIntegrationTests::@3e3005ae7443f751ac85"

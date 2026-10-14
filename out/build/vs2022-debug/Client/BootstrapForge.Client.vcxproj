@@ -491,7 +491,15 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Client\src\main.cpp" />
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Client\src\Editor\EditorDocument.cpp" />
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Client\src\Editor\EditorManager.cpp" />
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Client\src\Editor\CppSyntaxHighlighter.cpp" />
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Client\src\Project\ProjectTree.cpp" />
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Client\src\UI\MainWindow.cpp" />
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Client\include\BootstrapForge\Client\Editor\EditorDocument.hpp" />
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Client\include\BootstrapForge\Client\Editor\EditorManager.hpp" />
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Client\include\BootstrapForge\Client\Editor\CppSyntaxHighlighter.hpp" />
+    <ClInclude Include="C:\EndlessProjects\BootstrapForge\Client\include\BootstrapForge\Client\Project\ProjectTree.hpp" />
     <ClInclude Include="C:\EndlessProjects\BootstrapForge\Client\include\BootstrapForge\Client\UI\MainWindow.hpp" />
     <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Services\Cryptography\IHasher.hpp" />
     <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Execution\IExecutionBackend.hpp" />

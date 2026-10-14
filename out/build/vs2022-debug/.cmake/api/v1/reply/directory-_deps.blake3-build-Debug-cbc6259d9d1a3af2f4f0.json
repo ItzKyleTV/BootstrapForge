@@ -67,7 +67,7 @@
 				"lib/Debug/blake3.lib"
 			],
 			"targetId" : "blake3::@9d3c3f4fc440dab8acdd",
-			"targetIndex" : 25,
+			"targetIndex" : 26,
 			"type" : "target"
 		},
 		{
@@ -79,7 +79,7 @@
 			[
 				{
 					"id" : "blake3::@9d3c3f4fc440dab8acdd",
-					"index" : 25
+					"index" : 26
 				}
 			],
 			"paths" : 

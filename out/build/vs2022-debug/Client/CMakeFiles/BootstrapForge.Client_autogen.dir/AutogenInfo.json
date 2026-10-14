@@ -276,6 +276,30 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Editor/CppSyntaxHighlighter.hpp",
+			"MU",
+			"OYSNIQNRIZ/moc_CppSyntaxHighlighter.cpp",
+			null
+		],
+		[
+			"C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Editor/EditorDocument.hpp",
+			"MU",
+			"OYSNIQNRIZ/moc_EditorDocument.cpp",
+			null
+		],
+		[
+			"C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Editor/EditorManager.hpp",
+			"MU",
+			"OYSNIQNRIZ/moc_EditorManager.cpp",
+			null
+		],
+		[
+			"C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Project/ProjectTree.hpp",
+			"MU",
+			"ZCRKDOYTD3/moc_ProjectTree.cpp",
+			null
+		],
+		[
 			"C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/UI/MainWindow.hpp",
 			"MU",
 			"4JK6CNWKGY/moc_MainWindow.cpp",
@@ -476,6 +500,26 @@
 	"SETTINGS_FILE_Release" : "C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/CMakeFiles/BootstrapForge.Client_autogen.dir/AutogenUsed_Release.txt",
 	"SOURCES" : 
 	[
+		[
+			"C:/EndlessProjects/BootstrapForge/Client/src/Editor/CppSyntaxHighlighter.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/EndlessProjects/BootstrapForge/Client/src/Editor/EditorDocument.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/EndlessProjects/BootstrapForge/Client/src/Editor/EditorManager.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/EndlessProjects/BootstrapForge/Client/src/Project/ProjectTree.cpp",
+			"MU",
+			null
+		],
 		[
 			"C:/EndlessProjects/BootstrapForge/Client/src/UI/MainWindow.cpp",
 			"MU",

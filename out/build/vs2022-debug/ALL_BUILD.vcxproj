@@ -183,6 +183,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{60A9D3E3-2E6C-3B17-9467-74A4D784A564}</Project>
       <Name>BootstrapForge.Architecture</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Tests\BootstrapForge.ArchitectureParserTests.vcxproj">
+      <Project>{CEB7C724-286E-3807-8DE6-BA9E51E8B2DF}</Project>
+      <Name>BootstrapForge.ArchitectureParserTests</Name>
+    </ProjectReference>
     <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Client\BootstrapForge.Client.vcxproj">
       <Project>{0EA32267-B694-3AC3-9610-0D99486EB76D}</Project>
       <Name>BootstrapForge.Client</Name>

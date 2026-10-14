@@ -2,7 +2,10 @@
 
 #include <BootstrapForge/Architecture/AST/ArchitectureNode.hpp>
 
+#include <BootstrapForge/Architecture/Diagnostics/DiagnosticEngine.hpp>
+
 #include <BootstrapForge/Architecture/Grammar/Grammar.hpp>
+#include <BootstrapForge/Architecture/Grammar/TokenKind.hpp>
 
 #include <BootstrapForge/Architecture/Parsing/SourceSpan.hpp>
 #include <BootstrapForge/Architecture/Parsing/TokenStream.hpp>
@@ -19,6 +22,7 @@ namespace BootstrapForge::Architecture::Parsing
 
         Parser(
             const Grammar::Grammar& grammar,
+            Diagnostics::DiagnosticEngine& diagnostics,
             std::string_view source);
 
         [[nodiscard]]
@@ -63,7 +67,19 @@ namespace BootstrapForge::Architecture::Parsing
         [[nodiscard]]
         SourceSpan CurrentSpan() const noexcept;
 
+        void ReportSyntaxError(
+            SourceSpan span,
+            std::string message);
+
+        [[nodiscard]]
+        bool IsDeclarationStart(
+            Grammar::TokenKind kind) const noexcept;
+
+        void Synchronize();
+
         const Grammar::Grammar& m_grammar;
+
+        Diagnostics::DiagnosticEngine& m_diagnostics;
 
         TokenStream m_tokens;
     };

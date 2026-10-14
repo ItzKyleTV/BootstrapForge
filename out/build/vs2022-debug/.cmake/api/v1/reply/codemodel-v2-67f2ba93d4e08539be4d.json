@@ -31,8 +31,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0,
-						24
+						2,
+						25
 					]
 				},
 				{
@@ -42,7 +42,7 @@
 						2
 					],
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-_deps.blake3-build-Debug-d2a3a52f0517e51b423b.json",
+					"jsonFile" : "directory-_deps.blake3-build-Debug-cbc6259d9d1a3af2f4f0.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.9"
@@ -52,12 +52,12 @@
 					"source" : "out/build/vs2022-debug/_deps/blake3-src/c",
 					"targetIndexes" : 
 					[
-						5,
-						20,
+						6,
 						21,
 						22,
 						23,
-						25
+						24,
+						26
 					]
 				},
 				{
@@ -83,7 +83,7 @@
 					"source" : "out/build/vs2022-debug/_deps/nlohmann_json-src",
 					"targetIndexes" : 
 					[
-						9
+						10
 					]
 				},
 				{
@@ -98,8 +98,8 @@
 					"source" : "Domain",
 					"targetIndexes" : 
 					[
-						11,
-						15
+						0,
+						16
 					]
 				},
 				{
@@ -114,7 +114,7 @@
 					"source" : "Contracts",
 					"targetIndexes" : 
 					[
-						8
+						4
 					]
 				},
 				{
@@ -129,8 +129,8 @@
 					"source" : "Infrastructure",
 					"targetIndexes" : 
 					[
-						6,
-						17
+						1,
+						18
 					]
 				},
 				{
@@ -145,7 +145,7 @@
 					"source" : "Application",
 					"targetIndexes" : 
 					[
-						10,
+						5,
 						12
 					]
 				},
@@ -161,8 +161,8 @@
 					"source" : "Engine",
 					"targetIndexes" : 
 					[
-						7,
-						16
+						3,
+						17
 					]
 				},
 				{
@@ -177,7 +177,7 @@
 					"source" : "Capabilities",
 					"targetIndexes" : 
 					[
-						4
+						11
 					]
 				},
 				{
@@ -192,7 +192,7 @@
 					"source" : "Architecture",
 					"targetIndexes" : 
 					[
-						1,
+						8,
 						13
 					]
 				},
@@ -208,8 +208,8 @@
 					"source" : "Runtime",
 					"targetIndexes" : 
 					[
-						3,
-						19
+						7,
+						20
 					]
 				},
 				{
@@ -224,7 +224,8 @@
 					"source" : "Tests",
 					"targetIndexes" : 
 					[
-						18
+						14,
+						19
 					]
 				},
 				{
@@ -239,8 +240,8 @@
 					"source" : "Client",
 					"targetIndexes" : 
 					[
-						2,
-						14
+						9,
+						15
 					]
 				}
 			],
@@ -270,9 +271,10 @@
 					"name" : "BootstrapForge",
 					"targetIndexes" : 
 					[
-						0,
-						18,
-						24
+						2,
+						14,
+						19,
+						25
 					]
 				},
 				{
@@ -285,12 +287,12 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						5,
-						20,
+						6,
 						21,
 						22,
 						23,
-						25
+						24,
+						26
 					]
 				},
 				{
@@ -302,7 +304,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						9
+						10
 					]
 				},
 				{
@@ -314,8 +316,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						11,
-						15
+						0,
+						16
 					]
 				},
 				{
@@ -327,7 +329,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						8
+						4
 					]
 				},
 				{
@@ -339,8 +341,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						6,
-						17
+						1,
+						18
 					]
 				},
 				{
@@ -352,7 +354,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						10,
+						5,
 						12
 					]
 				},
@@ -365,8 +367,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						7,
-						16
+						3,
+						17
 					]
 				},
 				{
@@ -378,7 +380,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						4
+						11
 					]
 				},
 				{
@@ -390,7 +392,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						1,
+						8,
 						13
 					]
 				},
@@ -403,8 +405,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						3,
-						19
+						7,
+						20
 					]
 				},
 				{
@@ -416,54 +418,19 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						2,
-						14
+						9,
+						15
 					]
 				}
 			],
 			"targets" : 
 			[
 				{
-					"directoryIndex" : 0,
-					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-Debug-e40e16c1ae99415b27d4.json",
+					"directoryIndex" : 4,
+					"id" : "ALL_BUILD::@8cd51453df5484cab347",
+					"jsonFile" : "target-ALL_BUILD-Debug-3f821c08e4069558a1d2.json",
 					"name" : "ALL_BUILD",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 10,
-					"id" : "ALL_BUILD::@8e5f4f276750de217453",
-					"jsonFile" : "target-ALL_BUILD-Debug-36259d31914edea3468f.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 9
-				},
-				{
-					"directoryIndex" : 13,
-					"id" : "ALL_BUILD::@39d0ae6511a0d9878f7b",
-					"jsonFile" : "target-ALL_BUILD-Debug-817d5aa27aae07407fe7.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 11
-				},
-				{
-					"directoryIndex" : 11,
-					"id" : "ALL_BUILD::@3bdb40abe12afe69a388",
-					"jsonFile" : "target-ALL_BUILD-Debug-00ac56fa9126c8b8041a.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 10
-				},
-				{
-					"directoryIndex" : 9,
-					"id" : "ALL_BUILD::@b2a78782ced03350221b",
-					"jsonFile" : "target-ALL_BUILD-Debug-a4d7d1708474b4686689.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 8
-				},
-				{
-					"directoryIndex" : 1,
-					"id" : "ALL_BUILD::@9d3c3f4fc440dab8acdd",
-					"jsonFile" : "target-ALL_BUILD-Debug-c05d18135771318cb665.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 1
+					"projectIndex" : 3
 				},
 				{
 					"directoryIndex" : 6,
@@ -471,6 +438,13 @@
 					"jsonFile" : "target-ALL_BUILD-Debug-6bb19a3065be80484b33.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-Debug-826049cc8e6889b37794.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 8,
@@ -487,13 +461,6 @@
 					"projectIndex" : 4
 				},
 				{
-					"directoryIndex" : 3,
-					"id" : "ALL_BUILD::@7ad6b70f65d238af1bcf",
-					"jsonFile" : "target-ALL_BUILD-Debug-df0effe32ebb762e1368.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 2
-				},
-				{
 					"directoryIndex" : 7,
 					"id" : "ALL_BUILD::@66720fd680612643f4de",
 					"jsonFile" : "target-ALL_BUILD-Debug-8ebf0a9cff9d4cab9623.json",
@@ -501,11 +468,46 @@
 					"projectIndex" : 6
 				},
 				{
-					"directoryIndex" : 4,
-					"id" : "ALL_BUILD::@8cd51453df5484cab347",
-					"jsonFile" : "target-ALL_BUILD-Debug-3f821c08e4069558a1d2.json",
+					"directoryIndex" : 1,
+					"id" : "ALL_BUILD::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-ALL_BUILD-Debug-c05d18135771318cb665.json",
 					"name" : "ALL_BUILD",
-					"projectIndex" : 3
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "ALL_BUILD::@3bdb40abe12afe69a388",
+					"jsonFile" : "target-ALL_BUILD-Debug-00ac56fa9126c8b8041a.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "ALL_BUILD::@8e5f4f276750de217453",
+					"jsonFile" : "target-ALL_BUILD-Debug-36259d31914edea3468f.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 13,
+					"id" : "ALL_BUILD::@39d0ae6511a0d9878f7b",
+					"jsonFile" : "target-ALL_BUILD-Debug-817d5aa27aae07407fe7.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ALL_BUILD::@7ad6b70f65d238af1bcf",
+					"jsonFile" : "target-ALL_BUILD-Debug-df0effe32ebb762e1368.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "ALL_BUILD::@b2a78782ced03350221b",
+					"jsonFile" : "target-ALL_BUILD-Debug-a4d7d1708474b4686689.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 8
 				},
 				{
 					"directoryIndex" : 7,
@@ -522,9 +524,16 @@
 					"projectIndex" : 9
 				},
 				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ArchitectureParserTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ArchitectureParserTests-Debug-1b9679581fa690df9fd2.json",
+					"name" : "BootstrapForge.ArchitectureParserTests",
+					"projectIndex" : 0
+				},
+				{
 					"directoryIndex" : 13,
 					"id" : "BootstrapForge.Client::@39d0ae6511a0d9878f7b",
-					"jsonFile" : "target-BootstrapForge.Client-Debug-c6310147f405949e3708.json",
+					"jsonFile" : "target-BootstrapForge.Client-Debug-850e8e852d2bfc86ab39.json",
 					"name" : "BootstrapForge.Client",
 					"projectIndex" : 11
 				},
@@ -637,8 +646,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0,
-						24
+						2,
+						25
 					]
 				},
 				{
@@ -648,7 +657,7 @@
 						2
 					],
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-_deps.blake3-build-Release-e550a8fdec0d66c9e8a2.json",
+					"jsonFile" : "directory-_deps.blake3-build-Release-55d1160ed68f8086f78c.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.9"
@@ -658,12 +667,12 @@
 					"source" : "out/build/vs2022-debug/_deps/blake3-src/c",
 					"targetIndexes" : 
 					[
-						5,
-						20,
+						6,
 						21,
 						22,
 						23,
-						25
+						24,
+						26
 					]
 				},
 				{
@@ -689,7 +698,7 @@
 					"source" : "out/build/vs2022-debug/_deps/nlohmann_json-src",
 					"targetIndexes" : 
 					[
-						9
+						10
 					]
 				},
 				{
@@ -704,8 +713,8 @@
 					"source" : "Domain",
 					"targetIndexes" : 
 					[
-						11,
-						15
+						0,
+						16
 					]
 				},
 				{
@@ -720,7 +729,7 @@
 					"source" : "Contracts",
 					"targetIndexes" : 
 					[
-						8
+						4
 					]
 				},
 				{
@@ -735,8 +744,8 @@
 					"source" : "Infrastructure",
 					"targetIndexes" : 
 					[
-						6,
-						17
+						1,
+						18
 					]
 				},
 				{
@@ -751,7 +760,7 @@
 					"source" : "Application",
 					"targetIndexes" : 
 					[
-						10,
+						5,
 						12
 					]
 				},
@@ -767,8 +776,8 @@
 					"source" : "Engine",
 					"targetIndexes" : 
 					[
-						7,
-						16
+						3,
+						17
 					]
 				},
 				{
@@ -783,7 +792,7 @@
 					"source" : "Capabilities",
 					"targetIndexes" : 
 					[
-						4
+						11
 					]
 				},
 				{
@@ -798,7 +807,7 @@
 					"source" : "Architecture",
 					"targetIndexes" : 
 					[
-						1,
+						8,
 						13
 					]
 				},
@@ -814,8 +823,8 @@
 					"source" : "Runtime",
 					"targetIndexes" : 
 					[
-						3,
-						19
+						7,
+						20
 					]
 				},
 				{
@@ -830,7 +839,8 @@
 					"source" : "Tests",
 					"targetIndexes" : 
 					[
-						18
+						14,
+						19
 					]
 				},
 				{
@@ -845,8 +855,8 @@
 					"source" : "Client",
 					"targetIndexes" : 
 					[
-						2,
-						14
+						9,
+						15
 					]
 				}
 			],
@@ -876,9 +886,10 @@
 					"name" : "BootstrapForge",
 					"targetIndexes" : 
 					[
-						0,
-						18,
-						24
+						2,
+						14,
+						19,
+						25
 					]
 				},
 				{
@@ -891,12 +902,12 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						5,
-						20,
+						6,
 						21,
 						22,
 						23,
-						25
+						24,
+						26
 					]
 				},
 				{
@@ -908,7 +919,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						9
+						10
 					]
 				},
 				{
@@ -920,8 +931,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						11,
-						15
+						0,
+						16
 					]
 				},
 				{
@@ -933,7 +944,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						8
+						4
 					]
 				},
 				{
@@ -945,8 +956,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						6,
-						17
+						1,
+						18
 					]
 				},
 				{
@@ -958,7 +969,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						10,
+						5,
 						12
 					]
 				},
@@ -971,8 +982,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						7,
-						16
+						3,
+						17
 					]
 				},
 				{
@@ -984,7 +995,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						4
+						11
 					]
 				},
 				{
@@ -996,7 +1007,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						1,
+						8,
 						13
 					]
 				},
@@ -1009,8 +1020,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						3,
-						19
+						7,
+						20
 					]
 				},
 				{
@@ -1022,54 +1033,19 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						2,
-						14
+						9,
+						15
 					]
 				}
 			],
 			"targets" : 
 			[
 				{
-					"directoryIndex" : 0,
-					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-Release-e40e16c1ae99415b27d4.json",
+					"directoryIndex" : 4,
+					"id" : "ALL_BUILD::@8cd51453df5484cab347",
+					"jsonFile" : "target-ALL_BUILD-Release-3f821c08e4069558a1d2.json",
 					"name" : "ALL_BUILD",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 10,
-					"id" : "ALL_BUILD::@8e5f4f276750de217453",
-					"jsonFile" : "target-ALL_BUILD-Release-36259d31914edea3468f.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 9
-				},
-				{
-					"directoryIndex" : 13,
-					"id" : "ALL_BUILD::@39d0ae6511a0d9878f7b",
-					"jsonFile" : "target-ALL_BUILD-Release-817d5aa27aae07407fe7.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 11
-				},
-				{
-					"directoryIndex" : 11,
-					"id" : "ALL_BUILD::@3bdb40abe12afe69a388",
-					"jsonFile" : "target-ALL_BUILD-Release-00ac56fa9126c8b8041a.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 10
-				},
-				{
-					"directoryIndex" : 9,
-					"id" : "ALL_BUILD::@b2a78782ced03350221b",
-					"jsonFile" : "target-ALL_BUILD-Release-a4d7d1708474b4686689.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 8
-				},
-				{
-					"directoryIndex" : 1,
-					"id" : "ALL_BUILD::@9d3c3f4fc440dab8acdd",
-					"jsonFile" : "target-ALL_BUILD-Release-c05d18135771318cb665.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 1
+					"projectIndex" : 3
 				},
 				{
 					"directoryIndex" : 6,
@@ -1077,6 +1053,13 @@
 					"jsonFile" : "target-ALL_BUILD-Release-6bb19a3065be80484b33.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-Release-826049cc8e6889b37794.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 8,
@@ -1093,13 +1076,6 @@
 					"projectIndex" : 4
 				},
 				{
-					"directoryIndex" : 3,
-					"id" : "ALL_BUILD::@7ad6b70f65d238af1bcf",
-					"jsonFile" : "target-ALL_BUILD-Release-df0effe32ebb762e1368.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 2
-				},
-				{
 					"directoryIndex" : 7,
 					"id" : "ALL_BUILD::@66720fd680612643f4de",
 					"jsonFile" : "target-ALL_BUILD-Release-8ebf0a9cff9d4cab9623.json",
@@ -1107,11 +1083,46 @@
 					"projectIndex" : 6
 				},
 				{
-					"directoryIndex" : 4,
-					"id" : "ALL_BUILD::@8cd51453df5484cab347",
-					"jsonFile" : "target-ALL_BUILD-Release-3f821c08e4069558a1d2.json",
+					"directoryIndex" : 1,
+					"id" : "ALL_BUILD::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-ALL_BUILD-Release-c05d18135771318cb665.json",
 					"name" : "ALL_BUILD",
-					"projectIndex" : 3
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "ALL_BUILD::@3bdb40abe12afe69a388",
+					"jsonFile" : "target-ALL_BUILD-Release-00ac56fa9126c8b8041a.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "ALL_BUILD::@8e5f4f276750de217453",
+					"jsonFile" : "target-ALL_BUILD-Release-36259d31914edea3468f.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 13,
+					"id" : "ALL_BUILD::@39d0ae6511a0d9878f7b",
+					"jsonFile" : "target-ALL_BUILD-Release-817d5aa27aae07407fe7.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ALL_BUILD::@7ad6b70f65d238af1bcf",
+					"jsonFile" : "target-ALL_BUILD-Release-df0effe32ebb762e1368.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "ALL_BUILD::@b2a78782ced03350221b",
+					"jsonFile" : "target-ALL_BUILD-Release-a4d7d1708474b4686689.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 8
 				},
 				{
 					"directoryIndex" : 7,
@@ -1128,9 +1139,16 @@
 					"projectIndex" : 9
 				},
 				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ArchitectureParserTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ArchitectureParserTests-Release-b969536993432f9dc0fc.json",
+					"name" : "BootstrapForge.ArchitectureParserTests",
+					"projectIndex" : 0
+				},
+				{
 					"directoryIndex" : 13,
 					"id" : "BootstrapForge.Client::@39d0ae6511a0d9878f7b",
-					"jsonFile" : "target-BootstrapForge.Client-Release-0c57cb0df7667759e8ed.json",
+					"jsonFile" : "target-BootstrapForge.Client-Release-75f3641a54bc00a97beb.json",
 					"name" : "BootstrapForge.Client",
 					"projectIndex" : 11
 				},
@@ -1243,8 +1261,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0,
-						24
+						2,
+						25
 					]
 				},
 				{
@@ -1254,7 +1272,7 @@
 						2
 					],
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-_deps.blake3-build-MinSizeRel-0c6e6b7682b0473572bf.json",
+					"jsonFile" : "directory-_deps.blake3-build-MinSizeRel-f399f38dd62b95749a69.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.9"
@@ -1264,12 +1282,12 @@
 					"source" : "out/build/vs2022-debug/_deps/blake3-src/c",
 					"targetIndexes" : 
 					[
-						5,
-						20,
+						6,
 						21,
 						22,
 						23,
-						25
+						24,
+						26
 					]
 				},
 				{
@@ -1295,7 +1313,7 @@
 					"source" : "out/build/vs2022-debug/_deps/nlohmann_json-src",
 					"targetIndexes" : 
 					[
-						9
+						10
 					]
 				},
 				{
@@ -1310,8 +1328,8 @@
 					"source" : "Domain",
 					"targetIndexes" : 
 					[
-						11,
-						15
+						0,
+						16
 					]
 				},
 				{
@@ -1326,7 +1344,7 @@
 					"source" : "Contracts",
 					"targetIndexes" : 
 					[
-						8
+						4
 					]
 				},
 				{
@@ -1341,8 +1359,8 @@
 					"source" : "Infrastructure",
 					"targetIndexes" : 
 					[
-						6,
-						17
+						1,
+						18
 					]
 				},
 				{
@@ -1357,7 +1375,7 @@
 					"source" : "Application",
 					"targetIndexes" : 
 					[
-						10,
+						5,
 						12
 					]
 				},
@@ -1373,8 +1391,8 @@
 					"source" : "Engine",
 					"targetIndexes" : 
 					[
-						7,
-						16
+						3,
+						17
 					]
 				},
 				{
@@ -1389,7 +1407,7 @@
 					"source" : "Capabilities",
 					"targetIndexes" : 
 					[
-						4
+						11
 					]
 				},
 				{
@@ -1404,7 +1422,7 @@
 					"source" : "Architecture",
 					"targetIndexes" : 
 					[
-						1,
+						8,
 						13
 					]
 				},
@@ -1420,8 +1438,8 @@
 					"source" : "Runtime",
 					"targetIndexes" : 
 					[
-						3,
-						19
+						7,
+						20
 					]
 				},
 				{
@@ -1436,7 +1454,8 @@
 					"source" : "Tests",
 					"targetIndexes" : 
 					[
-						18
+						14,
+						19
 					]
 				},
 				{
@@ -1451,8 +1470,8 @@
 					"source" : "Client",
 					"targetIndexes" : 
 					[
-						2,
-						14
+						9,
+						15
 					]
 				}
 			],
@@ -1482,9 +1501,10 @@
 					"name" : "BootstrapForge",
 					"targetIndexes" : 
 					[
-						0,
-						18,
-						24
+						2,
+						14,
+						19,
+						25
 					]
 				},
 				{
@@ -1497,12 +1517,12 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						5,
-						20,
+						6,
 						21,
 						22,
 						23,
-						25
+						24,
+						26
 					]
 				},
 				{
@@ -1514,7 +1534,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						9
+						10
 					]
 				},
 				{
@@ -1526,8 +1546,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						11,
-						15
+						0,
+						16
 					]
 				},
 				{
@@ -1539,7 +1559,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						8
+						4
 					]
 				},
 				{
@@ -1551,8 +1571,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						6,
-						17
+						1,
+						18
 					]
 				},
 				{
@@ -1564,7 +1584,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						10,
+						5,
 						12
 					]
 				},
@@ -1577,8 +1597,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						7,
-						16
+						3,
+						17
 					]
 				},
 				{
@@ -1590,7 +1610,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						4
+						11
 					]
 				},
 				{
@@ -1602,7 +1622,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						1,
+						8,
 						13
 					]
 				},
@@ -1615,8 +1635,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						3,
-						19
+						7,
+						20
 					]
 				},
 				{
@@ -1628,54 +1648,19 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						2,
-						14
+						9,
+						15
 					]
 				}
 			],
 			"targets" : 
 			[
 				{
-					"directoryIndex" : 0,
-					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-MinSizeRel-e40e16c1ae99415b27d4.json",
+					"directoryIndex" : 4,
+					"id" : "ALL_BUILD::@8cd51453df5484cab347",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-3f821c08e4069558a1d2.json",
 					"name" : "ALL_BUILD",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 10,
-					"id" : "ALL_BUILD::@8e5f4f276750de217453",
-					"jsonFile" : "target-ALL_BUILD-MinSizeRel-36259d31914edea3468f.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 9
-				},
-				{
-					"directoryIndex" : 13,
-					"id" : "ALL_BUILD::@39d0ae6511a0d9878f7b",
-					"jsonFile" : "target-ALL_BUILD-MinSizeRel-817d5aa27aae07407fe7.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 11
-				},
-				{
-					"directoryIndex" : 11,
-					"id" : "ALL_BUILD::@3bdb40abe12afe69a388",
-					"jsonFile" : "target-ALL_BUILD-MinSizeRel-00ac56fa9126c8b8041a.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 10
-				},
-				{
-					"directoryIndex" : 9,
-					"id" : "ALL_BUILD::@b2a78782ced03350221b",
-					"jsonFile" : "target-ALL_BUILD-MinSizeRel-a4d7d1708474b4686689.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 8
-				},
-				{
-					"directoryIndex" : 1,
-					"id" : "ALL_BUILD::@9d3c3f4fc440dab8acdd",
-					"jsonFile" : "target-ALL_BUILD-MinSizeRel-c05d18135771318cb665.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 1
+					"projectIndex" : 3
 				},
 				{
 					"directoryIndex" : 6,
@@ -1683,6 +1668,13 @@
 					"jsonFile" : "target-ALL_BUILD-MinSizeRel-6bb19a3065be80484b33.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-826049cc8e6889b37794.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 8,
@@ -1699,13 +1691,6 @@
 					"projectIndex" : 4
 				},
 				{
-					"directoryIndex" : 3,
-					"id" : "ALL_BUILD::@7ad6b70f65d238af1bcf",
-					"jsonFile" : "target-ALL_BUILD-MinSizeRel-df0effe32ebb762e1368.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 2
-				},
-				{
 					"directoryIndex" : 7,
 					"id" : "ALL_BUILD::@66720fd680612643f4de",
 					"jsonFile" : "target-ALL_BUILD-MinSizeRel-8ebf0a9cff9d4cab9623.json",
@@ -1713,11 +1698,46 @@
 					"projectIndex" : 6
 				},
 				{
-					"directoryIndex" : 4,
-					"id" : "ALL_BUILD::@8cd51453df5484cab347",
-					"jsonFile" : "target-ALL_BUILD-MinSizeRel-3f821c08e4069558a1d2.json",
+					"directoryIndex" : 1,
+					"id" : "ALL_BUILD::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-c05d18135771318cb665.json",
 					"name" : "ALL_BUILD",
-					"projectIndex" : 3
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "ALL_BUILD::@3bdb40abe12afe69a388",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-00ac56fa9126c8b8041a.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "ALL_BUILD::@8e5f4f276750de217453",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-36259d31914edea3468f.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 13,
+					"id" : "ALL_BUILD::@39d0ae6511a0d9878f7b",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-817d5aa27aae07407fe7.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ALL_BUILD::@7ad6b70f65d238af1bcf",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-df0effe32ebb762e1368.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "ALL_BUILD::@b2a78782ced03350221b",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-a4d7d1708474b4686689.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 8
 				},
 				{
 					"directoryIndex" : 7,
@@ -1734,9 +1754,16 @@
 					"projectIndex" : 9
 				},
 				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ArchitectureParserTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ArchitectureParserTests-MinSizeRel-a3b03279ac0ab4b1ee5f.json",
+					"name" : "BootstrapForge.ArchitectureParserTests",
+					"projectIndex" : 0
+				},
+				{
 					"directoryIndex" : 13,
 					"id" : "BootstrapForge.Client::@39d0ae6511a0d9878f7b",
-					"jsonFile" : "target-BootstrapForge.Client-MinSizeRel-2354545ab3cf5c660514.json",
+					"jsonFile" : "target-BootstrapForge.Client-MinSizeRel-2469c7a46d4b15174a76.json",
 					"name" : "BootstrapForge.Client",
 					"projectIndex" : 11
 				},
@@ -1849,8 +1876,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0,
-						24
+						2,
+						25
 					]
 				},
 				{
@@ -1860,7 +1887,7 @@
 						2
 					],
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-_deps.blake3-build-RelWithDebInfo-eee5aa231d3d3606550d.json",
+					"jsonFile" : "directory-_deps.blake3-build-RelWithDebInfo-a32340309c0cf0b9a41b.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.9"
@@ -1870,12 +1897,12 @@
 					"source" : "out/build/vs2022-debug/_deps/blake3-src/c",
 					"targetIndexes" : 
 					[
-						5,
-						20,
+						6,
 						21,
 						22,
 						23,
-						25
+						24,
+						26
 					]
 				},
 				{
@@ -1901,7 +1928,7 @@
 					"source" : "out/build/vs2022-debug/_deps/nlohmann_json-src",
 					"targetIndexes" : 
 					[
-						9
+						10
 					]
 				},
 				{
@@ -1916,8 +1943,8 @@
 					"source" : "Domain",
 					"targetIndexes" : 
 					[
-						11,
-						15
+						0,
+						16
 					]
 				},
 				{
@@ -1932,7 +1959,7 @@
 					"source" : "Contracts",
 					"targetIndexes" : 
 					[
-						8
+						4
 					]
 				},
 				{
@@ -1947,8 +1974,8 @@
 					"source" : "Infrastructure",
 					"targetIndexes" : 
 					[
-						6,
-						17
+						1,
+						18
 					]
 				},
 				{
@@ -1963,7 +1990,7 @@
 					"source" : "Application",
 					"targetIndexes" : 
 					[
-						10,
+						5,
 						12
 					]
 				},
@@ -1979,8 +2006,8 @@
 					"source" : "Engine",
 					"targetIndexes" : 
 					[
-						7,
-						16
+						3,
+						17
 					]
 				},
 				{
@@ -1995,7 +2022,7 @@
 					"source" : "Capabilities",
 					"targetIndexes" : 
 					[
-						4
+						11
 					]
 				},
 				{
@@ -2010,7 +2037,7 @@
 					"source" : "Architecture",
 					"targetIndexes" : 
 					[
-						1,
+						8,
 						13
 					]
 				},
@@ -2026,8 +2053,8 @@
 					"source" : "Runtime",
 					"targetIndexes" : 
 					[
-						3,
-						19
+						7,
+						20
 					]
 				},
 				{
@@ -2042,7 +2069,8 @@
 					"source" : "Tests",
 					"targetIndexes" : 
 					[
-						18
+						14,
+						19
 					]
 				},
 				{
@@ -2057,8 +2085,8 @@
 					"source" : "Client",
 					"targetIndexes" : 
 					[
-						2,
-						14
+						9,
+						15
 					]
 				}
 			],
@@ -2088,9 +2116,10 @@
 					"name" : "BootstrapForge",
 					"targetIndexes" : 
 					[
-						0,
-						18,
-						24
+						2,
+						14,
+						19,
+						25
 					]
 				},
 				{
@@ -2103,12 +2132,12 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						5,
-						20,
+						6,
 						21,
 						22,
 						23,
-						25
+						24,
+						26
 					]
 				},
 				{
@@ -2120,7 +2149,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						9
+						10
 					]
 				},
 				{
@@ -2132,8 +2161,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						11,
-						15
+						0,
+						16
 					]
 				},
 				{
@@ -2145,7 +2174,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						8
+						4
 					]
 				},
 				{
@@ -2157,8 +2186,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						6,
-						17
+						1,
+						18
 					]
 				},
 				{
@@ -2170,7 +2199,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						10,
+						5,
 						12
 					]
 				},
@@ -2183,8 +2212,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						7,
-						16
+						3,
+						17
 					]
 				},
 				{
@@ -2196,7 +2225,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						4
+						11
 					]
 				},
 				{
@@ -2208,7 +2237,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						1,
+						8,
 						13
 					]
 				},
@@ -2221,8 +2250,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						3,
-						19
+						7,
+						20
 					]
 				},
 				{
@@ -2234,54 +2263,19 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						2,
-						14
+						9,
+						15
 					]
 				}
 			],
 			"targets" : 
 			[
 				{
-					"directoryIndex" : 0,
-					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-e40e16c1ae99415b27d4.json",
+					"directoryIndex" : 4,
+					"id" : "ALL_BUILD::@8cd51453df5484cab347",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-3f821c08e4069558a1d2.json",
 					"name" : "ALL_BUILD",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 10,
-					"id" : "ALL_BUILD::@8e5f4f276750de217453",
-					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-36259d31914edea3468f.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 9
-				},
-				{
-					"directoryIndex" : 13,
-					"id" : "ALL_BUILD::@39d0ae6511a0d9878f7b",
-					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-817d5aa27aae07407fe7.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 11
-				},
-				{
-					"directoryIndex" : 11,
-					"id" : "ALL_BUILD::@3bdb40abe12afe69a388",
-					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-00ac56fa9126c8b8041a.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 10
-				},
-				{
-					"directoryIndex" : 9,
-					"id" : "ALL_BUILD::@b2a78782ced03350221b",
-					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-a4d7d1708474b4686689.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 8
-				},
-				{
-					"directoryIndex" : 1,
-					"id" : "ALL_BUILD::@9d3c3f4fc440dab8acdd",
-					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-c05d18135771318cb665.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 1
+					"projectIndex" : 3
 				},
 				{
 					"directoryIndex" : 6,
@@ -2289,6 +2283,13 @@
 					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-6bb19a3065be80484b33.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-826049cc8e6889b37794.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 8,
@@ -2305,13 +2306,6 @@
 					"projectIndex" : 4
 				},
 				{
-					"directoryIndex" : 3,
-					"id" : "ALL_BUILD::@7ad6b70f65d238af1bcf",
-					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-df0effe32ebb762e1368.json",
-					"name" : "ALL_BUILD",
-					"projectIndex" : 2
-				},
-				{
 					"directoryIndex" : 7,
 					"id" : "ALL_BUILD::@66720fd680612643f4de",
 					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-8ebf0a9cff9d4cab9623.json",
@@ -2319,11 +2313,46 @@
 					"projectIndex" : 6
 				},
 				{
-					"directoryIndex" : 4,
-					"id" : "ALL_BUILD::@8cd51453df5484cab347",
-					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-3f821c08e4069558a1d2.json",
+					"directoryIndex" : 1,
+					"id" : "ALL_BUILD::@9d3c3f4fc440dab8acdd",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-c05d18135771318cb665.json",
 					"name" : "ALL_BUILD",
-					"projectIndex" : 3
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "ALL_BUILD::@3bdb40abe12afe69a388",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-00ac56fa9126c8b8041a.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "ALL_BUILD::@8e5f4f276750de217453",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-36259d31914edea3468f.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 13,
+					"id" : "ALL_BUILD::@39d0ae6511a0d9878f7b",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-817d5aa27aae07407fe7.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ALL_BUILD::@7ad6b70f65d238af1bcf",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-df0effe32ebb762e1368.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "ALL_BUILD::@b2a78782ced03350221b",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-a4d7d1708474b4686689.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 8
 				},
 				{
 					"directoryIndex" : 7,
@@ -2340,9 +2369,16 @@
 					"projectIndex" : 9
 				},
 				{
+					"directoryIndex" : 12,
+					"id" : "BootstrapForge.ArchitectureParserTests::@3e3005ae7443f751ac85",
+					"jsonFile" : "target-BootstrapForge.ArchitectureParserTests-RelWithDebInfo-0251758033a9e3492df7.json",
+					"name" : "BootstrapForge.ArchitectureParserTests",
+					"projectIndex" : 0
+				},
+				{
 					"directoryIndex" : 13,
 					"id" : "BootstrapForge.Client::@39d0ae6511a0d9878f7b",
-					"jsonFile" : "target-BootstrapForge.Client-RelWithDebInfo-1a7cb7a7c6884df8ef12.json",
+					"jsonFile" : "target-BootstrapForge.Client-RelWithDebInfo-8651f37213c29c805ddc.json",
 					"name" : "BootstrapForge.Client",
 					"projectIndex" : 11
 				},
