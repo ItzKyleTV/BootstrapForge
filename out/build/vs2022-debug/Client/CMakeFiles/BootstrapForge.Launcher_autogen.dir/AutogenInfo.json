@@ -267,7 +267,8 @@
 		"C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginTargets-relwithdebinfo.cmake",
 		"C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginAdditionalTargetInfo.cmake",
 		"C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessAliasTargets.cmake",
-		"C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/GNUInstallDirs.cmake"
+		"C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/GNUInstallDirs.cmake",
+		"C:/EndlessProjects/BootstrapForge/Client/resources/bootstrapforge.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "C:/EndlessProjects/BootstrapForge",
 	"CROSS_CONFIG" : false,
@@ -298,6 +299,10 @@
 		]
 	],
 	"MOC_INCLUDES" : [],
+	"MOC_INCLUDES_Debug" : [ "C:/EndlessProjects/BootstrapForge/Client/resources" ],
+	"MOC_INCLUDES_MinSizeRel" : [ "C:/EndlessProjects/BootstrapForge/Client/resources" ],
+	"MOC_INCLUDES_RelWithDebInfo" : [ "C:/EndlessProjects/BootstrapForge/Client/resources" ],
+	"MOC_INCLUDES_Release" : [ "C:/EndlessProjects/BootstrapForge/Client/resources" ],
 	"MOC_MACRO_NAMES" : 
 	[
 		"Q_OBJECT",
@@ -314,6 +319,7 @@
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : 
 	[
+		"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/BootstrapForge.Client_autogen/3YJK5W5UP7_$<CONFIG>/qrc_bootstrapforge.cpp",
 		"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/BootstrapForge.Client_autogen/mocs_compilation_Debug.cpp",
 		"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/BootstrapForge.Client_autogen/mocs_compilation_MinSizeRel.cpp",
 		"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/BootstrapForge.Client_autogen/mocs_compilation_RelWithDebInfo.cpp",
@@ -355,6 +361,7 @@
 	"UIC_SEARCH_PATHS" : [],
 	"UIC_SKIP" : 
 	[
+		"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/BootstrapForge.Client_autogen/3YJK5W5UP7_$<CONFIG>/qrc_bootstrapforge.cpp",
 		"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/BootstrapForge.Client_autogen/mocs_compilation_Debug.cpp",
 		"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/BootstrapForge.Client_autogen/mocs_compilation_MinSizeRel.cpp",
 		"C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/BootstrapForge.Client_autogen/mocs_compilation_RelWithDebInfo.cpp",

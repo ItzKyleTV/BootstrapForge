@@ -57,6 +57,7 @@ add_executable(
     BootstrapForge.Client
     src/main.cpp
     resources/bootstrapforge.qrc
+    resources/BootstrapForgeClient.rc
 
     src/Build/CMakeProjectController.cpp
 
@@ -82,6 +83,7 @@ target_include_directories(
     BootstrapForge.Client
     PRIVATE
         "${CMAKE_CURRENT_SOURCE_DIR}/include"
+        "${CMAKE_CURRENT_SOURCE_DIR}/resources"
 )
 
 target_compile_definitions(
@@ -131,6 +133,7 @@ endif()
 set_target_properties(
     BootstrapForge.Client
     PROPERTIES
+        AUTORCC ON
         CXX_STANDARD 23
         CXX_STANDARD_REQUIRED ON
         CXX_EXTENSIONS OFF

@@ -276,9 +276,11 @@ C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Build/CMa
  mdp:C:/Qt/6.11.2/msvc2022_64/include/QtCore/qversiontagging.h
  mdp:C:/Qt/6.11.2/msvc2022_64/include/QtCore/qxptype_traits.h
  mdp:C:/Qt/6.11.2/msvc2022_64/include/QtCore/qyieldcpu.h
-C:/EndlessProjects/BootstrapForge/Contracts/include/BootstrapForge/Contracts/Execution/IExecutionBackend.hpp
 C:/EndlessProjects/BootstrapForge/Client/src/Project/ProjectTree.cpp
 C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/UI/MainWindow.hpp
+C:/EndlessProjects/BootstrapForge/Contracts/include/BootstrapForge/Contracts/Execution/IExecutionBackend.hpp
+C:/EndlessProjects/BootstrapForge/Client/src/Editor/CppSyntaxHighlighter.cpp
+C:/EndlessProjects/BootstrapForge/Client/src/Build/CMakeProjectController.cpp
 C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Editor/EditorDocument.hpp
  mmc:Q_OBJECT
  mdp:C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Editor/EditorDocument.hpp
@@ -487,8 +489,6 @@ C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Editor/Ed
  mdp:C:/Qt/6.11.2/msvc2022_64/include/QtWidgets/qtwidgetsexports.h
  mdp:C:/Qt/6.11.2/msvc2022_64/include/QtWidgets/qtwidgetsglobal.h
  mdp:C:/Qt/6.11.2/msvc2022_64/include/QtWidgets/qwidget.h
-C:/EndlessProjects/BootstrapForge/Client/src/Editor/CppSyntaxHighlighter.cpp
-C:/EndlessProjects/BootstrapForge/Client/src/Build/CMakeProjectController.cpp
 C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Editor/EditorManager.hpp
  mmc:Q_OBJECT
  mdp:C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Editor/EditorManager.hpp

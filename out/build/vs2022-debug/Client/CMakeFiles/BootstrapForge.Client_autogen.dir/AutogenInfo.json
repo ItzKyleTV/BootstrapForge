@@ -267,7 +267,8 @@
 		"C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginTargets-relwithdebinfo.cmake",
 		"C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginAdditionalTargetInfo.cmake",
 		"C:/Qt/6.11.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessAliasTargets.cmake",
-		"C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/GNUInstallDirs.cmake"
+		"C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/GNUInstallDirs.cmake",
+		"C:/EndlessProjects/BootstrapForge/Client/resources/bootstrapforge.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "C:/EndlessProjects/BootstrapForge",
 	"CROSS_CONFIG" : false,
@@ -414,6 +415,7 @@
 	"MOC_INCLUDES_Debug" : 
 	[
 		"C:/EndlessProjects/BootstrapForge/Client/include",
+		"C:/EndlessProjects/BootstrapForge/Client/resources",
 		"C:/EndlessProjects/BootstrapForge/Domain/include",
 		"C:/EndlessProjects/BootstrapForge/Contracts/include",
 		"C:/EndlessProjects/BootstrapForge/Application/include",
@@ -431,6 +433,7 @@
 	"MOC_INCLUDES_MinSizeRel" : 
 	[
 		"C:/EndlessProjects/BootstrapForge/Client/include",
+		"C:/EndlessProjects/BootstrapForge/Client/resources",
 		"C:/EndlessProjects/BootstrapForge/Domain/include",
 		"C:/EndlessProjects/BootstrapForge/Contracts/include",
 		"C:/EndlessProjects/BootstrapForge/Application/include",
@@ -448,6 +451,7 @@
 	"MOC_INCLUDES_RelWithDebInfo" : 
 	[
 		"C:/EndlessProjects/BootstrapForge/Client/include",
+		"C:/EndlessProjects/BootstrapForge/Client/resources",
 		"C:/EndlessProjects/BootstrapForge/Domain/include",
 		"C:/EndlessProjects/BootstrapForge/Contracts/include",
 		"C:/EndlessProjects/BootstrapForge/Application/include",
@@ -465,6 +469,7 @@
 	"MOC_INCLUDES_Release" : 
 	[
 		"C:/EndlessProjects/BootstrapForge/Client/include",
+		"C:/EndlessProjects/BootstrapForge/Client/resources",
 		"C:/EndlessProjects/BootstrapForge/Domain/include",
 		"C:/EndlessProjects/BootstrapForge/Contracts/include",
 		"C:/EndlessProjects/BootstrapForge/Application/include",

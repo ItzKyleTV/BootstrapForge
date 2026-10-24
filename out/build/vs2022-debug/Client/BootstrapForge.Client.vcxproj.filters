@@ -28,14 +28,26 @@
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Client\src\UI\MainWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Client\BootstrapForge.Client_autogen\3YJK5W5UP7_Debug\qrc_bootstrapforge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Client\BootstrapForge.Client_autogen\mocs_compilation_Release.cpp">
       <Filter>Source Files\Generated</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Client\BootstrapForge.Client_autogen\3YJK5W5UP7_Release\qrc_bootstrapforge.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Client\BootstrapForge.Client_autogen\mocs_compilation_MinSizeRel.cpp">
       <Filter>Source Files\Generated</Filter>
     </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Client\BootstrapForge.Client_autogen\3YJK5W5UP7_MinSizeRel\qrc_bootstrapforge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Client\BootstrapForge.Client_autogen\mocs_compilation_RelWithDebInfo.cpp">
       <Filter>Source Files\Generated</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Client\BootstrapForge.Client_autogen\3YJK5W5UP7_RelWithDebInfo\qrc_bootstrapforge.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,12 +83,26 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <CustomBuild Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\CMakeFiles\bae7d75e208dd38fb4de384d20836bd0\qrc_bootstrapforge.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
     <CustomBuild Include="C:\EndlessProjects\BootstrapForge\Client\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\_deps\nlohmann_json-src\nlohmann_json.natvis" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="C:\EndlessProjects\BootstrapForge\Client\resources\bootstrapforge.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\EndlessProjects\BootstrapForge\Client\resources\BootstrapForgeClient.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{08C09BEB-C93C-3225-9FDD-14C3EB806792}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{CA61977A-F85F-36BB-A184-1BC12D9700C1}</UniqueIdentifier>
     </Filter>
