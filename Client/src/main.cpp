@@ -1,6 +1,7 @@
 #include <BootstrapForge/Client/UI/MainWindow.hpp>
 
 #include <QApplication>
+#include <QIcon>
 
 int main(
     int argc,
@@ -9,6 +10,8 @@ int main(
     QApplication application(
         argc,
         argv);
+    application.setWindowIcon(
+        QIcon(QStringLiteral(":/BootstrapForge/bootstrapforge-tree.png")));
 
     BootstrapForge::Client::UI::MainWindow
         mainWindow;

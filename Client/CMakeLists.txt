@@ -56,6 +56,7 @@ endif()
 add_executable(
     BootstrapForge.Client
     src/main.cpp
+    resources/bootstrapforge.qrc
 
     src/Build/CMakeProjectController.cpp
 
@@ -175,6 +176,13 @@ if(WIN32)
         BootstrapForge.Launcher
         WIN32
         src/Launcher.cpp
+        resources/BootstrapForgeLauncher.rc
+    )
+
+    target_include_directories(
+        BootstrapForge.Launcher
+        PRIVATE
+            "${CMAKE_CURRENT_SOURCE_DIR}/resources"
     )
 
     target_compile_definitions(

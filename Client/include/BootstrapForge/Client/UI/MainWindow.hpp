@@ -13,6 +13,7 @@ class QLabel;
 class QListWidget;
 class QMenu;
 class QPlainTextEdit;
+class QProcess;
 class QToolButton;
 class QTabWidget;
 class QWidget;
@@ -131,6 +132,14 @@ namespace BootstrapForge::Client::UI
 
         void CommitGitChanges();
 
+        void ConnectGitRepository();
+
+        void LoginToGitHub();
+
+        void PushGitCommits();
+
+        void UpdateGitActionAvailability();
+
         void RestoreGitStash(
             bool pop);
 
@@ -186,6 +195,12 @@ namespace BootstrapForge::Client::UI
 
         QAction* m_commitChangesAction = nullptr;
 
+        QAction* m_connectGitRepositoryAction = nullptr;
+
+        QAction* m_githubLoginAction = nullptr;
+
+        QAction* m_pushGitAction = nullptr;
+
         QAction* m_applyStashAction = nullptr;
 
         QAction* m_popStashAction = nullptr;
@@ -223,6 +238,10 @@ namespace BootstrapForge::Client::UI
         Editor::EditorManager* m_editorManager = nullptr;
 
         Build::CMakeProjectController* m_buildController = nullptr;
+
+        QProcess* m_gitPushProcess = nullptr;
+
+        QProcess* m_githubLoginProcess = nullptr;
 
         QFileDialog* m_openProjectDialog = nullptr;
 

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/BootstrapForge">
+        <file alias="bootstrapforge-tree.png">bootstrapforge-tree.png</file>
+    </qresource>
+</RCC>

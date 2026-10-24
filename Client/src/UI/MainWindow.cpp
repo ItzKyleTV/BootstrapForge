@@ -34,6 +34,7 @@
 #include <QPlainTextEdit>
 #include <QProcess>
 #include <QPushButton>
+#include <QRegularExpression>
 #include <QScreen>
 #include <QSettings>
 #include <QSpinBox>
@@ -54,6 +55,73 @@
 
 namespace
 {
+    bool HasEmbeddedRemoteCredentials(const QString& remote)
+    {
+        const QUrl url(remote);
+        return url.isValid() && !url.userInfo().isEmpty() &&
+            (url.scheme().compare(QStringLiteral("https"), Qt::CaseInsensitive) == 0 ||
+                url.scheme().compare(QStringLiteral("http"), Qt::CaseInsensitive) == 0 ||
+                url.scheme().compare(QStringLiteral("ssh"), Qt::CaseInsensitive) == 0);
+    }
+
+    bool HasSensitiveRemoteData(const QString& remote)
+    {
+        return HasEmbeddedRemoteCredentials(remote) || !QUrl(remote).query().isEmpty();
+    }
+
+    bool IsGitHubRepositoryUrl(const QString& remote)
+    {
+        if (remote.isEmpty() || remote.contains(QRegularExpression(QStringLiteral("\\s"))))
+        {
+            return false;
+        }
+
+        QString repositoryPath;
+        if (remote.startsWith(QStringLiteral("git@github.com:"), Qt::CaseInsensitive))
+        {
+            repositoryPath = remote.mid(QStringLiteral("git@github.com:").size());
+        }
+        else
+        {
+            const QUrl url(remote);
+            const QString scheme = url.scheme().toLower();
+            const bool https = scheme == QStringLiteral("https");
+            const bool ssh = scheme == QStringLiteral("ssh");
+            if (!url.isValid() || (!https && !ssh) ||
+                url.host().compare(QStringLiteral("github.com"), Qt::CaseInsensitive) != 0 ||
+                !url.query().isEmpty() || !url.fragment().isEmpty() ||
+                (https && (!url.userInfo().isEmpty() || url.port(-1) != -1)) ||
+                (ssh && (url.userName() != QStringLiteral("git") ||
+                    !url.password().isEmpty() || url.port(-1) != -1)))
+            {
+                return false;
+            }
+            repositoryPath = url.path(QUrl::FullyDecoded);
+        }
+
+        const QStringList segments = repositoryPath.split(QLatin1Char('/'), Qt::SkipEmptyParts);
+        if (segments.size() != 2)
+        {
+            return false;
+        }
+
+        const QString owner = segments.at(0);
+        QString repository = segments.at(1);
+        if (repository.endsWith(QStringLiteral(".git"), Qt::CaseInsensitive))
+        {
+            repository.chop(4);
+        }
+
+        static const QRegularExpression ownerPattern(
+            QStringLiteral("^[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?$"));
+        static const QRegularExpression repositoryPattern(
+            QStringLiteral("^[A-Za-z0-9_.-]+$"));
+        return ownerPattern.match(owner).hasMatch() &&
+            repositoryPattern.match(repository).hasMatch() &&
+            repository != QStringLiteral(".") &&
+            repository != QStringLiteral("..");
+    }
+
     QList<QUrl> CommonDirectoryPlaces()
     {
         QStringList paths{
@@ -548,6 +616,10 @@ namespace BootstrapForge::Client::UI
         m_switchBranchAction = new QAction(QStringLiteral("Switch Branch..."), this);
         m_stashChangesAction = new QAction(QStringLiteral("Stash Changes..."), this);
         m_commitChangesAction = new QAction(QStringLiteral("Commit..."), this);
+        m_connectGitRepositoryAction = new QAction(
+            QStringLiteral("Connect Repository..."), this);
+        m_githubLoginAction = new QAction(QStringLiteral("GitHub Login..."), this);
+        m_pushGitAction = new QAction(QStringLiteral("Push..."), this);
         m_applyStashAction = new QAction(QStringLiteral("Apply Stash..."), this);
         m_popStashAction = new QAction(QStringLiteral("Pop Stash..."), this);
         m_architectureAction = new QAction(QStringLiteral("Architecture Overview"), this);
@@ -566,6 +638,8 @@ namespace BootstrapForge::Client::UI
         m_switchBranchAction->setEnabled(false);
         m_stashChangesAction->setEnabled(false);
         m_commitChangesAction->setEnabled(false);
+        m_connectGitRepositoryAction->setEnabled(false);
+        m_pushGitAction->setEnabled(false);
         m_applyStashAction->setEnabled(false);
         m_popStashAction->setEnabled(false);
         m_undoAction->setEnabled(false);
@@ -671,6 +745,12 @@ namespace BootstrapForge::Client::UI
 
         gitMenu->addSeparator();
 
+        gitMenu->addAction(m_connectGitRepositoryAction);
+        gitMenu->addAction(m_githubLoginAction);
+        gitMenu->addAction(m_pushGitAction);
+
+        gitMenu->addSeparator();
+
         gitMenu->addAction(m_createBranchAction);
 
         gitMenu->addAction(m_switchBranchAction);
@@ -753,6 +833,8 @@ namespace BootstrapForge::Client::UI
 
         toolBar->addAction(
             m_gitStatusAction);
+
+        toolBar->addAction(m_pushGitAction);
     }
 
     void MainWindow::CreateProjectDock()
@@ -1268,6 +1350,7 @@ namespace BootstrapForge::Client::UI
                 m_commitChangesAction->setEnabled(hasProject && !busy);
                 m_applyStashAction->setEnabled(hasProject && !busy);
                 m_popStashAction->setEnabled(hasProject && !busy);
+                UpdateGitActionAvailability();
                 RebuildTestMenu(m_testNames);
                 UpdateEditorActions();
             });
@@ -1304,6 +1387,12 @@ namespace BootstrapForge::Client::UI
             this, [this] { StashGitChanges(); });
         connect(m_commitChangesAction, &QAction::triggered,
             this, [this] { CommitGitChanges(); });
+        connect(m_connectGitRepositoryAction, &QAction::triggered,
+            this, [this] { ConnectGitRepository(); });
+        connect(m_githubLoginAction, &QAction::triggered,
+            this, [this] { LoginToGitHub(); });
+        connect(m_pushGitAction, &QAction::triggered,
+            this, [this] { PushGitCommits(); });
         connect(m_applyStashAction, &QAction::triggered,
             this, [this] { RestoreGitStash(false); });
         connect(m_popStashAction, &QAction::triggered,
@@ -1649,6 +1738,12 @@ namespace BootstrapForge::Client::UI
                 "Wait for the current CMake operation to finish before returning Home."));
             return;
         }
+        if (m_gitPushProcess != nullptr)
+        {
+            ShowInformationMessage(QStringLiteral(
+                "Wait for the Git push to finish before returning Home."));
+            return;
+        }
 
         if (!ConfirmUnsavedDocuments())
         {
@@ -1689,6 +1784,7 @@ namespace BootstrapForge::Client::UI
         m_commitChangesAction->setEnabled(false);
         m_applyStashAction->setEnabled(false);
         m_popStashAction->setEnabled(false);
+        UpdateGitActionAvailability();
         RebuildTestMenu({});
         SetProjectWorkspacePanelsVisible(false);
         UpdateEditorProperties();
@@ -1975,6 +2071,27 @@ If the requested structure is ambiguous, ask the user to clarify before returnin
             QStringLiteral("About BootstrapForge"),
             QStringLiteral("BootstrapForge\nArchitecture workspace and development environment\n\nQt %1")
                 .arg(QString::fromLatin1(qVersion())));
+    }
+
+    void MainWindow::UpdateGitActionAvailability()
+    {
+        const bool hasProject = m_projectTree != nullptr &&
+            !m_projectTree->WorkspaceRoot().isEmpty();
+        const bool canUseProjectGit = hasProject &&
+            m_buildController != nullptr && !m_buildController->IsBusy() &&
+            m_gitPushProcess == nullptr && m_githubLoginProcess == nullptr;
+
+        m_gitStatusAction->setEnabled(canUseProjectGit);
+        m_createBranchAction->setEnabled(canUseProjectGit);
+        m_switchBranchAction->setEnabled(canUseProjectGit);
+        m_stashChangesAction->setEnabled(canUseProjectGit);
+        m_commitChangesAction->setEnabled(canUseProjectGit);
+        m_connectGitRepositoryAction->setEnabled(canUseProjectGit);
+        m_pushGitAction->setEnabled(canUseProjectGit);
+        m_applyStashAction->setEnabled(canUseProjectGit);
+        m_popStashAction->setEnabled(canUseProjectGit);
+        m_githubLoginAction->setEnabled(m_githubLoginProcess == nullptr &&
+            m_gitPushProcess == nullptr);
     }
 
     QString MainWindow::GitExecutable() const
@@ -2297,6 +2414,432 @@ If the requested structure is ambiguous, ask the user to clarify before returnin
         statusBar()->showMessage(QStringLiteral("Git commit created."), 5000);
     }
 
+    void MainWindow::ConnectGitRepository()
+    {
+        const QString projectRoot = m_projectTree->WorkspaceRoot();
+        if (projectRoot.isEmpty())
+        {
+            ShowErrorMessage(QStringLiteral("Open a project before connecting a GitHub repository."));
+            return;
+        }
+        if (GitExecutable().isEmpty())
+        {
+            ShowErrorMessage(QStringLiteral(
+                "Git was not found. Install Git for Windows with Git Credential Manager, "
+                "or set its executable path in Tools > Settings."));
+            return;
+        }
+
+        QString repositoryRootOutput;
+        QString error;
+        bool isRepository = RunGitCommand(
+            {QStringLiteral("rev-parse"), QStringLiteral("--show-toplevel")},
+            repositoryRootOutput,
+            error);
+        QString repositoryRoot;
+
+        if (!isRepository)
+        {
+            if (!error.contains(QStringLiteral("not a git repository"), Qt::CaseInsensitive))
+            {
+                ShowErrorMessage(error);
+                return;
+            }
+
+            const auto initialize = QMessageBox::question(
+                this,
+                QStringLiteral("Initialize Git Repository"),
+                QStringLiteral(
+                    "This project is not inside a Git repository. Initialize Git here?\n\n"
+                    "This creates a .git metadata folder; it does not change project files "
+                    "or create a GitHub repository."),
+                QMessageBox::Yes | QMessageBox::Cancel,
+                QMessageBox::Cancel);
+            if (initialize != QMessageBox::Yes)
+            {
+                return;
+            }
+
+            QString initOutput;
+            if (!RunGitCommand({QStringLiteral("init")}, initOutput, error))
+            {
+                ShowErrorMessage(error);
+                return;
+            }
+            repositoryRoot = QDir::cleanPath(QFileInfo(projectRoot).absoluteFilePath());
+            m_outputEditor->appendPlainText(QStringLiteral("[GIT] Initialized repository: %1")
+                .arg(QDir::toNativeSeparators(repositoryRoot)));
+        }
+        else
+        {
+            repositoryRoot = QDir::cleanPath(repositoryRootOutput.trimmed());
+            QString normalizedProjectRoot = QFileInfo(projectRoot).canonicalFilePath();
+            if (normalizedProjectRoot.isEmpty())
+            {
+                normalizedProjectRoot = QFileInfo(projectRoot).absoluteFilePath();
+            }
+            normalizedProjectRoot = QDir::cleanPath(normalizedProjectRoot);
+
+#ifdef Q_OS_WIN
+            constexpr Qt::CaseSensitivity pathCaseSensitivity = Qt::CaseInsensitive;
+#else
+            constexpr Qt::CaseSensitivity pathCaseSensitivity = Qt::CaseSensitive;
+#endif
+            if (QString::compare(repositoryRoot, normalizedProjectRoot,
+                    pathCaseSensitivity) != 0)
+            {
+                const auto useParentRepository = QMessageBox::warning(
+                    this,
+                    QStringLiteral("Project Uses a Parent Repository"),
+                    QStringLiteral(
+                        "This project folder is inside the Git repository at:\n%1\n\n"
+                        "Changing origin will affect that entire repository. Continue?" )
+                        .arg(QDir::toNativeSeparators(repositoryRoot)),
+                    QMessageBox::Yes | QMessageBox::Cancel,
+                    QMessageBox::Cancel);
+                if (useParentRepository != QMessageBox::Yes)
+                {
+                    return;
+                }
+            }
+        }
+
+        QString currentRemote;
+        const bool hasOrigin = RunGitCommand(
+            {QStringLiteral("remote"), QStringLiteral("get-url"), QStringLiteral("origin")},
+            currentRemote,
+            error);
+        if (!hasOrigin && !error.contains(QStringLiteral("no such remote"), Qt::CaseInsensitive))
+        {
+            ShowErrorMessage(error);
+            return;
+        }
+
+        const QString currentUrl = currentRemote.trimmed();
+        const QString initialUrl = HasSensitiveRemoteData(currentUrl) ||
+                !IsGitHubRepositoryUrl(currentUrl)
+            ? QString{}
+            : currentUrl;
+        bool accepted = false;
+        const QString remoteUrl = QInputDialog::getText(
+            this,
+            QStringLiteral("Connect GitHub Repository"),
+            QStringLiteral(
+                "Create an empty repository on GitHub, copy its HTTPS or SSH clone URL, "
+                "and paste it here. This configures origin; it does not create the "
+                "GitHub repository."),
+            QLineEdit::Normal,
+            initialUrl,
+            &accepted).trimmed();
+        if (!accepted)
+        {
+            return;
+        }
+        if (!IsGitHubRepositoryUrl(remoteUrl))
+        {
+            ShowErrorMessage(QStringLiteral(
+                "Enter a GitHub.com HTTPS or SSH clone URL, such as "
+                "https://github.com/owner/repository.git or "
+                "git@github.com:owner/repository.git. Do not put a password or token in the URL."));
+            return;
+        }
+
+        if (hasOrigin && currentUrl == remoteUrl)
+        {
+            ShowInformationMessage(QStringLiteral("This project is already connected to that GitHub repository."));
+            return;
+        }
+
+        if (hasOrigin)
+        {
+            const QString previousRemote = HasSensitiveRemoteData(currentUrl)
+                ? QStringLiteral("an origin URL containing credentials (hidden)")
+                : currentUrl;
+            const auto replaceRemote = QMessageBox::question(
+                this,
+                QStringLiteral("Replace Git Remote"),
+                QStringLiteral("Replace origin (%1) with %2?")
+                    .arg(previousRemote, remoteUrl),
+                QMessageBox::Yes | QMessageBox::Cancel,
+                QMessageBox::Cancel);
+            if (replaceRemote != QMessageBox::Yes)
+            {
+                return;
+            }
+        }
+
+        const QStringList arguments = hasOrigin
+            ? QStringList{QStringLiteral("remote"), QStringLiteral("set-url"),
+                QStringLiteral("origin"), remoteUrl}
+            : QStringList{QStringLiteral("remote"), QStringLiteral("add"),
+                QStringLiteral("origin"), remoteUrl};
+        QString output;
+        if (!RunGitCommand(arguments, output, error))
+        {
+            ShowErrorMessage(error);
+            return;
+        }
+
+        m_outputEditor->appendPlainText(QStringLiteral("[GIT] Connected origin to %1")
+            .arg(remoteUrl));
+        statusBar()->showMessage(QStringLiteral("GitHub repository connected."), 5000);
+    }
+
+    void MainWindow::LoginToGitHub()
+    {
+        if (m_githubLoginProcess != nullptr)
+        {
+            return;
+        }
+
+        const QString git = GitExecutable();
+        if (git.isEmpty())
+        {
+            ShowErrorMessage(QStringLiteral(
+                "Git was not found. Install Git for Windows with Git Credential Manager, "
+                "or set its executable path in Tools > Settings."));
+            return;
+        }
+
+        auto* process = new QProcess(this);
+        m_githubLoginProcess = process;
+        process->setProgram(git);
+        process->setArguments({QStringLiteral("credential-manager"),
+            QStringLiteral("github"), QStringLiteral("login"),
+            QStringLiteral("--browser")});
+
+        connect(process,
+            qOverload<int, QProcess::ExitStatus>(&QProcess::finished),
+            this,
+            [this, process](int exitCode, QProcess::ExitStatus exitStatus)
+            {
+                if (m_githubLoginProcess == process)
+                {
+                    m_githubLoginProcess = nullptr;
+                }
+                UpdateGitActionAvailability();
+                process->deleteLater();
+
+                if (exitStatus == QProcess::NormalExit && exitCode == 0)
+                {
+                    m_outputEditor->appendPlainText(
+                        QStringLiteral("[GITHUB] Git Credential Manager sign-in completed."));
+                    statusBar()->showMessage(QStringLiteral("GitHub sign-in completed."), 5000);
+                    ShowInformationMessage(QStringLiteral(
+                        "GitHub sign-in completed. Git Credential Manager stores and supplies "
+                        "authentication securely when you push over HTTPS."));
+                    return;
+                }
+
+                ShowErrorMessage(QStringLiteral(
+                    "GitHub sign-in did not complete. Make sure Git Credential Manager is "
+                    "installed and that the browser authorization was completed. Exit code: %1.")
+                    .arg(exitCode));
+            });
+        connect(process, &QProcess::errorOccurred, this,
+            [this, process](QProcess::ProcessError processError)
+            {
+                if (processError != QProcess::FailedToStart)
+                {
+                    return;
+                }
+                if (m_githubLoginProcess == process)
+                {
+                    m_githubLoginProcess = nullptr;
+                }
+                UpdateGitActionAvailability();
+                const QString detail = process->errorString();
+                process->deleteLater();
+                ShowErrorMessage(QStringLiteral(
+                    "Could not start Git Credential Manager. Install a current Git for Windows "
+                    "version that includes Git Credential Manager.\n\n%1").arg(detail));
+            });
+
+        m_outputEditor->appendPlainText(
+            QStringLiteral("[GITHUB] Starting browser sign-in through Git Credential Manager...") );
+        statusBar()->showMessage(QStringLiteral("Waiting for GitHub sign-in..."));
+        UpdateGitActionAvailability();
+        process->start();
+    }
+
+    void MainWindow::PushGitCommits()
+    {
+        if (m_gitPushProcess != nullptr)
+        {
+            return;
+        }
+
+        const QString projectRoot = m_projectTree->WorkspaceRoot();
+        if (projectRoot.isEmpty())
+        {
+            ShowErrorMessage(QStringLiteral("Open a project before pushing to GitHub."));
+            return;
+        }
+
+        QString branch;
+        QString error;
+        if (!RunGitCommand(
+                {QStringLiteral("branch"), QStringLiteral("--show-current")},
+                branch,
+                error))
+        {
+            ShowErrorMessage(error);
+            return;
+        }
+        branch = branch.trimmed();
+        if (branch.isEmpty())
+        {
+            ShowErrorMessage(QStringLiteral(
+                "The repository is not on a named branch. Switch to a branch before pushing."));
+            return;
+        }
+
+        QString commit;
+        if (!RunGitCommand(
+                {QStringLiteral("rev-parse"), QStringLiteral("--verify"), QStringLiteral("HEAD")},
+                commit,
+                error))
+        {
+            ShowErrorMessage(QStringLiteral(
+                "This repository has no commits yet. Create a commit before pushing."));
+            return;
+        }
+
+        QString remote;
+        if (!RunGitCommand(
+                {QStringLiteral("remote"), QStringLiteral("get-url"), QStringLiteral("origin")},
+                remote,
+                error))
+        {
+            if (error.contains(QStringLiteral("no such remote"), Qt::CaseInsensitive))
+            {
+                const auto connectNow = QMessageBox::question(
+                    this,
+                    QStringLiteral("No GitHub Repository Connected"),
+                    QStringLiteral("Connect this project to a GitHub repository before pushing?"),
+                    QMessageBox::Yes | QMessageBox::Cancel,
+                    QMessageBox::Yes);
+                if (connectNow == QMessageBox::Yes)
+                {
+                    ConnectGitRepository();
+                }
+                return;
+            }
+            ShowErrorMessage(error);
+            return;
+        }
+        remote = remote.trimmed();
+        const QUrl remoteUrl(remote);
+        if (HasEmbeddedRemoteCredentials(remote) || !remoteUrl.query().isEmpty())
+        {
+            ShowErrorMessage(QStringLiteral(
+                "The origin URL appears to contain embedded credentials or a query string. "
+                "Use Git > Connect Repository... to replace it with a credential-free URL; "
+                "Git Credential Manager can handle sign-in."));
+            return;
+        }
+
+        const auto confirmPush = QMessageBox::question(
+            this,
+            QStringLiteral("Push to GitHub"),
+            QStringLiteral(
+                "Push committed changes from branch '%1' to origin?\n\n%2\n\n"
+                "Only commits are uploaded; uncommitted file changes stay on this computer. "
+                "BootstrapForge will not force-push." )
+                .arg(branch, remote),
+            QMessageBox::Yes | QMessageBox::Cancel,
+            QMessageBox::Cancel);
+        if (confirmPush != QMessageBox::Yes)
+        {
+            return;
+        }
+
+        const QString git = GitExecutable();
+        if (git.isEmpty())
+        {
+            ShowErrorMessage(QStringLiteral(
+                "Git was not found. Set its executable path in Tools > Settings."));
+            return;
+        }
+
+        auto* process = new QProcess(this);
+        m_gitPushProcess = process;
+        process->setProgram(git);
+        process->setArguments({QStringLiteral("-C"), projectRoot,
+            QStringLiteral("push"), QStringLiteral("--set-upstream"),
+            QStringLiteral("origin"), branch});
+
+        connect(process,
+            qOverload<int, QProcess::ExitStatus>(&QProcess::finished),
+            this,
+            [this, process, branch](int exitCode, QProcess::ExitStatus exitStatus)
+            {
+                const QString remainingOutput = QString::fromLocal8Bit(
+                    process->readAllStandardOutput()).trimmed();
+                const QString remainingError = QString::fromLocal8Bit(
+                    process->readAllStandardError()).trimmed();
+                if (!remainingOutput.isEmpty())
+                {
+                    m_outputEditor->appendPlainText(
+                        QStringLiteral("[GIT PUSH] %1").arg(remainingOutput));
+                }
+                if (!remainingError.isEmpty())
+                {
+                    m_outputEditor->appendPlainText(
+                        QStringLiteral("[GIT PUSH] %1").arg(remainingError));
+                }
+
+                if (m_gitPushProcess == process)
+                {
+                    m_gitPushProcess = nullptr;
+                }
+                UpdateGitActionAvailability();
+                process->deleteLater();
+
+                if (exitStatus == QProcess::NormalExit && exitCode == 0)
+                {
+                    m_outputEditor->appendPlainText(
+                        QStringLiteral("[GIT] Pushed branch %1 to origin.").arg(branch));
+                    statusBar()->showMessage(QStringLiteral("Pushed %1 to origin.").arg(branch), 6000);
+                    return;
+                }
+
+                QString detail = remainingError.isEmpty()
+                    ? remainingOutput
+                    : remainingError;
+                if (detail.isEmpty())
+                {
+                    detail = QStringLiteral("Git exited with code %1.").arg(exitCode);
+                }
+                ShowErrorMessage(QStringLiteral(
+                    "Push failed. Check the remote URL, GitHub access, and whether the remote "
+                    "branch has changes that must be fetched first. No force-push was attempted.\n\n%1")
+                    .arg(detail));
+            });
+        connect(process, &QProcess::errorOccurred, this,
+            [this, process](QProcess::ProcessError processError)
+            {
+                if (processError != QProcess::FailedToStart)
+                {
+                    return;
+                }
+                if (m_gitPushProcess == process)
+                {
+                    m_gitPushProcess = nullptr;
+                }
+                UpdateGitActionAvailability();
+                const QString detail = process->errorString();
+                process->deleteLater();
+                ShowErrorMessage(QStringLiteral("Could not start Git push.\n\n%1").arg(detail));
+            });
+
+        m_outputEditor->appendPlainText(
+            QStringLiteral("[GIT] Pushing branch %1 to origin...").arg(branch));
+        statusBar()->showMessage(QStringLiteral("Pushing to GitHub..."));
+        UpdateGitActionAvailability();
+        process->start();
+    }
+
     void MainWindow::StashGitChanges()
     {
         QString status;
@@ -2538,6 +3081,23 @@ If the requested structure is ambiguous, ask the user to clarify before returnin
 
     void MainWindow::closeEvent(QCloseEvent* event)
     {
+        if (m_gitPushProcess != nullptr || m_githubLoginProcess != nullptr)
+        {
+            const auto closeAnyway = QMessageBox::warning(
+                this,
+                QStringLiteral("Git Operation in Progress"),
+                QStringLiteral(
+                    "A Git push or GitHub sign-in is still running. Closing now may cancel it. "
+                    "Close BootstrapForge anyway?"),
+                QMessageBox::Yes | QMessageBox::Cancel,
+                QMessageBox::Cancel);
+            if (closeAnyway != QMessageBox::Yes)
+            {
+                event->ignore();
+                return;
+            }
+        }
+
         if (ConfirmUnsavedDocuments())
         {
             event->accept();
@@ -2690,6 +3250,12 @@ If the requested structure is ambiguous, ask the user to clarify before returnin
                 QStringLiteral("Wait for the current CMake operation to finish before switching projects."));
             return;
         }
+        if (m_gitPushProcess != nullptr)
+        {
+            ShowInformationMessage(QStringLiteral(
+                "Wait for the Git push to finish before switching projects."));
+            return;
+        }
 
         if (!m_projectTree->SetWorkspaceRoot(path))
         {
@@ -2737,6 +3303,7 @@ If the requested structure is ambiguous, ask the user to clarify before returnin
         m_commitChangesAction->setEnabled(true);
         m_applyStashAction->setEnabled(true);
         m_popStashAction->setEnabled(true);
+        UpdateGitActionAvailability();
         m_buildController->RefreshTests();
         setWindowTitle(QStringLiteral("%1 — BootstrapForge")
             .arg(projectName));
