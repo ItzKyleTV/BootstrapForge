@@ -25,6 +25,9 @@
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Infrastructure\src\Generation\GenerationExecutor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Infrastructure\src\Generation\CodePackageLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Services\Cryptography\IHasher.hpp">

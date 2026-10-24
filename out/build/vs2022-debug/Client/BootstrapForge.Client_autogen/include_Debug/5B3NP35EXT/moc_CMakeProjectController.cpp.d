@@ -1,4 +1,5 @@
 C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/BootstrapForge.Client_autogen/include_Debug/5B3NP35EXT/moc_CMakeProjectController.cpp: C:/EndlessProjects/BootstrapForge/Client/include/BootstrapForge/Client/Build/CMakeProjectController.hpp \
+  C:/Qt/6.11.2/msvc2022_64/include/QtCore/QHash \
   C:/Qt/6.11.2/msvc2022_64/include/QtCore/QObject \
   C:/Qt/6.11.2/msvc2022_64/include/QtCore/QString \
   C:/Qt/6.11.2/msvc2022_64/include/QtCore/QStringList \
@@ -43,6 +44,7 @@ C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/BootstrapForge.C
   C:/Qt/6.11.2/msvc2022_64/include/QtCore/qgenericatomic.h \
   C:/Qt/6.11.2/msvc2022_64/include/QtCore/qglobal.h \
   C:/Qt/6.11.2/msvc2022_64/include/QtCore/qglobalstatic.h \
+  C:/Qt/6.11.2/msvc2022_64/include/QtCore/qhash.h \
   C:/Qt/6.11.2/msvc2022_64/include/QtCore/qhashfunctions.h \
   C:/Qt/6.11.2/msvc2022_64/include/QtCore/qiodevicebase.h \
   C:/Qt/6.11.2/msvc2022_64/include/QtCore/qiterable.h \

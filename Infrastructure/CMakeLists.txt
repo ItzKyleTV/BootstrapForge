@@ -41,6 +41,7 @@ target_sources(
         src/Execution/PhysicalExecutionBackend.cpp
 
         src/Generation/GenerationExecutor.cpp
+        src/Generation/CodePackageLoader.cpp
 )
 
 target_include_directories(

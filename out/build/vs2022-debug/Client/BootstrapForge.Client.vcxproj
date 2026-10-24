@@ -144,9 +144,20 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Message>Deploying Qt runtime for BootstrapForge.Client</Message>
+      <Message>Deploying Qt runtime for BootstrapForge.Client	Copying the deployed BootstrapForge application beside its root launcher</Message>
       <Command>setlocal
-C:\Qt\6.11.2\msvc2022_64\bin\windeployqt.exe --debug --no-translations C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/Debug/BootstrapForge.Client.exe
+C:\Qt\6.11.2\msvc2022_64\bin\windeployqt.exe --debug --no-translations --compiler-runtime C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/Debug/BootstrapForge.Client.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory C:/EndlessProjects/BootstrapForge/bin/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_directory C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/Debug C:/EndlessProjects/BootstrapForge/bin/Debug
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -229,9 +240,20 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Message>Deploying Qt runtime for BootstrapForge.Client</Message>
+      <Message>Deploying Qt runtime for BootstrapForge.Client	Copying the deployed BootstrapForge application beside its root launcher</Message>
       <Command>setlocal
-C:\Qt\6.11.2\msvc2022_64\bin\windeployqt.exe --release --no-translations C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/Release/BootstrapForge.Client.exe
+C:\Qt\6.11.2\msvc2022_64\bin\windeployqt.exe --release --no-translations --compiler-runtime C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/Release/BootstrapForge.Client.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory C:/EndlessProjects/BootstrapForge/bin/Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_directory C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/Release C:/EndlessProjects/BootstrapForge/bin/Release
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -314,9 +336,20 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Message>Deploying Qt runtime for BootstrapForge.Client</Message>
+      <Message>Deploying Qt runtime for BootstrapForge.Client	Copying the deployed BootstrapForge application beside its root launcher</Message>
       <Command>setlocal
-C:\Qt\6.11.2\msvc2022_64\bin\windeployqt.exe --minsizerel --no-translations C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/MinSizeRel/BootstrapForge.Client.exe
+C:\Qt\6.11.2\msvc2022_64\bin\windeployqt.exe --minsizerel --no-translations --compiler-runtime C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/MinSizeRel/BootstrapForge.Client.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory C:/EndlessProjects/BootstrapForge/bin/MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_directory C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/MinSizeRel C:/EndlessProjects/BootstrapForge/bin/MinSizeRel
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -398,9 +431,20 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Message>Deploying Qt runtime for BootstrapForge.Client</Message>
+      <Message>Deploying Qt runtime for BootstrapForge.Client	Copying the deployed BootstrapForge application beside its root launcher</Message>
       <Command>setlocal
-C:\Qt\6.11.2\msvc2022_64\bin\windeployqt.exe --relwithdebinfo --no-translations C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/RelWithDebInfo/BootstrapForge.Client.exe
+C:\Qt\6.11.2\msvc2022_64\bin\windeployqt.exe --relwithdebinfo --no-translations --compiler-runtime C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/RelWithDebInfo/BootstrapForge.Client.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory C:/EndlessProjects/BootstrapForge/bin/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_directory C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/bin/RelWithDebInfo C:/EndlessProjects/BootstrapForge/bin/RelWithDebInfo
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone

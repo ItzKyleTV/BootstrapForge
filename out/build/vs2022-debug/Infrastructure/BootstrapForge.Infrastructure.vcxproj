@@ -317,6 +317,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Infrastructure\src\Execution\NullExecutionBackend.cpp" />
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Infrastructure\src\Execution\PhysicalExecutionBackend.cpp" />
     <ClCompile Include="C:\EndlessProjects\BootstrapForge\Infrastructure\src\Generation\GenerationExecutor.cpp" />
+    <ClCompile Include="C:\EndlessProjects\BootstrapForge\Infrastructure\src\Generation\CodePackageLoader.cpp" />
     <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Services\Cryptography\IHasher.hpp" />
     <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Execution\IExecutionBackend.hpp" />
     <ClInclude Include="C:\EndlessProjects\BootstrapForge\Contracts\include\BootstrapForge\Contracts\Filesystem\IFilesystemScanner.hpp" />

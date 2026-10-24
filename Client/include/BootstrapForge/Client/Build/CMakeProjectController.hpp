@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QObject>
+#include <QHash>
 #include <QString>
 #include <QStringList>
 
@@ -25,6 +26,9 @@ namespace BootstrapForge::Client::Build
 
         [[nodiscard]]
         QString BuildDirectory() const;
+
+        [[nodiscard]]
+        QString ToolchainReadinessReport() const;
 
         [[nodiscard]]
         bool IsBusy() const noexcept;
@@ -96,6 +100,10 @@ namespace BootstrapForge::Client::Build
         void StartTestRun(
             bool runAll);
 
+        [[nodiscard]]
+        bool ValidateDiscoveredTestsForRun(
+            QString& errorMessage) const;
+
         void StartProcess(
             Phase phase,
             const QString& program,
@@ -128,6 +136,8 @@ namespace BootstrapForge::Client::Build
         QString m_projectRoot;
         QString m_pendingTestName;
         QStringList m_testExecutablePaths;
+        QStringList m_discoveredTestNames;
+        QHash<QString, QStringList> m_testExecutablesByName;
         QString m_standardOutput;
         QProcess* m_process = nullptr;
         Request m_request = Request::None;

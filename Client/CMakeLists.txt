@@ -147,8 +147,89 @@ if(WIN32)
             "${BOOTSTRAPFORGE_WINDEPLOYQT}"
             "--$<LOWER_CASE:$<CONFIG>>"
             --no-translations
+            --compiler-runtime
             "$<TARGET_FILE:BootstrapForge.Client>"
         COMMENT "Deploying Qt runtime for BootstrapForge.Client"
         VERBATIM
+    )
+
+    add_custom_command(
+        TARGET BootstrapForge.Client
+        POST_BUILD
+        COMMAND
+            "${CMAKE_COMMAND}"
+            -E
+            make_directory
+            "${CMAKE_SOURCE_DIR}/bin/$<CONFIG>"
+        COMMAND
+            "${CMAKE_COMMAND}"
+            -E
+            copy_directory
+            "$<TARGET_FILE_DIR:BootstrapForge.Client>"
+            "${CMAKE_SOURCE_DIR}/bin/$<CONFIG>"
+        COMMENT "Copying the deployed BootstrapForge application beside its root launcher"
+        VERBATIM
+    )
+
+    add_executable(
+        BootstrapForge.Launcher
+        WIN32
+        src/Launcher.cpp
+    )
+
+    target_compile_definitions(
+        BootstrapForge.Launcher
+        PRIVATE
+            "BOOTSTRAPFORGE_CONFIGURATION=L\"$<CONFIG>\""
+    )
+
+    target_link_libraries(
+        BootstrapForge.Launcher
+        PRIVATE
+            shell32
+    )
+
+    target_compile_features(
+        BootstrapForge.Launcher
+        PRIVATE
+            cxx_std_23
+    )
+
+    if(MSVC)
+        target_compile_options(
+            BootstrapForge.Launcher
+            PRIVATE
+                /W4
+                /permissive-
+                /EHsc
+        )
+    else()
+        target_compile_options(
+            BootstrapForge.Launcher
+            PRIVATE
+                -Wall
+                -Wextra
+                -Wpedantic
+        )
+    endif()
+
+    set_target_properties(
+        BootstrapForge.Launcher
+        PROPERTIES
+            CXX_STANDARD 23
+            CXX_STANDARD_REQUIRED ON
+            CXX_EXTENSIONS OFF
+            FOLDER "BootstrapForge/Client"
+            OUTPUT_NAME "BootstrapForge"
+            MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
+            RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_SOURCE_DIR}"
+            RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_SOURCE_DIR}"
+            RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_SOURCE_DIR}"
+            RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL "${CMAKE_SOURCE_DIR}"
+    )
+
+    add_dependencies(
+        BootstrapForge.Launcher
+        BootstrapForge.Client
     )
 endif()

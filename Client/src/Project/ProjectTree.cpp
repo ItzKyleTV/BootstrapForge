@@ -41,6 +41,13 @@ namespace BootstrapForge::Client::Project
     bool ProjectTree::SetWorkspaceRoot(
         const QString& path)
     {
+        if (path.trimmed().isEmpty())
+        {
+            m_workspaceRoot.clear();
+            SelectWorkspaceRoot();
+            return true;
+        }
+
         const QFileInfo directoryInfo(path);
 
         if (!directoryInfo.exists() ||

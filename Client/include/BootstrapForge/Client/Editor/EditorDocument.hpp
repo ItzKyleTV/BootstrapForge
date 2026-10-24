@@ -37,6 +37,8 @@ namespace BootstrapForge::Client::Editor
         [[nodiscard]]
         bool IsModified() const noexcept;
 
+        void ApplyEditorSettings();
+
         [[nodiscard]]
         int LineNumberAreaWidth() const;
 
@@ -71,6 +73,7 @@ namespace BootstrapForge::Client::Editor
             QByteArray("\n");
 
         bool m_hasUtf8Bom = false;
+        bool m_showLineNumbers = true;
 
         QWidget* m_lineNumberArea = nullptr;
     };

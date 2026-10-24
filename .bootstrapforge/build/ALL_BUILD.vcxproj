@@ -191,6 +191,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{664F6489-B1B8-3CC5-9355-1144E3DF3974}</Project>
       <Name>BootstrapForge.Client</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\.bootstrapforge\build\Tests\BootstrapForge.CodePackageTests.vcxproj">
+      <Project>{92CE6D09-2FB5-331F-AE35-2F1C073C34A6}</Project>
+      <Name>BootstrapForge.CodePackageTests</Name>
+    </ProjectReference>
     <ProjectReference Include="C:\EndlessProjects\BootstrapForge\.bootstrapforge\build\Domain\BootstrapForge.Domain.vcxproj">
       <Project>{26605169-C74B-318F-8D72-EF73C898144B}</Project>
       <Name>BootstrapForge.Domain</Name>

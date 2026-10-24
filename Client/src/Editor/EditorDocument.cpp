@@ -3,9 +3,12 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QFontMetrics>
+#include <QFontDatabase>
+#include <QFontMetricsF>
 #include <QPainter>
 #include <QResizeEvent>
 #include <QSaveFile>
+#include <QSettings>
 #include <QTextBlock>
 #include <QTextDocument>
 #include <QTextEdit>
@@ -171,6 +174,7 @@ namespace BootstrapForge::Client::Editor
         m_lineNumberArea =
             new LineNumberArea(
                 *this);
+        m_lineNumberArea->setVisible(m_showLineNumbers);
 
         connect(
             this,
@@ -441,6 +445,11 @@ namespace BootstrapForge::Client::Editor
 
     int EditorDocument::LineNumberAreaWidth() const
     {
+        if (!m_showLineNumbers)
+        {
+            return 0;
+        }
+
         int digits = 1;
 
         int maximum =
@@ -610,9 +619,6 @@ namespace BootstrapForge::Client::Editor
 
     void EditorDocument::ConfigureEditor()
     {
-        setLineWrapMode(
-            QPlainTextEdit::NoWrap);
-
         setTabChangesFocus(
             false);
 
@@ -624,6 +630,49 @@ namespace BootstrapForge::Client::Editor
 
         setCursorWidth(
             2);
+
+        ApplyEditorSettings();
+    }
+
+    void EditorDocument::ApplyEditorSettings()
+    {
+        QSettings settings(
+            QSettings::IniFormat,
+            QSettings::UserScope,
+            QStringLiteral("BootstrapForge"),
+            QStringLiteral("BootstrapForge.Client"));
+
+        const int fontSize = std::clamp(
+            settings.value(QStringLiteral("editor/fontSize"), 11).toInt(),
+            8,
+            28);
+        const int tabWidth = std::clamp(
+            settings.value(QStringLiteral("editor/tabWidth"), 4).toInt(),
+            2,
+            8);
+        const bool wordWrap = settings.value(
+            QStringLiteral("editor/wordWrap"), false).toBool();
+        m_showLineNumbers = settings.value(
+            QStringLiteral("editor/showLineNumbers"), true).toBool();
+
+        QFont editorFont = QFontDatabase::systemFont(
+            QFontDatabase::FixedFont);
+        editorFont.setPointSize(fontSize);
+        setFont(editorFont);
+
+        const QFontMetricsF metrics(editorFont);
+        setTabStopDistance(
+            metrics.horizontalAdvance(QLatin1Char(' ')) * tabWidth);
+        setLineWrapMode(wordWrap
+            ? QPlainTextEdit::WidgetWidth
+            : QPlainTextEdit::NoWrap);
+
+        if (m_lineNumberArea != nullptr)
+        {
+            m_lineNumberArea->setVisible(m_showLineNumbers);
+        }
+        UpdateLineNumberAreaWidth(blockCount());
+        HighlightCurrentLine();
     }
 
 } // namespace BootstrapForge::Client::Editor

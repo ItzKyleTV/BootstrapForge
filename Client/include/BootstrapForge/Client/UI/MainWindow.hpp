@@ -13,6 +13,7 @@ class QLabel;
 class QListWidget;
 class QMenu;
 class QPlainTextEdit;
+class QToolButton;
 class QTabWidget;
 class QWidget;
 
@@ -108,7 +109,15 @@ namespace BootstrapForge::Client::UI
 
         void ShowArchitectureOverview();
 
+        void ReturnToHome();
+
+        void ShowWelcomePage();
+
         void ShowSettingsDialog();
+
+        void ShowToolchainReadiness();
+
+        void ShowUsagePrompt();
 
         void ShowAboutDialog();
 
@@ -117,6 +126,13 @@ namespace BootstrapForge::Client::UI
         void CreateGitBranch();
 
         void SwitchGitBranch();
+
+        void StashGitChanges();
+
+        void CommitGitChanges();
+
+        void RestoreGitStash(
+            bool pop);
 
         void RunBuiltApplication();
 
@@ -134,6 +150,7 @@ namespace BootstrapForge::Client::UI
         [[nodiscard]]
         bool ConfirmUnsavedDocuments();
 
+        QAction* m_homeAction = nullptr;
         QAction* m_newAction = nullptr;
         QAction* m_openAction = nullptr;
         QAction* m_openProjectAction = nullptr;
@@ -165,13 +182,25 @@ namespace BootstrapForge::Client::UI
 
         QAction* m_switchBranchAction = nullptr;
 
+        QAction* m_stashChangesAction = nullptr;
+
+        QAction* m_commitChangesAction = nullptr;
+
+        QAction* m_applyStashAction = nullptr;
+
+        QAction* m_popStashAction = nullptr;
+
         QAction* m_architectureAction = nullptr;
 
         QAction* m_settingsAction = nullptr;
 
+        QAction* m_toolchainReadinessAction = nullptr;
+
+        QAction* m_usagePromptAction = nullptr;
         QAction* m_aboutAction = nullptr;
 
         QMenu* m_testMenu = nullptr;
+        QToolButton* m_testButton = nullptr;
 
         QDockWidget* m_projectDock = nullptr;
         QDockWidget* m_propertiesDock = nullptr;
@@ -198,6 +227,7 @@ namespace BootstrapForge::Client::UI
         QFileDialog* m_openProjectDialog = nullptr;
 
         QStringList m_testNames;
+        QString m_selectedProjectItemPath;
         bool m_runAfterBuild = false;
     };
 

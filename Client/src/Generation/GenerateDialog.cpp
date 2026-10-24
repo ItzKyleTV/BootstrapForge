@@ -5,10 +5,12 @@
 #include <BootstrapForge/Architecture/Parsing/GenerateCommandParser.hpp>
 #include <BootstrapForge/Application/Generation/GenerationPlanner.hpp>
 #include <BootstrapForge/Infrastructure/Generation/GenerationExecutor.hpp>
+#include <BootstrapForge/Infrastructure/Generation/CodePackageLoader.hpp>
 
 #include <QAbstractItemView>
 #include <QComboBox>
 #include <QDialogButtonBox>
+#include <QFileDialog>
 #include <QFormLayout>
 #include <QFont>
 #include <QHBoxLayout>
@@ -28,6 +30,7 @@
 #include <filesystem>
 #include <sstream>
 #include <string>
+#include <utility>
 
 namespace BootstrapForge::Client::Generation
 {
@@ -260,7 +263,8 @@ namespace BootstrapForge::Client::Generation
         m_modeCombo->addItems({
             QStringLiteral("Command"),
             QStringLiteral("Generate Path"),
-            QStringLiteral("Generate File")});
+            QStringLiteral("Generate File"),
+            QStringLiteral("Import Code Package / Component")});
         auto* modeForm = new QFormLayout();
         modeForm->addRow(QStringLiteral("Create"), m_modeCombo);
         layout->addLayout(modeForm);
@@ -307,6 +311,25 @@ namespace BootstrapForge::Client::Generation
         m_fileContentEdit->setMinimumHeight(150);
         fileLayout->addRow(QStringLiteral("Initial contents"), m_fileContentEdit);
         m_inputStack->addWidget(fileForm);
+
+        auto* packageForm = new QWidget(m_inputStack);
+        auto* packageLayout = new QVBoxLayout(packageForm);
+        packageLayout->setContentsMargins(0, 0, 0, 0);
+        auto* packagePathRow = new QHBoxLayout();
+        m_packageManifestEdit = new QLineEdit(packageForm);
+        m_packageManifestEdit->setObjectName(QStringLiteral("CodePackageManifestEdit"));
+        m_packageManifestEdit->setPlaceholderText(QStringLiteral("Select a .bfpackage.json manifest"));
+        auto* browsePackageButton = new QPushButton(QStringLiteral("Browse..."), packageForm);
+        packagePathRow->addWidget(m_packageManifestEdit, 1);
+        packagePathRow->addWidget(browsePackageButton);
+        packageLayout->addLayout(packagePathRow);
+        packageLayout->addWidget(new QLabel(
+            QStringLiteral("Package files are previewed as project-relative changes. No package scripts or dependency installers are run."),
+            packageForm));
+        m_packageInfoLabel = new QLabel(packageForm);
+        m_packageInfoLabel->setWordWrap(true);
+        packageLayout->addWidget(m_packageInfoLabel);
+        m_inputStack->addWidget(packageForm);
         layout->addWidget(m_inputStack, 1);
 
         auto* buttonsRow = new QHBoxLayout();
@@ -416,6 +439,10 @@ namespace BootstrapForge::Client::Generation
             this, [this] { InvalidatePreview(); });
         QObject::connect(m_fileContentEdit, &QPlainTextEdit::textChanged,
             this, [this] { InvalidatePreview(); });
+        QObject::connect(m_packageManifestEdit, &QLineEdit::textChanged,
+            this, [this] { InvalidatePreview(); });
+        QObject::connect(browsePackageButton, &QPushButton::clicked,
+            this, [this] { SelectPackageManifest(); });
     }
 
     void GenerateDialog::InvalidatePreview()
@@ -427,8 +454,25 @@ namespace BootstrapForge::Client::Generation
         m_contentPreview->clear();
         m_contentPreviewLabel->setText(
             QStringLiteral("Select a file to preview its generated contents."));
+        if (m_packageInfoLabel != nullptr)
+        {
+            m_packageInfoLabel->clear();
+        }
         m_statusLabel->setText(QStringLiteral(
             "Input changed; preview it again before applying."));
+    }
+
+    void GenerateDialog::SelectPackageManifest()
+    {
+        QFileDialog dialog(this, QStringLiteral("Select a BootstrapForge code package"));
+        dialog.setOption(QFileDialog::DontUseNativeDialog, true);
+        dialog.setFileMode(QFileDialog::ExistingFile);
+        dialog.setNameFilter(QStringLiteral("BootstrapForge package manifests (*.bfpackage.json *.json);;All files (*.*)"));
+        dialog.setDirectory(m_workspaceRoot);
+        if (dialog.exec() == QDialog::Accepted && !dialog.selectedFiles().isEmpty())
+        {
+            m_packageManifestEdit->setText(dialog.selectedFiles().front());
+        }
     }
 
     QString GenerateDialog::BuildCommandSource(QString& errorMessage) const
@@ -503,47 +547,99 @@ namespace BootstrapForge::Client::Generation
         m_contentPreview->clear();
         m_contentPreviewLabel->setText(
             QStringLiteral("Select a file to preview its generated contents."));
+        QString planOrigin;
 
-        Architecture::Grammar::Grammar grammar;
-        Architecture::Diagnostics::DiagnosticEngine diagnostics;
-        QString errorMessage;
-        const QString sourceText = BuildCommandSource(errorMessage);
-        if (!errorMessage.isEmpty())
+        if (m_modeCombo->currentIndex() == 3)
         {
-            m_statusLabel->setText(QStringLiteral("Input invalid; nothing was changed.\n%1")
-                .arg(errorMessage));
-            return;
-        }
-        const QByteArray source = sourceText.toUtf8();
-        Architecture::Parsing::GenerateCommandParser parser(
-            grammar,
-            diagnostics,
-            std::string_view(source.constData(), static_cast<std::size_t>(source.size())));
-        auto command = parser.Parse();
-
-        if (!command || diagnostics.HasErrors())
-        {
-            QStringList messages;
-            for (const auto& diagnostic : diagnostics.Diagnostics().Diagnostics())
+            const QString manifestPath = m_packageManifestEdit->text().trimmed();
+            if (manifestPath.isEmpty())
             {
-                messages.push_back(QString::fromStdString(diagnostic.Message()));
+                m_statusLabel->setText(QStringLiteral(
+                    "Select a package manifest; nothing was changed."));
+                return;
             }
-            m_statusLabel->setText(QStringLiteral("Command invalid; nothing was changed.\n%1")
-                .arg(messages.join(QLatin1Char('\n'))));
-            return;
+
+            std::string error;
+            Infrastructure::Generation::CodePackageLoader loader;
+            auto package = loader.Load(ToFilesystemPath(manifestPath), error);
+            if (!package)
+            {
+                m_statusLabel->setText(QStringLiteral(
+                    "Package invalid; nothing was changed.\n%1")
+                    .arg(QString::fromStdString(error)));
+                return;
+            }
+
+            QStringList dependencies;
+            for (const std::string& dependency : package->Info.Dependencies)
+            {
+                dependencies.push_back(QString::fromStdString(dependency));
+            }
+            const QString dependencyText = dependencies.isEmpty()
+                ? QStringLiteral("None declared")
+                : dependencies.join(QStringLiteral(", "));
+            planOrigin = QStringLiteral("Package: %1 (%2 %3)\nDependencies: %4")
+                .arg(QString::fromStdString(package->Info.Name),
+                    QString::fromStdString(package->Info.Kind),
+                    QString::fromStdString(package->Info.Version),
+                    dependencyText);
+            if (!package->Info.Description.empty())
+            {
+                planOrigin += QStringLiteral("\n%1")
+                    .arg(QString::fromStdString(package->Info.Description));
+            }
+            m_packageInfoLabel->setText(planOrigin);
+            m_plan = std::move(package->Plan);
+        }
+        else
+        {
+            Architecture::Grammar::Grammar grammar;
+            Architecture::Diagnostics::DiagnosticEngine diagnostics;
+            QString errorMessage;
+            const QString sourceText = BuildCommandSource(errorMessage);
+            if (!errorMessage.isEmpty())
+            {
+                m_statusLabel->setText(QStringLiteral("Input invalid; nothing was changed.\n%1")
+                    .arg(errorMessage));
+                return;
+            }
+            const QByteArray source = sourceText.toUtf8();
+            Architecture::Parsing::GenerateCommandParser parser(
+                grammar,
+                diagnostics,
+                std::string_view(source.constData(), static_cast<std::size_t>(source.size())));
+            auto command = parser.Parse();
+
+            if (!command || diagnostics.HasErrors())
+            {
+                QStringList messages;
+                for (const auto& diagnostic : diagnostics.Diagnostics().Diagnostics())
+                {
+                    messages.push_back(QString::fromStdString(diagnostic.Message()));
+                }
+                m_statusLabel->setText(QStringLiteral("Command invalid; nothing was changed.\n%1")
+                    .arg(messages.join(QLatin1Char('\n'))));
+                return;
+            }
+
+            Application::Generation::GenerationPlanner planner;
+            m_plan = planner.Build(*command, diagnostics);
+            if (!m_plan || diagnostics.HasErrors())
+            {
+                QStringList messages;
+                for (const auto& diagnostic : diagnostics.Diagnostics().Diagnostics())
+                {
+                    messages.push_back(QString::fromStdString(diagnostic.Message()));
+                }
+                m_statusLabel->setText(QStringLiteral("Plan invalid; nothing was changed.\n%1")
+                    .arg(messages.join(QLatin1Char('\n'))));
+                return;
+            }
         }
 
-        Application::Generation::GenerationPlanner planner;
-        m_plan = planner.Build(*command, diagnostics);
-        if (!m_plan || diagnostics.HasErrors())
+        if (!m_plan)
         {
-            QStringList messages;
-            for (const auto& diagnostic : diagnostics.Diagnostics().Diagnostics())
-            {
-                messages.push_back(QString::fromStdString(diagnostic.Message()));
-            }
-            m_statusLabel->setText(QStringLiteral("Plan invalid; nothing was changed.\n%1")
-                .arg(messages.join(QLatin1Char('\n'))));
+            m_statusLabel->setText(QStringLiteral("No valid plan was produced; nothing was changed."));
             return;
         }
 
@@ -573,9 +669,10 @@ namespace BootstrapForge::Client::Generation
             m_planTree->setCurrentItem(firstFileItem);
         }
 
-        m_statusLabel->setText(QStringLiteral("Validated %1 planned paths under %2.")
+        m_statusLabel->setText(QStringLiteral("Validated %1 planned paths under %2.%3")
             .arg(m_plan->Entries().size())
-            .arg(m_workspaceRoot));
+            .arg(m_workspaceRoot)
+            .arg(planOrigin.isEmpty() ? QString{} : QStringLiteral("\n\n%1").arg(planOrigin)));
         m_applyButton->setEnabled(true);
     }
 

@@ -48,9 +48,11 @@ C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Runtime/CMakeFiles/ALL_
 C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Tests/CMakeFiles/BootstrapForge.ReconciliationIntegrationTests.dir
 C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Tests/CMakeFiles/BootstrapForge.ArchitectureParserTests.dir
 C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Tests/CMakeFiles/BootstrapForge.GenerationTests.dir
+C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Tests/CMakeFiles/BootstrapForge.CodePackageTests.dir
 C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Tests/CMakeFiles/RUN_TESTS.dir
 C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Tests/CMakeFiles/INSTALL.dir
 C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/CMakeFiles/BootstrapForge.Client.dir
+C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/CMakeFiles/BootstrapForge.Launcher.dir
 C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/CMakeFiles/RUN_TESTS.dir
 C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/CMakeFiles/INSTALL.dir
 C:/EndlessProjects/BootstrapForge/out/build/vs2022-debug/Client/CMakeFiles/ALL_BUILD.dir

@@ -2,6 +2,7 @@
 
 #include <QDir>
 #include <QDirIterator>
+#include <QFile>
 #include <QFileInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -10,6 +11,7 @@
 #include <QRegularExpression>
 #include <QSettings>
 #include <QStandardPaths>
+#include <QTextStream>
 
 #include <algorithm>
 
@@ -77,6 +79,8 @@ namespace BootstrapForge::Client::Build
 
         m_pendingTestName.clear();
         m_testExecutablePaths.clear();
+        m_discoveredTestNames.clear();
+        m_testExecutablesByName.clear();
         emit TestsDiscovered({});
     }
 
@@ -94,6 +98,158 @@ namespace BootstrapForge::Client::Build
 
         return QDir(m_projectRoot).filePath(
             QStringLiteral(".bootstrapforge/build"));
+    }
+
+    QString CMakeProjectController::ToolchainReadinessReport() const
+    {
+        QStringList lines;
+        lines << QStringLiteral("BootstrapForge toolchain readiness")
+              << QString{};
+
+        const auto describeTool = [&lines](const QString& label, const QString& path)
+        {
+            if (path.isEmpty())
+            {
+                lines << QStringLiteral("%1: NOT FOUND").arg(label);
+                return;
+            }
+
+            QString version = QStringLiteral("version unavailable");
+            QProcess process;
+            process.start(path, {QStringLiteral("--version")});
+            if (process.waitForStarted(1500) && process.waitForFinished(2500) &&
+                process.exitStatus() == QProcess::NormalExit && process.exitCode() == 0)
+            {
+                const QString output = QString::fromLocal8Bit(
+                    process.readAllStandardOutput() + process.readAllStandardError()).trimmed();
+                if (!output.isEmpty())
+                {
+                    version = output.section(QLatin1Char('\n'), 0, 0);
+                }
+            }
+            else if (process.state() != QProcess::NotRunning)
+            {
+                process.kill();
+                process.waitForFinished(500);
+            }
+            lines << QStringLiteral("%1: %2\n  %3")
+                .arg(label, version, QDir::toNativeSeparators(path));
+        };
+
+        const QString cmake = CMakeExecutable();
+        const QString ctest = CTestExecutable();
+        describeTool(QStringLiteral("CMake"), cmake);
+        describeTool(QStringLiteral("CTest"), ctest);
+
+        QSettings settings(
+            QSettings::IniFormat,
+            QSettings::UserScope,
+            QStringLiteral("BootstrapForge"),
+            QStringLiteral("BootstrapForge.Client"));
+        QString qtDirectory = settings.value(
+            QStringLiteral("tools/qt6CMakeDirectory")).toString();
+        if (qtDirectory.isEmpty())
+        {
+            qtDirectory = QString::fromUtf8(BOOTSTRAPFORGE_QT6_CMAKE_DIR);
+        }
+        const bool qtAvailable = !qtDirectory.isEmpty() && QFileInfo(
+            QDir(qtDirectory).filePath(QStringLiteral("Qt6Config.cmake"))).isFile();
+        lines << QStringLiteral("Qt 6.11 CMake package: %1")
+            .arg(qtAvailable ? QStringLiteral("found") : QStringLiteral("NOT FOUND"));
+        if (!qtDirectory.isEmpty())
+        {
+            lines << QStringLiteral("  %1")
+                .arg(QDir::toNativeSeparators(qtDirectory));
+        }
+
+        lines << QString{};
+        if (m_projectRoot.isEmpty())
+        {
+            lines << QStringLiteral("Project: no project is open.");
+            return lines.join(QLatin1Char('\n'));
+        }
+
+        lines << QStringLiteral("Project: %1")
+            .arg(QDir::toNativeSeparators(m_projectRoot));
+        lines << QStringLiteral("CMakeLists.txt: %1")
+            .arg(QFileInfo(QDir(m_projectRoot).filePath(QStringLiteral("CMakeLists.txt"))).isFile()
+                ? QStringLiteral("found") : QStringLiteral("NOT FOUND"));
+        lines << QStringLiteral("Build directory: %1")
+            .arg(QDir::toNativeSeparators(BuildDirectory()));
+
+        const QString cachePath = QDir(BuildDirectory()).filePath(QStringLiteral("CMakeCache.txt"));
+        QFile cache(cachePath);
+        if (!cache.open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            lines << QStringLiteral("Configured build: NOT FOUND; use Check CMake first.");
+            return lines.join(QLatin1Char('\n'));
+        }
+
+        QString generator;
+        QString compiler;
+        QString projectQtDirectory;
+        QString windowsSdkVersion;
+        QTextStream stream(&cache);
+        while (!stream.atEnd())
+        {
+            const QString line = stream.readLine();
+            const auto readCacheValue = [&line](const QString& key)
+            {
+                return line.startsWith(key) ? line.section(QLatin1Char('='), 1) : QString{};
+            };
+            if (line.startsWith(QStringLiteral("CMAKE_GENERATOR:")))
+            {
+                generator = readCacheValue(QStringLiteral("CMAKE_GENERATOR:"));
+            }
+            else if (line.startsWith(QStringLiteral("CMAKE_CXX_COMPILER:")))
+            {
+                compiler = readCacheValue(QStringLiteral("CMAKE_CXX_COMPILER:"));
+            }
+            else if (line.startsWith(QStringLiteral("Qt6_DIR:")))
+            {
+                projectQtDirectory = readCacheValue(QStringLiteral("Qt6_DIR:"));
+            }
+            else if (line.startsWith(QStringLiteral("CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION:")))
+            {
+                windowsSdkVersion = readCacheValue(
+                    QStringLiteral("CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION:"));
+            }
+        }
+
+        lines << QStringLiteral("Configured build: found (Debug configuration selected by the client)");
+        lines << QStringLiteral("Generator: %1")
+            .arg(generator.isEmpty() ? QStringLiteral("unknown") : generator);
+        if (!compiler.isEmpty())
+        {
+            const QRegularExpression msvcPathPattern(
+                QStringLiteral("(?:^|[/\\\\])MSVC[/\\\\]([^/\\\\]+)[/\\\\]"),
+                QRegularExpression::CaseInsensitiveOption);
+            const auto msvcMatch = msvcPathPattern.match(compiler);
+            const QString compilerVersion = msvcMatch.hasMatch()
+                ? QStringLiteral("; MSVC toolset %1").arg(msvcMatch.captured(1))
+                : QString{};
+            lines << QStringLiteral("C++ compiler: %1 (%2)")
+                .arg(QDir::toNativeSeparators(compiler),
+                    (QFileInfo(compiler).isFile() ? QStringLiteral("found") : QStringLiteral("missing")) +
+                        compilerVersion);
+        }
+        else
+        {
+            lines << QStringLiteral("C++ compiler: not recorded in CMakeCache.txt");
+        }
+        if (!windowsSdkVersion.isEmpty())
+        {
+            lines << QStringLiteral("Windows SDK: %1").arg(windowsSdkVersion);
+        }
+        if (!projectQtDirectory.isEmpty())
+        {
+            const bool projectQtAvailable = QFileInfo(
+                QDir(projectQtDirectory).filePath(QStringLiteral("Qt6Config.cmake"))).isFile();
+            lines << QStringLiteral("Project Qt package: %1 (%2)")
+                .arg(projectQtAvailable ? QStringLiteral("found") : QStringLiteral("missing"),
+                    QDir::toNativeSeparators(projectQtDirectory));
+        }
+        return lines.join(QLatin1Char('\n'));
     }
 
     bool CMakeProjectController::IsBusy() const noexcept
@@ -329,8 +485,18 @@ namespace BootstrapForge::Client::Build
             QStringLiteral("-DCMAKE_BUILD_TYPE=Debug")
         };
 
-        const QString qt6CMakeDirectory = QDir::fromNativeSeparators(
-            QString::fromUtf8(BOOTSTRAPFORGE_QT6_CMAKE_DIR));
+        QSettings settings(
+            QSettings::IniFormat,
+            QSettings::UserScope,
+            QStringLiteral("BootstrapForge"),
+            QStringLiteral("BootstrapForge.Client"));
+        QString qt6CMakeDirectory = settings.value(
+            QStringLiteral("tools/qt6CMakeDirectory")).toString().trimmed();
+        if (qt6CMakeDirectory.isEmpty())
+        {
+            qt6CMakeDirectory = QString::fromUtf8(BOOTSTRAPFORGE_QT6_CMAKE_DIR);
+        }
+        qt6CMakeDirectory = QDir::fromNativeSeparators(qt6CMakeDirectory);
         if (!qt6CMakeDirectory.isEmpty() &&
             QFileInfo::exists(QDir(qt6CMakeDirectory).filePath(
                 QStringLiteral("Qt6Config.cmake"))))
@@ -520,7 +686,7 @@ namespace BootstrapForge::Client::Build
             if (m_request == Request::RunTest ||
                 m_request == Request::RunAllTests)
             {
-                StartTestRun(m_request == Request::RunAllTests);
+                StartTestDiscovery();
                 return;
             }
             StartTestDiscovery();
@@ -550,6 +716,8 @@ namespace BootstrapForge::Client::Build
 
             QStringList testNames;
             m_testExecutablePaths.clear();
+            m_discoveredTestNames.clear();
+            m_testExecutablesByName.clear();
             const QJsonArray tests = document.object()
                 .value(QStringLiteral("tests")).toArray();
             for (const QJsonValue& value : tests)
@@ -564,23 +732,54 @@ namespace BootstrapForge::Client::Build
 
                 const QJsonArray command = testObject
                     .value(QStringLiteral("command")).toArray();
+                QStringList executablePaths;
                 if (!command.isEmpty())
                 {
-                    QString executablePath = command.at(0).toString();
-                    if (!QFileInfo(executablePath).isAbsolute())
+                    const QString commandName = command.at(0).toString();
+                    QString executablePath;
+                    if (QFileInfo(commandName).isAbsolute())
                     {
-                        executablePath = QDir(BuildDirectory()).absoluteFilePath(
-                            executablePath);
+                        executablePath = commandName;
                     }
-                    m_testExecutablePaths.push_back(QDir::cleanPath(
-                        QFileInfo(executablePath).absoluteFilePath()));
+                    else if (commandName.contains(QLatin1Char('/')) ||
+                        commandName.contains(QLatin1Char('\\')))
+                    {
+                        executablePath = QDir(BuildDirectory()).absoluteFilePath(commandName);
+                    }
+                    else
+                    {
+                        executablePath = QStandardPaths::findExecutable(commandName);
+                        if (executablePath.isEmpty())
+                        {
+                            executablePath = QDir(BuildDirectory()).absoluteFilePath(commandName);
+                        }
+                    }
+                    executablePath = QDir::cleanPath(QFileInfo(executablePath).absoluteFilePath());
+                    executablePaths.push_back(executablePath);
+                    m_testExecutablePaths.push_back(executablePath);
+                }
+                if (!testName.isEmpty())
+                {
+                    m_testExecutablesByName.insert(testName, executablePaths);
                 }
             }
 
+            m_discoveredTestNames = testNames;
             emit TestsDiscovered(testNames);
             emit OutputReceived(
                 QStringLiteral("[TEST] Discovered %1 registered test(s).\n")
                     .arg(testNames.size()));
+            if (m_request == Request::RunTest || m_request == Request::RunAllTests)
+            {
+                QString validationError;
+                if (!ValidateDiscoveredTestsForRun(validationError))
+                {
+                    FinishRequest(false, validationError);
+                    return;
+                }
+                StartTestRun(m_request == Request::RunAllTests);
+                return;
+            }
             FinishRequest(
                 true,
                 QStringLiteral("Discovered %1 registered test(s).")
@@ -594,6 +793,61 @@ namespace BootstrapForge::Client::Build
                 true,
                 QStringLiteral("CTest completed successfully."));
         }
+    }
+
+    bool CMakeProjectController::ValidateDiscoveredTestsForRun(
+        QString& errorMessage) const
+    {
+        if (m_discoveredTestNames.isEmpty())
+        {
+            errorMessage = QStringLiteral(
+                "No CTest tests are registered after the build; no test command was run.");
+            return false;
+        }
+
+        QStringList selectedTests;
+        if (m_request == Request::RunAllTests)
+        {
+            selectedTests = m_discoveredTestNames;
+        }
+        else
+        {
+            if (!m_discoveredTestNames.contains(m_pendingTestName, Qt::CaseSensitive))
+            {
+                errorMessage = QStringLiteral(
+                    "The selected test is no longer registered after the build: %1")
+                    .arg(m_pendingTestName);
+                return false;
+            }
+            selectedTests.push_back(m_pendingTestName);
+        }
+
+        QStringList missing;
+        for (const QString& testName : selectedTests)
+        {
+            const QStringList executables = m_testExecutablesByName.value(testName);
+            if (executables.isEmpty())
+            {
+                missing.push_back(QStringLiteral("%1 (CTest command is empty)").arg(testName));
+                continue;
+            }
+            for (const QString& executable : executables)
+            {
+                if (!QFileInfo(executable).isFile())
+                {
+                    missing.push_back(QStringLiteral("%1: %2")
+                        .arg(testName, QDir::toNativeSeparators(executable)));
+                }
+            }
+        }
+        if (!missing.isEmpty())
+        {
+            errorMessage = QStringLiteral(
+                "Test executable(s) are missing after the build; CTest was not started:\n%1")
+                .arg(missing.join(QLatin1Char('\n')));
+            return false;
+        }
+        return true;
     }
 
     void CMakeProjectController::OnProcessError()

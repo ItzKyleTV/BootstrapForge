@@ -48,6 +48,7 @@ C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/Runtime/CMakeFiles/ALL_B
 C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/Tests/CMakeFiles/BootstrapForge.ReconciliationIntegrationTests.dir
 C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/Tests/CMakeFiles/BootstrapForge.ArchitectureParserTests.dir
 C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/Tests/CMakeFiles/BootstrapForge.GenerationTests.dir
+C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/Tests/CMakeFiles/BootstrapForge.CodePackageTests.dir
 C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/Tests/CMakeFiles/RUN_TESTS.dir
 C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/Tests/CMakeFiles/INSTALL.dir
 C:/EndlessProjects/BootstrapForge/.bootstrapforge/build/Client/CMakeFiles/BootstrapForge.Client.dir

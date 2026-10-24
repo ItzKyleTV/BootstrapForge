@@ -32,6 +32,7 @@ namespace BootstrapForge::Client::Generation
 
         void PreviewCommand();
         void ApplyPlan();
+        void SelectPackageManifest();
         void InvalidatePreview();
         [[nodiscard]]
         QString BuildCommandSource(
@@ -43,9 +44,11 @@ namespace BootstrapForge::Client::Generation
         QPlainTextEdit* m_commandEditor = nullptr;
         QLineEdit* m_pathEdit = nullptr;
         QLineEdit* m_filePathEdit = nullptr;
+        QLineEdit* m_packageManifestEdit = nullptr;
         QPlainTextEdit* m_fileContentEdit = nullptr;
         QTreeWidget* m_planTree = nullptr;
         QLabel* m_contentPreviewLabel = nullptr;
+        QLabel* m_packageInfoLabel = nullptr;
         QPlainTextEdit* m_contentPreview = nullptr;
         QLabel* m_statusLabel = nullptr;
         QPushButton* m_applyButton = nullptr;

@@ -1,4 +1,5 @@
-BootstrapForge.ReconciliationIntegrationTests 2 0.0071521
-BootstrapForge.ArchitectureParserTests 1 0.0339768
-BootstrapForge.GenerationTests 1 0.0791775
+BootstrapForge.ReconciliationIntegrationTests 3 0.0185433
+BootstrapForge.ArchitectureParserTests 2 0.0164516
+BootstrapForge.GenerationTests 2 0.0502823
+BootstrapForge.CodePackageTests 1 0.0935734
 ---

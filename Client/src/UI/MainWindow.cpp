@@ -7,6 +7,8 @@
 #include <BootstrapForge/Client/Project/ProjectTree.hpp>
 
 #include <QAction>
+#include <QCheckBox>
+#include <QClipboard>
 #include <QCloseEvent>
 #include <QDialog>
 #include <QDialogButtonBox>
@@ -17,6 +19,7 @@
 #include <QFormLayout>
 #include <QFont>
 #include <QFrame>
+#include <QGuiApplication>
 #include <QHBoxLayout>
 #include <QLineEdit>
 #include <QLabel>
@@ -31,7 +34,9 @@
 #include <QPlainTextEdit>
 #include <QProcess>
 #include <QPushButton>
+#include <QScreen>
 #include <QSettings>
+#include <QSpinBox>
 #include <QStandardPaths>
 #include <QStatusBar>
 #include <QStringList>
@@ -40,6 +45,7 @@
 #include <QTextCursor>
 #include <QTimer>
 #include <QToolBar>
+#include <QToolButton>
 #include <QUrl>
 #include <QVBoxLayout>
 #include <QWidget>
@@ -106,6 +112,21 @@ namespace
         dialog.setWindowTitle(title);
         dialog.setDirectory(startingDirectory);
         dialog.setFileMode(QFileDialog::Directory);
+        dialog.setSidebarUrls(CommonDirectoryPlaces());
+        dialog.setWindowModality(Qt::WindowModal);
+    }
+
+    void ConfigureFilePicker(
+        QFileDialog& dialog,
+        const QString& title,
+        const QString& startingDirectory,
+        const QString& nameFilter)
+    {
+        dialog.setOption(QFileDialog::DontUseNativeDialog, true);
+        dialog.setWindowTitle(title);
+        dialog.setDirectory(startingDirectory);
+        dialog.setFileMode(QFileDialog::ExistingFile);
+        dialog.setNameFilter(nameFilter);
         dialog.setSidebarUrls(CommonDirectoryPlaces());
         dialog.setWindowModality(Qt::WindowModal);
     }
@@ -331,6 +352,11 @@ namespace BootstrapForge::Client::UI
 
         CreateCentralWidget();
 
+        resizeDocks(
+            {m_projectDock, m_propertiesDock},
+            {260, 280},
+            Qt::Horizontal);
+
         CreateStatusBar();
 
         ConnectActions();
@@ -367,6 +393,12 @@ namespace BootstrapForge::Client::UI
 
     void MainWindow::CreateActions()
     {
+        m_homeAction = new QAction(QStringLiteral("Home"), this);
+        m_homeAction->setShortcut(
+            QKeySequence(QStringLiteral("Alt+Home")));
+        m_homeAction->setStatusTip(
+            QStringLiteral("Return to the BootstrapForge start page"));
+
         m_newAction = new QAction(
             QStringLiteral("&New Project..."), this);
 
@@ -514,8 +546,14 @@ namespace BootstrapForge::Client::UI
 
         m_createBranchAction = new QAction(QStringLiteral("Create Branch..."), this);
         m_switchBranchAction = new QAction(QStringLiteral("Switch Branch..."), this);
+        m_stashChangesAction = new QAction(QStringLiteral("Stash Changes..."), this);
+        m_commitChangesAction = new QAction(QStringLiteral("Commit..."), this);
+        m_applyStashAction = new QAction(QStringLiteral("Apply Stash..."), this);
+        m_popStashAction = new QAction(QStringLiteral("Pop Stash..."), this);
         m_architectureAction = new QAction(QStringLiteral("Architecture Overview"), this);
         m_settingsAction = new QAction(QStringLiteral("Settings..."), this);
+        m_toolchainReadinessAction = new QAction(
+            QStringLiteral("Toolchain Readiness..."), this);
         m_aboutAction = new QAction(QStringLiteral("About BootstrapForge"), this);
 
         m_newAction->setEnabled(true);
@@ -526,6 +564,10 @@ namespace BootstrapForge::Client::UI
         m_gitStatusAction->setEnabled(false);
         m_createBranchAction->setEnabled(false);
         m_switchBranchAction->setEnabled(false);
+        m_stashChangesAction->setEnabled(false);
+        m_commitChangesAction->setEnabled(false);
+        m_applyStashAction->setEnabled(false);
+        m_popStashAction->setEnabled(false);
         m_undoAction->setEnabled(false);
         m_redoAction->setEnabled(false);
         m_cutAction->setEnabled(false);
@@ -536,6 +578,8 @@ namespace BootstrapForge::Client::UI
 
     void MainWindow::CreateMenus()
     {
+        menuBar()->addAction(m_homeAction);
+
         QMenu* fileMenu =
             menuBar()->addMenu(
                 QStringLiteral("&File"));
@@ -631,15 +675,29 @@ namespace BootstrapForge::Client::UI
 
         gitMenu->addAction(m_switchBranchAction);
 
+        gitMenu->addSeparator();
+        gitMenu->addAction(m_commitChangesAction);
+        gitMenu->addAction(m_stashChangesAction);
+        gitMenu->addAction(m_applyStashAction);
+        gitMenu->addAction(m_popStashAction);
+
         QMenu* toolsMenu =
             menuBar()->addMenu(
                 QStringLiteral("&Tools"));
 
         toolsMenu->addAction(m_architectureAction);
 
+        toolsMenu->addAction(m_toolchainReadinessAction);
+
         toolsMenu->addAction(m_settingsAction);
 
         QMenu* helpMenu = menuBar()->addMenu(QStringLiteral("&Help"));
+        m_usagePromptAction = new QAction(
+            QStringLiteral("BootstrapForge Use Prompt"), this);
+        m_usagePromptAction->setStatusTip(
+            QStringLiteral("Copy BootstrapForge command rules for an external AI"));
+        helpMenu->addAction(m_usagePromptAction);
+        helpMenu->addSeparator();
         helpMenu->addAction(m_aboutAction);
     }
 
@@ -684,8 +742,12 @@ namespace BootstrapForge::Client::UI
         toolBar->addAction(
             m_configureAction);
 
-        toolBar->addAction(
-            m_testAction);
+        m_testButton = new QToolButton(toolBar);
+        m_testButton->setText(QStringLiteral("Test"));
+        m_testButton->setMenu(m_testMenu);
+        m_testButton->setPopupMode(QToolButton::InstantPopup);
+        m_testButton->setToolButtonStyle(Qt::ToolButtonTextOnly);
+        toolBar->addWidget(m_testButton);
 
         toolBar->addSeparator();
 
@@ -737,11 +799,21 @@ namespace BootstrapForge::Client::UI
             Qt::LeftDockWidgetArea |
             Qt::RightDockWidgetArea);
 
+        m_propertiesDock->setMinimumWidth(240);
+
+        m_propertiesDock->setStyleSheet(QStringLiteral(
+            "QDockWidget { border: 1px solid #454545; "
+            "border-left: 2px solid #5a5a5a; "
+            "border-right: 2px solid #5a5a5a; }"
+            "QDockWidget::title { border-bottom: 1px solid #454545; "
+            "padding: 4px; }"
+            "QLabel { border: none; background-color: palette(base); }"));
+
         m_propertiesLabel =
             new QLabel(
-                QStringLiteral(
-                    "No item selected."),
+                QString{},
                 m_propertiesDock);
+        m_propertiesLabel->setFrameStyle(QFrame::NoFrame);
 
         m_propertiesLabel->setAlignment(
             Qt::AlignTop |
@@ -850,16 +922,6 @@ namespace BootstrapForge::Client::UI
             "color: palette(highlight); font-weight: 600; letter-spacing: 1px;"));
         contentLayout->addWidget(eyebrow);
 
-        auto* title = new QLabel(
-            QStringLiteral("What are you building?"), content);
-        title->setObjectName(QStringLiteral("ProjectLauncherTitle"));
-        title->setAlignment(Qt::AlignCenter);
-        QFont titleFont = title->font();
-        titleFont.setPointSize(titleFont.pointSize() + 10);
-        titleFont.setBold(true);
-        title->setFont(titleFont);
-        contentLayout->addWidget(title);
-
         auto* subtitle = new QLabel(
             QStringLiteral("Create a project workspace or open one you already have."),
             content);
@@ -929,7 +991,7 @@ namespace BootstrapForge::Client::UI
 
         m_workspaceTabs->addTab(
             m_welcomePage,
-            QStringLiteral("Start"));
+            QStringLiteral("Home"));
         m_workspaceTabs->tabBar()->setTabButton(
             0, QTabBar::RightSide, nullptr);
 
@@ -970,6 +1032,9 @@ namespace BootstrapForge::Client::UI
 
     void MainWindow::ConnectActions()
     {
+        connect(m_homeAction, &QAction::triggered,
+            this, [this] { ReturnToHome(); });
+
         connect(
             m_exitAction,
             &QAction::triggered,
@@ -997,22 +1062,20 @@ namespace BootstrapForge::Client::UI
                         QStandardPaths::DocumentsLocation)
                     : m_projectTree->WorkspaceRoot();
 
-                const QString path =
-                    QFileDialog::getOpenFileName(
-                        this,
-                        QStringLiteral(
-                            "Open File"),
-                        startingDirectory,
-                        QStringLiteral(
-                            "All Files (*.*)"));
-
-                if (path.isEmpty())
+                QFileDialog dialog(this);
+                ConfigureFilePicker(
+                    dialog,
+                    QStringLiteral("Open File"),
+                    startingDirectory,
+                    QStringLiteral("All Files (*.*)"));
+                if (dialog.exec() != QDialog::Accepted ||
+                    dialog.selectedFiles().isEmpty())
                 {
                     return;
                 }
 
                 OpenProjectFile(
-                    path);
+                    dialog.selectedFiles().front());
             });
 
         connect(
@@ -1178,11 +1241,8 @@ namespace BootstrapForge::Client::UI
             this,
             [this](const QStringList& testNames)
             {
-                QTimer::singleShot(0, this, [this, testNames]
-                {
-                    m_testNames = testNames;
-                    RebuildTestMenu(testNames);
-                });
+                m_testNames = testNames;
+                RebuildTestMenu(m_testNames);
             });
 
         connect(
@@ -1204,7 +1264,11 @@ namespace BootstrapForge::Client::UI
                 m_gitStatusAction->setEnabled(hasProject && !busy);
                 m_createBranchAction->setEnabled(hasProject && !busy);
                 m_switchBranchAction->setEnabled(hasProject && !busy);
-                m_testAction->setEnabled(hasProject && !busy);
+                m_stashChangesAction->setEnabled(hasProject && !busy);
+                m_commitChangesAction->setEnabled(hasProject && !busy);
+                m_applyStashAction->setEnabled(hasProject && !busy);
+                m_popStashAction->setEnabled(hasProject && !busy);
+                RebuildTestMenu(m_testNames);
                 UpdateEditorActions();
             });
 
@@ -1236,10 +1300,22 @@ namespace BootstrapForge::Client::UI
             this, [this] { CreateGitBranch(); });
         connect(m_switchBranchAction, &QAction::triggered,
             this, [this] { SwitchGitBranch(); });
+        connect(m_stashChangesAction, &QAction::triggered,
+            this, [this] { StashGitChanges(); });
+        connect(m_commitChangesAction, &QAction::triggered,
+            this, [this] { CommitGitChanges(); });
+        connect(m_applyStashAction, &QAction::triggered,
+            this, [this] { RestoreGitStash(false); });
+        connect(m_popStashAction, &QAction::triggered,
+            this, [this] { RestoreGitStash(true); });
         connect(m_architectureAction, &QAction::triggered,
             this, [this] { ShowArchitectureOverview(); });
         connect(m_settingsAction, &QAction::triggered,
             this, [this] { ShowSettingsDialog(); });
+        connect(m_toolchainReadinessAction, &QAction::triggered,
+            this, [this] { ShowToolchainReadiness(); });
+        connect(m_usagePromptAction, &QAction::triggered,
+            this, [this] { ShowUsagePrompt(); });
         connect(m_aboutAction, &QAction::triggered,
             this, [this] { ShowAboutDialog(); });
 
@@ -1282,10 +1358,8 @@ namespace BootstrapForge::Client::UI
             this,
             [this](const QString& path)
             {
-                m_propertiesLabel->setText(
-                    QStringLiteral(
-                        "Selected item:\n\n%1")
-                    .arg(path));
+                m_selectedProjectItemPath = path;
+                UpdateEditorProperties();
 
                 statusBar()->showMessage(
                     path);
@@ -1315,8 +1389,21 @@ namespace BootstrapForge::Client::UI
             m_workspaceTabs,
             &QTabWidget::currentChanged,
             this,
-            [this](int)
+            [this](int index)
             {
+                if (m_editorManager->IsEditorTab(index))
+                {
+                    m_selectedProjectItemPath.clear();
+                }
+                const int welcomeIndex =
+                    m_workspaceTabs->indexOf(m_welcomePage);
+                if (index >= 0 && welcomeIndex >= 0 &&
+                    index != welcomeIndex &&
+                    m_workspaceTabs->tabBar()->isTabVisible(welcomeIndex))
+                {
+                    m_workspaceTabs->tabBar()->setTabVisible(
+                        welcomeIndex, false);
+                }
                 UpdateEditorProperties();
                 UpdateEditorActions();
             });
@@ -1330,6 +1417,7 @@ namespace BootstrapForge::Client::UI
                 bool modified)
             {
                 UpdateEditorActions();
+                UpdateEditorProperties();
                 m_outputEditor->appendPlainText(
                     QStringLiteral(
                         "[EDITOR] %1 %2")
@@ -1413,7 +1501,11 @@ namespace BootstrapForge::Client::UI
         m_testMenu->clear();
         const bool canUseProject = !m_projectTree->WorkspaceRoot().isEmpty();
         const bool canRun = canUseProject && !m_buildController->IsBusy();
-        m_testAction->setEnabled(canRun);
+        m_testAction->setEnabled(canUseProject);
+        if (m_testButton != nullptr)
+        {
+            m_testButton->setEnabled(canUseProject);
+        }
 
         QAction* refreshAction = m_testMenu->addAction(
             QStringLiteral("Refresh Tests"));
@@ -1424,10 +1516,32 @@ namespace BootstrapForge::Client::UI
         m_testMenu->addSeparator();
         if (testNames.isEmpty())
         {
+            QString emptyMessage;
             QAction* emptyAction = m_testMenu->addAction(
-                canUseProject
-                    ? QStringLiteral("No tests discovered — check CMake or refresh")
-                    : QStringLiteral("Open a project to discover tests"));
+                QString{});
+            if (!canUseProject)
+            {
+                emptyMessage = QStringLiteral("Open a project to discover tests");
+            }
+            else if (m_buildController->IsBusy())
+            {
+                emptyMessage = QStringLiteral("Test information is being refreshed");
+            }
+            else if (!QFileInfo(QDir(m_projectTree->WorkspaceRoot()).filePath(
+                QStringLiteral("CMakeLists.txt"))).isFile())
+            {
+                emptyMessage = QStringLiteral("No root CMakeLists.txt — this project has no CTest tests to discover");
+            }
+            else if (!QFileInfo(QDir(m_projectTree->WorkspaceRoot()).filePath(
+                QStringLiteral(".bootstrapforge/build/CMakeCache.txt"))).isFile())
+            {
+                emptyMessage = QStringLiteral("Configure CMake to discover registered tests");
+            }
+            else
+            {
+                emptyMessage = QStringLiteral("No CTest tests are registered in this build");
+            }
+            emptyAction->setText(emptyMessage);
             emptyAction->setEnabled(false);
             return;
         }
@@ -1488,6 +1602,134 @@ namespace BootstrapForge::Client::UI
                 "The Architecture library stays independent of Qt. The Client provides the editor, workspace tree, previews, and build/test controls."));
     }
 
+    void MainWindow::ShowWelcomePage()
+    {
+        if (m_welcomePage == nullptr)
+        {
+            return;
+        }
+
+        const QString projectRoot = m_projectTree->WorkspaceRoot();
+        m_welcomeProjectLabel->setText(projectRoot.isEmpty()
+            ? QStringLiteral("No project open")
+            : QStringLiteral("Current project: %1")
+                .arg(QDir::toNativeSeparators(projectRoot)));
+        RefreshRecentProjects();
+
+        const int welcomeIndex = m_workspaceTabs->indexOf(m_welcomePage);
+        const int visibleWelcomeIndex = welcomeIndex >= 0
+            ? welcomeIndex
+            : m_workspaceTabs->insertTab(
+                0, m_welcomePage, QStringLiteral("Home"));
+        if (welcomeIndex < 0)
+        {
+            m_workspaceTabs->tabBar()->setTabButton(
+                visibleWelcomeIndex, QTabBar::RightSide, nullptr);
+        }
+
+        if (visibleWelcomeIndex < 0)
+        {
+            return;
+        }
+
+        m_workspaceTabs->tabBar()->setTabVisible(visibleWelcomeIndex, true);
+        m_workspaceTabs->setCurrentWidget(m_welcomePage);
+        if (projectRoot.isEmpty())
+        {
+            SetProjectWorkspacePanelsVisible(false);
+        }
+        statusBar()->showMessage(QStringLiteral("Welcome to BootstrapForge."), 4000);
+    }
+
+    void MainWindow::ReturnToHome()
+    {
+        if (m_buildController->IsBusy())
+        {
+            ShowInformationMessage(QStringLiteral(
+                "Wait for the current CMake operation to finish before returning Home."));
+            return;
+        }
+
+        if (!ConfirmUnsavedDocuments())
+        {
+            return;
+        }
+
+        const QString previousRoot = m_projectTree->WorkspaceRoot();
+        for (int index = m_workspaceTabs->count() - 1; index >= 0; --index)
+        {
+            if (m_editorManager->IsEditorTab(index))
+            {
+                if (!m_editorManager->CloseEditor(index))
+                {
+                    ShowErrorMessage(QStringLiteral(
+                        "Could not close an editor tab; the current project remains open."));
+                    return;
+                }
+            }
+        }
+
+        if (!m_projectTree->SetWorkspaceRoot(QString{}))
+        {
+            ShowErrorMessage(QStringLiteral("Could not close the current project workspace."));
+            return;
+        }
+
+        m_buildController->SetProjectRoot(QString{});
+        m_selectedProjectItemPath.clear();
+        m_runAfterBuild = false;
+
+        m_buildAction->setEnabled(false);
+        m_runAction->setEnabled(false);
+        m_configureAction->setEnabled(false);
+        m_gitStatusAction->setEnabled(false);
+        m_createBranchAction->setEnabled(false);
+        m_switchBranchAction->setEnabled(false);
+        m_stashChangesAction->setEnabled(false);
+        m_commitChangesAction->setEnabled(false);
+        m_applyStashAction->setEnabled(false);
+        m_popStashAction->setEnabled(false);
+        RebuildTestMenu({});
+        SetProjectWorkspacePanelsVisible(false);
+        UpdateEditorProperties();
+        UpdateEditorActions();
+        setWindowTitle(QStringLiteral("BootstrapForge"));
+
+        if (!previousRoot.isEmpty())
+        {
+            m_outputEditor->appendPlainText(
+                QStringLiteral("[PROJECT] Closed: %1")
+                    .arg(QDir::toNativeSeparators(previousRoot)));
+        }
+
+        ShowWelcomePage();
+    }
+
+    void MainWindow::ShowToolchainReadiness()
+    {
+        QDialog dialog(this);
+        dialog.setWindowTitle(QStringLiteral("Toolchain Readiness"));
+        dialog.resize(760, 560);
+
+        auto* layout = new QVBoxLayout(&dialog);
+        auto* summary = new QLabel(
+            QStringLiteral("Detected tools and the active project's CMake configuration."),
+            &dialog);
+        summary->setWordWrap(true);
+        layout->addWidget(summary);
+
+        auto* report = new QPlainTextEdit(&dialog);
+        report->setReadOnly(true);
+        report->setLineWrapMode(QPlainTextEdit::NoWrap);
+        report->setPlainText(m_buildController->ToolchainReadinessReport());
+        layout->addWidget(report, 1);
+
+        auto* buttons = new QDialogButtonBox(QDialogButtonBox::Close, &dialog);
+        connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::accept);
+        layout->addWidget(buttons);
+        dialog.exec();
+    }
+
     void MainWindow::ShowSettingsDialog()
     {
         QSettings settings(
@@ -1498,18 +1740,27 @@ namespace BootstrapForge::Client::UI
 
         QDialog dialog(this);
         dialog.setWindowTitle(QStringLiteral("BootstrapForge Settings"));
+        dialog.setMinimumSize(540, 360);
         auto* layout = new QVBoxLayout(&dialog);
-        auto* form = new QFormLayout();
+        auto* pages = new QTabWidget(&dialog);
+        layout->addWidget(pages, 1);
+
+        auto* toolsPage = new QWidget(pages);
+        auto* toolsLayout = new QVBoxLayout(toolsPage);
+        auto* toolsForm = new QFormLayout();
         auto* cmakeEdit = new QLineEdit(
             settings.value(QStringLiteral("tools/cmakeExecutable")).toString(),
-            &dialog);
+            toolsPage);
         auto* gitEdit = new QLineEdit(
             settings.value(QStringLiteral("tools/gitExecutable")).toString(),
-            &dialog);
-        auto addExecutableRow = [&dialog, form](
+            toolsPage);
+        auto* qtCMakeDirEdit = new QLineEdit(
+            settings.value(QStringLiteral("tools/qt6CMakeDirectory")).toString(),
+            toolsPage);
+        auto addExecutableRow = [&dialog, toolsForm, toolsPage](
             const QString& label, QLineEdit* edit, const QString& caption)
         {
-            auto* row = new QWidget(&dialog);
+            auto* row = new QWidget(toolsPage);
             auto* rowLayout = new QHBoxLayout(row);
             rowLayout->setContentsMargins(0, 0, 0, 0);
             auto* browse = new QPushButton(QStringLiteral("Browse..."), row);
@@ -1518,24 +1769,92 @@ namespace BootstrapForge::Client::UI
             QObject::connect(browse, &QPushButton::clicked, &dialog,
                 [&dialog, edit, caption]
                 {
-                    const QString path = QFileDialog::getOpenFileName(
-                        &dialog, caption, edit->text(),
+                    const QString currentPath = edit->text().trimmed();
+                    const QString startDirectory = currentPath.isEmpty()
+                        ? QDir::homePath()
+                        : QFileInfo(currentPath).absolutePath();
+                    QFileDialog picker(&dialog);
+                    ConfigureFilePicker(
+                        picker,
+                        caption,
+                        startDirectory,
                         QStringLiteral("Executables (*.exe);;All files (*.*)"));
-                    if (!path.isEmpty())
+                    if (picker.exec() == QDialog::Accepted &&
+                        !picker.selectedFiles().isEmpty())
                     {
-                        edit->setText(path);
+                        edit->setText(picker.selectedFiles().front());
                     }
                 });
-            form->addRow(label, row);
+            toolsForm->addRow(label, row);
         };
         addExecutableRow(QStringLiteral("CMake executable"), cmakeEdit,
             QStringLiteral("Choose CMake executable"));
         addExecutableRow(QStringLiteral("Git executable"), gitEdit,
             QStringLiteral("Choose Git executable"));
-        layout->addLayout(form);
-        layout->addWidget(new QLabel(
-            QStringLiteral("Leave a field empty to use automatic discovery."),
-            &dialog));
+        auto* qtRow = new QWidget(toolsPage);
+        auto* qtRowLayout = new QHBoxLayout(qtRow);
+        qtRowLayout->setContentsMargins(0, 0, 0, 0);
+        auto* browseQt = new QPushButton(QStringLiteral("Browse..."), qtRow);
+        qtRowLayout->addWidget(qtCMakeDirEdit, 1);
+        qtRowLayout->addWidget(browseQt);
+        toolsForm->addRow(QStringLiteral("Qt 6 CMake package directory"), qtRow);
+        connect(browseQt, &QPushButton::clicked, &dialog,
+            [&dialog, qtCMakeDirEdit]
+            {
+                const QString currentPath = qtCMakeDirEdit->text().trimmed();
+                QFileDialog picker(&dialog);
+                ConfigureDirectoryPicker(
+                    picker,
+                    QStringLiteral("Choose the directory containing Qt6Config.cmake"),
+                    currentPath.isEmpty() ? QDir::homePath() : currentPath);
+                if (picker.exec() == QDialog::Accepted &&
+                    !picker.selectedFiles().isEmpty())
+                {
+                    qtCMakeDirEdit->setText(picker.selectedFiles().front());
+                }
+            });
+        toolsLayout->addLayout(toolsForm);
+        auto* toolHint = new QLabel(
+            QStringLiteral("Leave a tool path empty to use automatic discovery. Set Qt's package directory to the folder containing Qt6Config.cmake when CMake cannot find Qt. Changes take effect on the next configure."),
+            toolsPage);
+        toolHint->setWordWrap(true);
+        toolsLayout->addWidget(toolHint);
+        toolsLayout->addStretch();
+        pages->addTab(toolsPage, QStringLiteral("Tools"));
+
+        auto* editorPage = new QWidget(pages);
+        auto* editorLayout = new QVBoxLayout(editorPage);
+        auto* editorForm = new QFormLayout();
+        auto* fontSize = new QSpinBox(editorPage);
+        fontSize->setRange(8, 28);
+        fontSize->setSuffix(QStringLiteral(" pt"));
+        fontSize->setValue(settings.value(
+            QStringLiteral("editor/fontSize"), 11).toInt());
+        auto* tabWidth = new QSpinBox(editorPage);
+        tabWidth->setRange(2, 8);
+        tabWidth->setSuffix(QStringLiteral(" spaces"));
+        tabWidth->setValue(settings.value(
+            QStringLiteral("editor/tabWidth"), 4).toInt());
+        auto* wordWrap = new QCheckBox(
+            QStringLiteral("Wrap long lines to the editor width"), editorPage);
+        wordWrap->setChecked(settings.value(
+            QStringLiteral("editor/wordWrap"), false).toBool());
+        auto* lineNumbers = new QCheckBox(
+            QStringLiteral("Show line numbers"), editorPage);
+        lineNumbers->setChecked(settings.value(
+            QStringLiteral("editor/showLineNumbers"), true).toBool());
+        editorForm->addRow(QStringLiteral("Font size"), fontSize);
+        editorForm->addRow(QStringLiteral("Tab width"), tabWidth);
+        editorForm->addRow(QString(), wordWrap);
+        editorForm->addRow(QString(), lineNumbers);
+        editorLayout->addLayout(editorForm);
+        auto* editorHint = new QLabel(
+            QStringLiteral("These preferences apply to open documents immediately "
+                "and to files opened later."), editorPage);
+        editorHint->setWordWrap(true);
+        editorLayout->addWidget(editorHint);
+        editorLayout->addStretch();
+        pages->addTab(editorPage, QStringLiteral("Editor"));
 
         auto* buttons = new QDialogButtonBox(
             QDialogButtonBox::Save | QDialogButtonBox::Cancel, &dialog);
@@ -1549,11 +1868,104 @@ namespace BootstrapForge::Client::UI
 
         settings.setValue(QStringLiteral("tools/cmakeExecutable"), cmakeEdit->text().trimmed());
         settings.setValue(QStringLiteral("tools/gitExecutable"), gitEdit->text().trimmed());
-        ShowInformationMessage(QStringLiteral("Tool settings saved."));
+        settings.setValue(QStringLiteral("tools/qt6CMakeDirectory"), qtCMakeDirEdit->text().trimmed());
+        settings.setValue(QStringLiteral("editor/fontSize"), fontSize->value());
+        settings.setValue(QStringLiteral("editor/tabWidth"), tabWidth->value());
+        settings.setValue(QStringLiteral("editor/wordWrap"), wordWrap->isChecked());
+        settings.setValue(QStringLiteral("editor/showLineNumbers"), lineNumbers->isChecked());
+        for (Editor::EditorDocument* document :
+            m_workspaceTabs->findChildren<Editor::EditorDocument*>())
+        {
+            document->ApplyEditorSettings();
+        }
+        ShowInformationMessage(QStringLiteral("Settings saved and editor preferences applied."));
         if (!m_projectTree->WorkspaceRoot().isEmpty())
         {
             m_buildController->RefreshTests();
         }
+    }
+
+    void MainWindow::ShowUsagePrompt()
+    {
+        const QString prompt = QString::fromUtf8(R"PROMPT(
+You are generating commands for BootstrapForge, a project structure and file generation tool.
+
+Return one valid command only. Do not include Markdown fences or explanatory prose. BootstrapForge will parse and validate the command, show a preview, and ask the user before applying filesystem changes.
+
+Command form:
+generate {
+  branch(Engine) {
+    subbranch(include) {
+      subbranch(BootstrapForge) {
+        subbranch(Engine) {
+          folder(Differ) {
+            file(ArchitectureDiffer.hpp)
+          }
+        }
+      }
+    }
+    subbranch(src) {
+      folder(Differ) {
+        file(ArchitectureDiffer.cpp)
+      }
+    }
+  }
+}
+
+Rules:
+- The generate block may contain multiple branches, folders, or files.
+- A branch is allowed directly under generate. It may contain subbranch, folder, or file entries.
+- A subbranch may contain subbranch, folder, or file entries. A folder may contain folder or file entries.
+- Containers use braces, may have multiple siblings, and may be empty.
+- Files are leaves and cannot contain children.
+- Names may be quoted or unquoted. Quote names with spaces or punctuation, and preserve the requested spelling and extension.
+- Every destination is relative to the currently open project. Use nested containers for directories; never use absolute paths, drive letters, or '..'.
+- Use file(Name.ext) for an empty placeholder. To provide initial contents, write file(Name.ext) = """ followed by the exact multiline contents and a closing """ on its own line.
+- Do not put the triple-quote delimiter inside generated file contents.
+- Avoid duplicate destinations, including names that differ only by letter case.
+- Do not invent unsupported declaration types or create files the user did not request.
+
+If the requested structure is ambiguous, ask the user to clarify before returning a command.
+)PROMPT");
+
+        QDialog dialog(this);
+        dialog.setWindowTitle(QStringLiteral("BootstrapForge Use Prompt"));
+        dialog.resize(820, 680);
+        auto* layout = new QVBoxLayout(&dialog);
+        auto* introduction = new QLabel(
+            QStringLiteral("Copy these instructions into an external AI so it can "
+                "generate commands for BootstrapForge."),
+            &dialog);
+        introduction->setWordWrap(true);
+        layout->addWidget(introduction);
+
+        auto* promptEditor = new QPlainTextEdit(&dialog);
+        promptEditor->setPlainText(prompt.trimmed());
+        promptEditor->setReadOnly(true);
+        promptEditor->setLineWrapMode(QPlainTextEdit::WidgetWidth);
+        layout->addWidget(promptEditor, 1);
+
+        auto* footer = new QHBoxLayout();
+        auto* copyStatus = new QLabel(&dialog);
+        auto* copyButton = new QPushButton(
+            QStringLiteral("Copy Prompt"), &dialog);
+        auto* closeButtons = new QDialogButtonBox(
+            QDialogButtonBox::Close, &dialog);
+        footer->addWidget(copyStatus, 1);
+        footer->addWidget(copyButton);
+        footer->addWidget(closeButtons);
+        layout->addLayout(footer);
+
+        connect(copyButton, &QPushButton::clicked, &dialog,
+            [&dialog, promptEditor, copyStatus]
+            {
+                QGuiApplication::clipboard()->setText(
+                    promptEditor->toPlainText());
+                copyStatus->setText(QStringLiteral("Prompt copied."));
+            });
+        connect(closeButtons, &QDialogButtonBox::rejected,
+            &dialog, &QDialog::reject);
+        dialog.exec();
     }
 
     void MainWindow::ShowAboutDialog()
@@ -1727,6 +2139,296 @@ namespace BootstrapForge::Client::UI
         }
         m_outputEditor->appendPlainText(QStringLiteral("[GIT] Switched to branch %1.").arg(selected));
         statusBar()->showMessage(QStringLiteral("Switched to %1").arg(selected), 5000);
+    }
+
+    void MainWindow::CommitGitChanges()
+    {
+        QString status;
+        QString error;
+        if (!RunGitCommand(
+            {QStringLiteral("status"), QStringLiteral("--short"),
+                QStringLiteral("--untracked-files=normal")}, status, error))
+        {
+            ShowErrorMessage(error);
+            return;
+        }
+        if (status.trimmed().isEmpty())
+        {
+            ShowInformationMessage(QStringLiteral("There are no changes to commit."));
+            return;
+        }
+
+        bool accepted = false;
+        const QString message = QInputDialog::getText(
+            this,
+            QStringLiteral("Commit Changes"),
+            QStringLiteral("Commit message"),
+            QLineEdit::Normal,
+            {},
+            &accepted).trimmed();
+        if (!accepted)
+        {
+            return;
+        }
+        if (message.isEmpty())
+        {
+            ShowErrorMessage(QStringLiteral("A commit message is required."));
+            return;
+        }
+
+        QDialog choice(this);
+        choice.setWindowTitle(QStringLiteral("Commit Changes"));
+        choice.setWindowModality(Qt::WindowModal);
+        choice.setSizeGripEnabled(true);
+
+        auto* choiceLayout = new QVBoxLayout(&choice);
+        auto* reviewText = new QLabel(
+            QStringLiteral("Review the working-tree changes, then choose what to commit."),
+            &choice);
+        reviewText->setWordWrap(true);
+        choiceLayout->addWidget(reviewText);
+
+        auto* statusView = new QPlainTextEdit(&choice);
+        statusView->setReadOnly(true);
+        statusView->setLineWrapMode(QPlainTextEdit::NoWrap);
+        statusView->setPlainText(status.trimmed());
+        statusView->setMinimumHeight(120);
+        choiceLayout->addWidget(statusView, 1);
+
+        auto* buttons = new QDialogButtonBox(&choice);
+        auto* stageAll = buttons->addButton(
+            QStringLiteral("Stage All and Commit"),
+            QDialogButtonBox::AcceptRole);
+        auto* stagedOnly = buttons->addButton(
+            QStringLiteral("Commit Staged Changes"),
+            QDialogButtonBox::ActionRole);
+        auto* cancel = buttons->addButton(QDialogButtonBox::Cancel);
+        cancel->setDefault(true);
+        choiceLayout->addWidget(buttons);
+
+        enum class CommitSelection
+        {
+            None,
+            StageAll,
+            StagedOnly
+        };
+        CommitSelection selection = CommitSelection::None;
+        connect(stageAll, &QAbstractButton::clicked, &choice,
+            [&choice, &selection]
+            {
+                selection = CommitSelection::StageAll;
+                choice.accept();
+            });
+        connect(stagedOnly, &QAbstractButton::clicked, &choice,
+            [&choice, &selection]
+            {
+                selection = CommitSelection::StagedOnly;
+                choice.accept();
+            });
+        connect(buttons, &QDialogButtonBox::rejected,
+            &choice, &QDialog::reject);
+
+        const QScreen* targetScreen = screen();
+        if (targetScreen == nullptr)
+        {
+            targetScreen = QGuiApplication::primaryScreen();
+        }
+        const QSize availableSize = targetScreen == nullptr
+            ? QSize(1024, 768)
+            : targetScreen->availableGeometry().size();
+        const int dialogWidth = std::max(
+            240, std::min(900, availableSize.width() - 48));
+        const int dialogHeight = std::max(
+            200, std::min(620, availableSize.height() - 72));
+        choice.setMinimumSize(
+            std::min(480, dialogWidth),
+            std::min(320, dialogHeight));
+        choice.resize(dialogWidth, dialogHeight);
+
+        if (choice.exec() != QDialog::Accepted ||
+            selection == CommitSelection::None)
+        {
+            return;
+        }
+
+        if (selection == CommitSelection::StageAll)
+        {
+            QString addOutput;
+            if (!RunGitCommand(
+                {QStringLiteral("add"), QStringLiteral("--all")}, addOutput, error))
+            {
+                ShowErrorMessage(error);
+                return;
+            }
+        }
+        else
+        {
+            QString stagedFiles;
+            if (!RunGitCommand(
+                {QStringLiteral("diff"), QStringLiteral("--cached"),
+                    QStringLiteral("--name-only")}, stagedFiles, error))
+            {
+                ShowErrorMessage(error);
+                return;
+            }
+            if (stagedFiles.trimmed().isEmpty())
+            {
+                ShowInformationMessage(QStringLiteral(
+                    "There are no staged changes. Choose Stage All and Commit, or stage files in Git first."));
+                return;
+            }
+        }
+
+        QString commitOutput;
+        if (!RunGitCommand(
+            {QStringLiteral("commit"), QStringLiteral("-m"), message},
+            commitOutput, error))
+        {
+            if (!commitOutput.trimmed().isEmpty())
+            {
+                m_outputEditor->appendPlainText(commitOutput.trimmed());
+            }
+            ShowErrorMessage(error);
+            return;
+        }
+
+        m_outputEditor->appendPlainText(QStringLiteral("[GIT COMMIT]\n%1")
+            .arg(commitOutput.trimmed()));
+        statusBar()->showMessage(QStringLiteral("Git commit created."), 5000);
+    }
+
+    void MainWindow::StashGitChanges()
+    {
+        QString status;
+        QString error;
+        if (!RunGitCommand(
+            {QStringLiteral("status"), QStringLiteral("--porcelain"),
+                QStringLiteral("--untracked-files=normal")}, status, error))
+        {
+            ShowErrorMessage(error);
+            return;
+        }
+        if (status.trimmed().isEmpty())
+        {
+            ShowInformationMessage(QStringLiteral("There are no tracked or untracked changes to stash."));
+            return;
+        }
+
+        bool accepted = false;
+        const QString message = QInputDialog::getText(
+            this,
+            QStringLiteral("Stash Git Changes"),
+            QStringLiteral("Stash message"),
+            QLineEdit::Normal,
+            QStringLiteral("BootstrapForge changes"),
+            &accepted).trimmed();
+        if (!accepted)
+        {
+            return;
+        }
+
+        QString output;
+        if (!RunGitCommand(
+            {QStringLiteral("stash"), QStringLiteral("push"),
+                QStringLiteral("--include-untracked"), QStringLiteral("-m"),
+                message.isEmpty() ? QStringLiteral("BootstrapForge changes") : message},
+            output, error))
+        {
+            ShowErrorMessage(error);
+            return;
+        }
+
+        m_outputEditor->appendPlainText(QStringLiteral("[GIT STASH]\n%1")
+            .arg(output.trimmed().isEmpty() ? QStringLiteral("Changes stashed.") : output.trimmed()));
+        statusBar()->showMessage(QStringLiteral("Git changes stashed."), 5000);
+    }
+
+    void MainWindow::RestoreGitStash(bool pop)
+    {
+        QString output;
+        QString error;
+        if (!RunGitCommand(
+            {QStringLiteral("stash"), QStringLiteral("list"),
+                QStringLiteral("--format=%gd%x09%gs")},
+            output, error))
+        {
+            ShowErrorMessage(error);
+            return;
+        }
+
+        QStringList references;
+        QStringList choices;
+        const QStringList rows = output.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
+        for (const QString& row : rows)
+        {
+            const qsizetype separator = row.indexOf(QLatin1Char('\t'));
+            if (separator <= 0)
+            {
+                continue;
+            }
+            references.push_back(row.left(separator).trimmed());
+            choices.push_back(row.left(separator).trimmed() +
+                QStringLiteral(": ") + row.mid(separator + 1).trimmed());
+        }
+        if (references.isEmpty())
+        {
+            ShowInformationMessage(QStringLiteral("There are no saved Git stashes."));
+            return;
+        }
+
+        bool accepted = false;
+        const QString selected = QInputDialog::getItem(
+            this,
+            pop ? QStringLiteral("Pop Git Stash") : QStringLiteral("Apply Git Stash"),
+            QStringLiteral("Choose a saved stash"),
+            choices,
+            0,
+            false,
+            &accepted);
+        if (!accepted)
+        {
+            return;
+        }
+        const qsizetype index = choices.indexOf(selected);
+        if (index < 0 || index >= references.size())
+        {
+            return;
+        }
+
+        if (pop)
+        {
+            const auto answer = QMessageBox::warning(
+                this,
+                QStringLiteral("Pop Git Stash"),
+                QStringLiteral("Pop %1 into the working tree? Git removes it from the stash list only if the apply succeeds.")
+                    .arg(references[index]),
+                QMessageBox::Apply | QMessageBox::Cancel,
+                QMessageBox::Cancel);
+            if (answer != QMessageBox::Apply)
+            {
+                return;
+            }
+        }
+
+        const QString operation = pop ? QStringLiteral("pop") : QStringLiteral("apply");
+        if (!RunGitCommand(
+            {QStringLiteral("stash"), operation, references[index]}, output, error))
+        {
+            if (!output.trimmed().isEmpty())
+            {
+                m_outputEditor->appendPlainText(output.trimmed());
+            }
+            ShowErrorMessage(error);
+            return;
+        }
+
+        m_outputEditor->appendPlainText(QStringLiteral("[GIT STASH]\n%1")
+            .arg(output.trimmed().isEmpty()
+                ? QStringLiteral("Applied %1.").arg(references[index])
+                : output.trimmed()));
+        statusBar()->showMessage(
+            pop ? QStringLiteral("Git stash popped.") : QStringLiteral("Git stash applied; saved stash retained."),
+            5000);
     }
 
     void MainWindow::RunBuiltApplication()
@@ -1939,6 +2641,7 @@ namespace BootstrapForge::Client::UI
             return;
         }
 
+        m_selectedProjectItemPath = fileInfo.absoluteFilePath();
         QString errorMessage;
 
         if (!m_editorManager->OpenFile(
@@ -1998,6 +2701,7 @@ namespace BootstrapForge::Client::UI
 
         const QString projectPath = QDir::cleanPath(
             QFileInfo(path).absoluteFilePath());
+        m_selectedProjectItemPath = projectPath;
         const QString projectName = QFileInfo(projectPath).fileName().isEmpty()
             ? projectPath
             : QFileInfo(projectPath).fileName();
@@ -2012,12 +2716,14 @@ namespace BootstrapForge::Client::UI
             if (welcomeIndex >= 0)
             {
                 m_workspaceTabs->removeTab(welcomeIndex);
+                m_welcomePage->hide();
+                if (m_workspaceTabs->count() == 0)
+                {
+                    m_workspaceTabs->setCurrentIndex(-1);
+                }
             }
-            delete m_welcomePage;
-            m_welcomePage = nullptr;
-            m_welcomeProjectLabel = nullptr;
-            m_recentProjectsList = nullptr;
         }
+        UpdateEditorProperties();
         SetProjectWorkspacePanelsVisible(true);
         m_buildController->SetProjectRoot(projectPath);
         m_buildAction->setEnabled(true);
@@ -2027,6 +2733,10 @@ namespace BootstrapForge::Client::UI
         m_gitStatusAction->setEnabled(true);
         m_createBranchAction->setEnabled(true);
         m_switchBranchAction->setEnabled(true);
+        m_stashChangesAction->setEnabled(true);
+        m_commitChangesAction->setEnabled(true);
+        m_applyStashAction->setEnabled(true);
+        m_popStashAction->setEnabled(true);
         m_buildController->RefreshTests();
         setWindowTitle(QStringLiteral("%1 — BootstrapForge")
             .arg(projectName));
@@ -2229,28 +2939,35 @@ namespace BootstrapForge::Client::UI
 
     void MainWindow::UpdateEditorProperties()
     {
-        const QString filePath =
-            m_editorManager->CurrentFilePath();
-
-        if (filePath.isEmpty())
+        QString filePath = m_selectedProjectItemPath;
+        if (filePath.isEmpty() &&
+            m_editorManager->IsEditorTab(m_workspaceTabs->currentIndex()))
         {
-            m_propertiesLabel->setText(
-                QStringLiteral(
-                    "No document selected."));
+            filePath = m_editorManager->CurrentFilePath();
+        }
 
+        const QFileInfo fileInfo(filePath);
+        if (filePath.isEmpty() || !fileInfo.exists() || !fileInfo.isFile())
+        {
+            m_propertiesLabel->clear();
             return;
         }
 
-        const QFileInfo fileInfo(
-            filePath);
-
-        const QString modifiedState =
-            m_editorManager->IsModified(
-                m_workspaceTabs->currentIndex())
-            ? QStringLiteral(
-                "Modified")
-            : QStringLiteral(
-                "Saved");
+        QString modifiedState = QStringLiteral("Not open");
+        for (int index = 0; index < m_workspaceTabs->count(); ++index)
+        {
+            if (m_editorManager->IsEditorTab(index) &&
+                QString::compare(
+                    QFileInfo(m_editorManager->FilePath(index)).absoluteFilePath(),
+                    fileInfo.absoluteFilePath(),
+                    Qt::CaseInsensitive) == 0)
+            {
+                modifiedState = m_editorManager->IsModified(index)
+                    ? QStringLiteral("Modified")
+                    : QStringLiteral("Saved");
+                break;
+            }
+        }
 
         m_propertiesLabel->setText(
             QStringLiteral(
@@ -2264,7 +2981,7 @@ namespace BootstrapForge::Client::UI
                 "%4")
             .arg(
                 fileInfo.fileName(),
-                fileInfo.absoluteFilePath(),
+                QDir::toNativeSeparators(fileInfo.absoluteFilePath()),
                 QString::number(
                     fileInfo.size()),
                 modifiedState));

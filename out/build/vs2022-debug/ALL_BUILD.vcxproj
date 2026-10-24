@@ -191,6 +191,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{0EA32267-B694-3AC3-9610-0D99486EB76D}</Project>
       <Name>BootstrapForge.Client</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Tests\BootstrapForge.CodePackageTests.vcxproj">
+      <Project>{26E2FDF6-41E5-3A60-8E3E-60415F14BDD6}</Project>
+      <Name>BootstrapForge.CodePackageTests</Name>
+    </ProjectReference>
     <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Domain\BootstrapForge.Domain.vcxproj">
       <Project>{EFCEF277-CE1E-37D2-BA04-66235D96A3B3}</Project>
       <Name>BootstrapForge.Domain</Name>
@@ -206,6 +210,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Infrastructure\BootstrapForge.Infrastructure.vcxproj">
       <Project>{6B95805E-DBEA-3E72-88EE-0EBB82787C78}</Project>
       <Name>BootstrapForge.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Client\BootstrapForge.Launcher.vcxproj">
+      <Project>{9B0144E5-7CEA-3E12-B5E4-1D188230BCF6}</Project>
+      <Name>BootstrapForge.Launcher</Name>
     </ProjectReference>
     <ProjectReference Include="C:\EndlessProjects\BootstrapForge\out\build\vs2022-debug\Tests\BootstrapForge.ReconciliationIntegrationTests.vcxproj">
       <Project>{F6286A92-3C80-39E4-9424-E50EC3F6DD60}</Project>
